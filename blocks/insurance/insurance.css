@@ -1,0 +1,72 @@
+.insurance-container .insurance-wrapper .insurance div > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (width <= 786px){
+        display: block;
+    }
+}
+
+@media (width <= 786px){
+.insurance-container .insurance-wrapper .insurance div > div .button-container{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin: 10px 0px;
+}
+}
+
+.insurance-container .insurance-wrapper .insurance div h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (width <= 786px){
+        margin: 0;
+    }
+}
+
+.insurance-container .insuranceblock table td a{
+    border:1px solid grey;
+    padding:10px;
+    border-radius:4px;
+    color:black;
+}
+
+.insurance-container .insurance-wrapper .insurance a {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff; 
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.insurance-container .insurance-wrapper .insurance div:last-child a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (width >= 768px){
+    .insurance-container .insuranceblock > div:first-child{
+    display:flex;
+    gap:32px;
+    }
+}
+
+.insurance-container .insuranceblock > div> div:first-child p{
+    font-size: 12px;
+    margin:0;
+}
+
+.insurance-container .insuranceblock table td{
+font-size: 12px;
+vertical-align: top;
+}
+
+.insurance-container .insuranceblock table td p{
+margin:0;
+}

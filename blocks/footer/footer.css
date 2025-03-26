@@ -1,20 +1,114 @@
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  padding: 2rem;
+
+  /* background-color: var(--light-color); */
+  background-color: #273f87;
+  font-size: var(--body-font-size-s);
+  color: white;
 }
 
-footer .footer > div {
-  margin: auto;
+footer .footer {
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  margin: auto;
 }
 
 footer .footer p {
   margin: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+footer .footer .default-content-wrapper p{
+  display: flex;
+  gap:5px;
+  cursor: pointer;
+}
+
+footer .footer .default-content-wrapper strong{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* new  */
+.aboutus-container{
+  display:flex;
+}
+
+@media (width <= 786px){
+  .aboutus-container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
+}
+
+.aboutus-container .default-content-wrapper{
+  display:unset!important;
+  margin:unset!important
+}
+
+.footer-container .default-content-wrapper p:last-child {
+  display: flex;
+  align-items: center;
+}
+
+@media (width <= 786px){
+  .footer-container .default-content-wrapper p:last-child {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 12px;
+  }
+}
+
+.aboutus-container .default-content-wrapper p:nth-child(even){
+  font-size: 12px;
+  opacity: 0.72;
+  line-height: 24px;
+}
+
+.aboutus-container .default-content-wrapper p:nth-child(3) {
+  margin-top: 30px;
+}
+
+.footer-container .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container .default-content-wrapper p:nth-child(even) {
+  font-size: 12px;
+  opacity: 0.72;
+  line-height: 24px;
+  margin: 15px 0;
+}
+
+.aboutus-wrapper .aboutus div:not(:first-child){
+  font-size: 12px;
+  opacity: 0.72;
+  line-height: 24px;
+}
+
+.resource-wrapper .resource div:not(:first-child){
+  font-size: 12px;
+  opacity: 0.72;
+  line-height: 24px;
+}
+
+.services-wrapper .services div:not(:first-child){
+  font-size: 12px;
+  opacity: 0.72;
+  line-height: 24px;
+}
+
+.aboutus-wrapper,
+.resource-wrapper,
+.services-wrapper
+{
+  margin-top:unset!important;
+}
+
+footer .default-content-wrapper .icon-logo_icon{
+  width:50px;
+  height: 50px;
 }

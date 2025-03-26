@@ -1,4 +1,5 @@
 import {
+  sampleRUM,
   buildBlock,
   loadHeader,
   loadFooter,
@@ -7,11 +8,14 @@ import {
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
-  waitForFirstImage,
-  loadSection,
-  loadSections,
+  waitForLCP,
+  loadBlocks,
   loadCSS,
+  getMetadata,
+  loadSubHeader,
 } from './aem.js';
+
+const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -26,6 +30,20 @@ function buildHeroBlock(main) {
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
   }
+}
+
+function autolinkModals(element) {
+  console.log("k");
+  element.addEventListener('click', async (e) => {
+    console.log("dji");
+    const origin = e.target.closest('a');
+ 
+    if (origin && origin.href && origin.href.includes('/modal')) {
+      e.preventDefault();
+      const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
+      openModal(origin.href);
+    }
+  });
 }
 
 /**
@@ -67,6 +85,85 @@ export function decorateMain(main) {
   decorateBlocks(main);
 }
 
+function initWebSDK(path, config) {
+  return new Promise((resolve) => {
+    import(path)
+      .then(() => window.alloy('configure', config))
+      .then(resolve);
+  });
+}
+
+
+function onDecoratedElement(fn) {
+  // Apply propositions to all already decorated blocks/sections
+  if (document.querySelector('[data-block-status="loaded"],[data-section-status="loaded"]')) {
+    fn();
+  }
+
+  const observer = new MutationObserver((mutations) => {
+    if (mutations.some((m) => m.target.tagName === 'BODY'
+      || m.target.dataset.sectionStatus === 'loaded'
+      || m.target.dataset.blockStatus === 'loaded')) {
+      fn();
+    }
+  });
+  // Watch sections and blocks being decorated async
+  observer.observe(document.querySelector('main'), {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['data-block-status', 'data-section-status'],
+  });
+  // Watch anything else added to the body
+  observer.observe(document.querySelector('body'), { childList: true });
+}
+
+function toCssSelector(selector) {
+  return selector.replace(/(\.\S+)?:eq\((\d+)\)/g, (_, clss, i) => `:nth-child(${Number(i) + 1}${clss ? ` of ${clss})` : ''}`);
+}
+
+async function getElementForProposition(proposition) {
+  const selector = proposition.data.prehidingSelector
+    || toCssSelector(proposition.data.selector);
+  return document.querySelector(selector);
+}
+
+async function getAndApplyRenderDecisions() {
+  // Get the decisions, but don't render them automatically
+  // so we can hook up into the AEM EDS page load sequence
+  const response = await window.alloy('sendEvent', { renderDecisions: false });
+  const { propositions } = response;
+  onDecoratedElement(async () => {
+    await window.alloy('applyPropositions', { propositions });
+    // keep track of propositions that were applied
+    propositions.forEach((p) => {
+      p.items = p.items.filter((i) => i.schema !== 'https://ns.adobe.com/personalization/dom-action' || !getElementForProposition(i));
+    });
+  });
+
+  // Reporting is deferred to avoid long tasks
+  window.setTimeout(() => {
+    // Report shown decisions
+    window.alloy('sendEvent', {
+      xdm: {
+        eventType: 'decisioning.propositionDisplay',
+        _experience: {
+          decisioning: { propositions },
+        },
+      },
+    });
+  });
+}
+
+let alloyLoadedPromise = initWebSDK('./alloy.js', {
+    datastreamId: 'ce2eeece-8320-4043-b94a-4c13f308248d',
+    orgId: '73D97EE25CCCE8260A495EBD@AdobeOrg',
+  });
+//alloyLoadedPromise.then(() => getAndApplyRenderDecisions());
+console.log(getMetadata('target'));
+if (getMetadata('target')) {
+//  alloyLoadedPromise.then(() => getAndApplyRenderDecisions());
+}
+
 /**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
@@ -77,8 +174,16 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
+    await alloyLoadedPromise;
+    // show the LCP block in a dedicated frame to reduce TBT
+    await new Promise((res) => {
+      window.requestAnimationFrame(async () => {
+        await waitForLCP(LCP_BLOCKS);
+        res();
+      });
+    });
     document.body.classList.add('appear');
-    await loadSection(main.querySelector('.section'), waitForFirstImage);
+    await waitForLCP(LCP_BLOCKS);
   }
 
   try {
@@ -96,18 +201,25 @@ async function loadEager(doc) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
+  autolinkModals(doc);
   const main = doc.querySelector('main');
-  await loadSections(main);
+  await loadBlocks(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
+  
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+  loadSubHeader(doc.querySelector('header'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  sampleRUM('lazy');
+  sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
+  sampleRUM.observe(main.querySelectorAll('picture > img'));
 }
 
 /**
