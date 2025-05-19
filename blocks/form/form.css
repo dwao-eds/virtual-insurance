@@ -199,7 +199,7 @@ input#form-phonenumber {
 }
 
 .premium-section {
-    margin-top: 125px!important;
+    margin-top: 50px!important;
     background-image: url(../../icons/pay-premium-image.png);
     background-size: cover;
     background-position: center;
@@ -478,5 +478,8 @@ margin:0;
     transform-origin: center;
   }
 
-
+#form-headline{
+    margin-top: -12px;
+    margin-bottom: 0;
+}
 

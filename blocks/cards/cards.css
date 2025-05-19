@@ -1,18 +1,21 @@
-.cards > ul {
+.cards>ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(278px, 1fr));
-  grid-gap: 16px;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(278px, 1fr)); */
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 15px;
+  grid-gap: 20px;
 
-  @media (width <= 786px){
+  @media (width <=786px) {
     display: block;
-    padding-left:20px;
+    padding-left: 20px;
   }
 }
 
-.cards > ul > li {
+.cards>ul>li {
   border: 1px solid var(--dark-color);
   background-color: var(--background-color)
 }
@@ -25,101 +28,119 @@
   line-height: 0;
 }
 
-.cards .cards-card-body > *:first-child {
+.cards .cards-card-body>*:first-child {
   margin-top: 0;
 }
 
-.cards > ul > li img {
+.cards>ul>li img {
   width: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
-.cards-choice >ul > li img {
-width:unset!important;
-padding:20px;
+.cards-choice>ul>li img {
+  width: unset !important;
+  padding: 20px;
+  padding-bottom: 0;
 }
 
 .cards-choice ul {
   display: flex;
   list-style-type: none;
   padding: 0;
+  margin-top: 30px;
 
-  @media (width <= 786px){
-      display: block;
+  @media (width <=786px) {
+    display: block;
   }
 }
 
 .cards-choice ul li {
   flex: 1;
-  background-color: #f5f8ff!important;
+  background-color: #f5f8ff !important;
   margin-right: 10px;
-  border-radius:10px;
+  border-radius: 10px;
   font-size: 14px;
 
-  @media (width <= 786px){
-    margin:10px 0;
+  @media (width <=786px) {
+    margin: 10px 0;
   }
 }
 
-.second-card-container{
-  width: 62%;
+.second-card-container {
+  width: 80%;
   margin: auto;
   border-radius: 24px;
-  padding:10px!important;
+  padding: 10px !important;
   bottom: 55px;
   background: white;
   position: relative;
   box-shadow: 2px 2px 4px rgb(0 0 0 / 10%);
-  
-  @media (width <= 786px){
+
+  @media (width <=786px) {
     width: auto;
-    position:unset;
+    position: unset;
     border-radius: 12px;
   }
 }
 
-.second-card-container .default-content-wrapper{
-  margin-left:35px;
+.second-card-container .default-content-wrapper {
+  margin-left: 35px;
+  margin-top: 20px;
 
 }
 
-.second-card-container .virtual-health-insurance ul li{
-display:flex;
-justify-content: center;
-align-items: center;
-border:none;
-@media (width <= 786px){
+.second-card-container .virtual-health-insurance ul li {
   display: flex;
-  justify-content: unset;
-}
-}
+  justify-content: center;
+  align-items: center;
+  border: none;
 
-@media (width >= 786px){
-  .second-card-container .virtual-health-insurance ul li:not(:last-child){
-    border-right: 1px solid;
-    border-image-source: linear-gradient(180deg, rgb(36 150 173 / 0%) 0%, rgb(204 204 204 / 100%) 50%, rgb(92 92 92 / 0%) 100%);
-    border-image-slice: 1;
+  @media (width <=786px) {
+    display: flex;
+    justify-content: unset;
   }
 }
 
-.second-card-container .virtual-health-insurance ul li p{
-margin:unset;
+@media (width >=786px) {
+  .second-card-container .virtual-health-insurance ul li:not(:last-child) {
+    border-left: 1px solid;
+    border-image-source: linear-gradient(180deg, rgb(36 150 173 / 0%) 0%, rgb(204 204 204 / 100%) 50%, rgb(92 92 92 / 0%) 100%);
+    border-image-slice: 1;
+    padding-left: 20px;
+  }
 }
 
-.second-card-container .virtual-health-insurance ul li p:first-child{
-font-size: 16px;
-color: rgb(17 17 17 / 60%);
-font-weight: 400;
+.second-card-container .virtual-health-insurance ul li p {
+  margin: unset;
 }
 
-.second-card-container .cards-wrapper .cards-card-image img{
-  width: 30px; /* Set width to auto */
-  height: 30px; /* Set height to auto */
-  min-width: 100%; /* Ensure a minimum width of 100% */
-  min-height: 100%; /* Ensure a minimum height of 100% */
-  max-width: none; /* Allow the image to expand beyond its intrinsic size */
-  max-height: none; /* Allow the image to expand beyond its intrinsic size */
+.second-card-container .virtual-health-insurance ul li p:first-child {
+  font-size: 16px;
+  color: rgb(17 17 17 / 60%);
+  font-weight: 400;
+}
+
+.second-card-container .cards-wrapper .cards-card-image img {
+  width: 30px;
+  /* Set width to auto */
+  height: 30px;
+  /* Set height to auto */
+  min-width: 100%;
+  /* Ensure a minimum width of 100% */
+  min-height: 100%;
+  /* Ensure a minimum height of 100% */
+  max-width: none;
+  /* Allow the image to expand beyond its intrinsic size */
+  max-height: none;
+  /* Allow the image to expand beyond its intrinsic size */
   object-fit: cover;
 }
 
+.section.cards-container .default-content-wrapper > p:nth-child(1) > strong{
+  color: Red;
+}
+
+.section.cards-container .default-content-wrapper > p:nth-child(2) > strong{
+  font-size: 28px;
+}
