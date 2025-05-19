@@ -3,7 +3,7 @@
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.accordion details + details {
+.accordion details+details {
   margin-top: 16px;
 }
 
@@ -44,13 +44,22 @@
 
 .accordion details[open] .accordion-item-body {
   border-top: 1px solid var(--dark-color);
-  background-color: var(--background-color);
 }
 
+.accordion details[open] {
+  background-color: #F5F9FF;
+}
+
+.accordion-item[open] .accordion-item-label p strong{
+  background-color: #4169E1;
+  color: white;
+}
+
+
 /* accordion container starts  */
-@media (width >= 786px) {
-  .section-health-accordion-first{
-    display:flex;
+@media (width >=786px) {
+  .section-health-accordion-first {
+    display: flex;
     justify-content: center;
   }
 
@@ -60,42 +69,52 @@
   }
 }
 
-.accordion-first .default-content-wrapper{
-margin-right:0;
+.accordion-first .default-content-wrapper {
+  margin-right: 0;
 }
 
-.section-health-accordion-first .default-content-wrapper{
-margin:0;
-/* width: 100%;
+.section-health-accordion-first .default-content-wrapper {
+  margin: 0;
+  /* width: 100%;
 text-align: center; */
-width: auto;
-margin-right: 200px;
-@media (width <= 1400px){
-  text-align: unset;
-}
+  width: auto;
+  margin-right: 200px;
 
-@media (width <= 768px){
-  margin-right: unset;
-}
-}
+  @media (width <=1400px) {
+    text-align: unset;
+  }
 
-/* accordion second  */
-.section-health-accordion-second{
-  background-color:#f5f8ff;
-}
-
-@media (width >= 768px){
-  .section-health-accordion-second .default-content-wrapper p{
-    font-size: 48px;
-    /* width: 50%; */
-    text-align: center;
-    /* line-height: 1;
-    margin-bottom: 1.5rem; */
+  @media (width <=768px) {
+    margin-right: unset;
   }
 }
 
-@media (width <= 768px){
-  .section-health-accordion-second .default-content-wrapper .button-container{
+/* accordion second  */
+.section-health-accordion-second {
+  background-color: #f5f8ff;
+}
+
+@media (width >=768px) {
+  .section-health-accordion-second .default-content-wrapper p {
+    font-size: 48px;
+    width: 50%;
+    /* text-align: center; */
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section.section-health-accordion-second.accordion-container > div:nth-child(3) > p{
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    margin-top: 20px;
+  }
+}
+
+
+@media (width <=768px) {
+  .section-health-accordion-second .default-content-wrapper .button-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -103,17 +122,17 @@ margin-right: 200px;
   }
 }
 
-.section-health-accordion-second .default-content-wrapper .button-container a{
+.section-health-accordion-second .default-content-wrapper .button-container a {
   background-color: #4169e2;
 }
 
-.accordion-second .accordion-item{
+.accordion-second .accordion-item {
   border-radius: 20px;
   background-color: white;
 }
 
-@media (width <= 786px){
-  .accordion-second .accordion-item p{
+@media (width <=786px) {
+  .accordion-second .accordion-item p {
     font-size: 14px;
   }
 
@@ -122,12 +141,12 @@ margin-right: 200px;
   }
 }
 
-.accordion-second .accordion-item strong{
-  color:#4e6abd;
+.accordion-second .accordion-item strong {
+  color: #4e6abd;
 }
 
-@media (width <= 786px){
-  .accordion-first .accordion-item p{
+@media (width <=786px) {
+  .accordion-first .accordion-item p {
     font-size: 14px;
   }
 
@@ -138,29 +157,34 @@ margin-right: 200px;
 
 .section-health-accordion-first .accordion-wrapper {
   width: 27%;
-  margin:0;
+  margin: 0;
 
-  @media (width <= 1400px){
+  @media (width <=1400px) {
     width: 65%;
-}
+  }
+
   /* margin-left: unset !important; */
 
-  @media (width <= 786px){
+  @media (width <=786px) {
     width: auto;
-}
+  }
 }
 
 .section-health-accordion-first .accordion-first .accordion-item {
   border-radius: 25px;
-  
-  @media (width <= 786px){
+
+  @media (width <=786px) {
     border-radius: 10px;
   }
 }
 
-.section-health-accordion-first .accordion-first .accordion-item strong{
-  background-color: #4169E1;
-  border-radius:8px;
-  padding:8px;
-  color:white;
+.section-health-accordion-first .accordion-first .accordion-item strong {
+  background-color: #F5F9FF;
+  border-radius: 8px;
+  padding: 8px;
+  color: #4169E1;
+}
+
+.section-health-accordion-first.accordion-container .default-content-wrapper > p:nth-child(1) > strong{
+  font-size: 28px;
 }
