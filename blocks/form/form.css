@@ -260,7 +260,7 @@ h4 {
     /* background-size: cover; */
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("../../icons/need-help-img.png");
+    background-image: url("../icons/need-help-img.png");
     justify-content: space-evenly;
 
     @media (width <=768px) {
@@ -425,9 +425,9 @@ h4 {
 }
 
 .hero-container .form-wrapper form {
-    padding: 20px;
+    padding: 0 20px;
     min-height: unset;
-    padding-top: 0;
+    /* padding-top: 0; */
 
     @media (width <=786px) {
         padding: unset;
