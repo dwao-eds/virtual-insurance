@@ -86,6 +86,18 @@ export function decorateMain(main) {
 }
 
 function initWebSDK(path, config) {
+  // Preparing the alloy queue
+  if (!window.alloy) {
+    // eslint-disable-next-line no-underscore-dangle
+    (window.__alloyNS ||= []).push('alloy');
+    window.alloy = (...args) => new Promise((resolve, reject) => {
+      window.setTimeout(() => {
+        window.alloy.q.push([resolve, reject, args]);
+      });
+    });
+    window.alloy.q = [];
+  }
+  // Loading and configuring the websdk
   return new Promise((resolve) => {
     import(path)
       .then(() => window.alloy('configure', config))
@@ -155,13 +167,13 @@ async function getAndApplyRenderDecisions() {
 }
 
 let alloyLoadedPromise = initWebSDK('./alloy.js', {
-    datastreamId: 'ce2eeece-8320-4043-b94a-4c13f308248d',
-    orgId: '73D97EE25CCCE8260A495EBD@AdobeOrg',
+    datastreamId: '0f909b86-b2f2-4129-81ea-1937ef0be7d7',
+    orgId: 'D7A63A725B02CDC70A495C49@AdobeOrg',
   });
 //alloyLoadedPromise.then(() => getAndApplyRenderDecisions());
 console.log(getMetadata('target'));
 if (getMetadata('target')) {
-//  alloyLoadedPromise.then(() => getAndApplyRenderDecisions());
+ alloyLoadedPromise.then(() => getAndApplyRenderDecisions());
 }
 
 /**
