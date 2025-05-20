@@ -260,7 +260,7 @@ h4 {
     /* background-size: cover; */
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("../icons/need-help-img.png");
+    background-image: url("../../icons/need-help-img.png");
     justify-content: space-evenly;
 
     @media (width <=768px) {
