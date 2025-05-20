@@ -76,3 +76,37 @@
 .question-container .heading-label {
     width: 80%;
 }
+
+.how-it-work .content-div {
+    flex: 1.7;
+}
+
+.how-it-work .heading-label {
+    font-size: 24px;
+}
+
+.how-it-work #how-does-it-work {
+    font-size: 18px;
+    color: #DC143C;
+    margin-bottom: 16px;
+}
+
+.how-it-work .q-wrap table {
+    border: none;
+    width: 80%;
+    border-radius: 0;
+    padding: 0;
+}
+
+.how-it-work .content-div table td {
+    font-size: 14px;
+}
+
+.how-it-work .label-text-0{
+    width: 80%;
+}
+
+.how-it-work .content-div table td picture img {
+    width: 23px;
+    height: 18px;
+}

@@ -44,11 +44,13 @@
   padding-bottom: 0;
 }
 
+
 .cards-choice ul {
   display: flex;
   list-style-type: none;
   padding: 0;
   margin-top: 30px;
+  flex-wrap: wrap;
 
   @media (width <=786px) {
     display: block;
@@ -141,6 +143,34 @@
   color: Red;
 } */
 
-.section.cards-container .default-content-wrapper > p:nth-child(2) > strong{
+.section.cards-container .default-content-wrapper>p:nth-child(2)>strong {
   font-size: 28px;
+}
+
+.financial-cards ul li img{
+  width: 10% !important;
+ padding-top: 25px;
+}
+
+.financial-cards ul{
+  grid-gap: 35px 0;
+  justify-content: space-between;
+}
+
+.financial-cards ul li{
+  flex: none;
+  width: 31%;
+  /* margin:auto ; */
+  padding-bottom: 25px;
+  background-color: #FFFFFF !important;
+}
+
+
+.financial-cards ul li:hover{
+  box-shadow: -1px 3px 6px 4px rgb(0% 0 0 / 10%);
+  
+}
+
+.financial-cards .cards-card-body>*:first-child{
+  width:70%;
 }
