@@ -137,9 +137,9 @@
   object-fit: cover;
 }
 
-.section.cards-container .default-content-wrapper > p:nth-child(1) > strong{
+/* .section.cards-container .default-content-wrapper > p:nth-child(1) > strong{
   color: Red;
-}
+} */
 
 .section.cards-container .default-content-wrapper > p:nth-child(2) > strong{
   font-size: 28px;

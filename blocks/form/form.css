@@ -2,18 +2,18 @@
     display: grid;
     grid-auto-flow: row;
     align-items: center;
-    padding: 8px;
+    /* padding: 8px; */
 }
 
 .form {
     width: 460px;
     height: auto;
-    min-height: 562px;
+    min-height: 550px;
     border-radius: 16px;
     gap: 24px;
-    background-color:white;
+    background-color: white;
 
-    @media (width <= 786px){
+    @media (width <=786px) {
         width: auto;
     }
 }
@@ -65,7 +65,7 @@
     resize: vertical;
 }
 
-.form-premium input{
+.form-premium input {
     border-radius: 8px;
     border: 1px solid rgb(37 56 88);
     background-color: inherit;
@@ -83,25 +83,26 @@
     width: auto;
     border-radius: 10px;
 
-    @media (width <= 600px){
+    @media (width <=600px) {
         min-width: auto;
-        flex:1;
-        display:flex;
+        flex: 1;
+        display: flex;
     }
 }
 
 .form #form-headline {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
-    font-size: 1.8rem;
+    font-size: 35px;
+    /* width: 50%; */
 }
 
-.hero-container label{
+.hero-container label {
     font-size: small;
     font-weight: 600;
 }
 
-.form-premium label{
+.form-premium label {
     font-size: 12px;
 }
 
@@ -199,7 +200,7 @@ input#form-phonenumber {
 }
 
 .premium-section {
-    margin-top: 50px!important;
+    margin-top: 50px !important;
     background-image: url(../../icons/pay-premium-image.png);
     background-size: cover;
     background-position: center;
@@ -208,12 +209,12 @@ input#form-phonenumber {
     margin: unset;
     background-color: #dfe7fa;
 
-    @media (width <= 768px){
-        margin-top:64px;
+    @media (width <=768px) {
+        margin-top: 64px;
         background-image: none;
     }
 
-    @media (width >= 2880px){
+    @media (width >=2880px) {
         background-size: auto;
     }
 }
@@ -224,18 +225,18 @@ input#form-phonenumber {
     appearance: none;
 }
 
-.form-premium{
-border:none;
-width: 481px;
-min-height:fit-content;
-background-color: inherit;
+.form-premium {
+    border: none;
+    width: 481px;
+    min-height: fit-content;
+    background-color: inherit;
 
-    @media (width <= 786px){
+    @media (width <=786px) {
         width: auto;
     }
 }
 
-.form-premium .button{
+.form-premium .button {
     width: auto;
     margin: 0;
     background-color: #4169e2;
@@ -248,91 +249,87 @@ h4 {
 }
 
 .form-premium p {
-    font-size:14px;
+    font-size: 14px;
 }
 
-.need-help-form-main{
-    margin-top: 125px;
-    background-color:#4169e2;
-    background-size: cover;
-    
-    /* background-position: center; */
+.need-help-form-main {
+    margin-top: 100px;
+    margin-bottom: 125px;
+    padding: 0;
+    /* background-color: #4169e2; */
+    /* background-size: cover; */
+    background-position: center;
     background-repeat: no-repeat;
+    background-image: url("../../icons/need-help-img.png");
     justify-content: space-evenly;
 
-    @media (width <= 768px){
-        margin-top:64px;
+    @media (width <=768px) {
+        margin-top: 64px;
     }
 
-    @media (width >= 1499px){
+    /* @media (width >= 1499px){
         background-image: url("../../icons/need-help-img.png");
-    }
+    } */
 
-    @media (width >= 2880px){
+    @media (width >=2880px) {
         background-size: auto;
         background-color: unset;
         background-position: center;
     }
 }
 
-.need-help-form-main .form-wrapper .need-help-form{
-    color:#fff;
+.need-help-form-main .form-wrapper .need-help-form {
+    color: #fff;
     min-height: 550px;
     align-content: center;
     background-color: inherit;
-} 
+}
 
 .need-help-form-main .field-wrapper .button {
-    width: auto!important;
+    width: auto !important;
     height: 40px;
     border-radius: 5px;
     gap: 10px;
-    background-color:#fff;
-    color:#4169e2;
+    background-color: #fff;
+    color: #4169e2;
 }
 
-.need-help-form-main .field-wrapper 
-.form-headline-4
-{
-margin:unset;
+.need-help-form-main .field-wrapper .form-headline-4 {
+    margin: unset;
 }
 
-.need-help-form-main .field-wrapper 
-select{
-height: 40px;
-font-size: 12px;
-background-color: inherit;
-border:1px solid white;
-color:white;
+.need-help-form-main .field-wrapper select {
+    height: 40px;
+    font-size: 12px;
+    background-color: inherit;
+    border: 1px solid white;
+    color: white;
 }
 
-.need-help-form-main .field-wrapper 
-p{
-margin:unset;
-font-size: 14px;
+.need-help-form-main .field-wrapper p {
+    margin: unset;
+    font-size: 14px;
 }
 
-.need-help-form-main .field-wrapper 
-fieldset{
-margin:0;
+.need-help-form-main .field-wrapper fieldset {
+    margin: 0;
 }
 
-.need-help-form-main .form .field-wrapper 
-{
-    padding:0;
-margin:0;
+.need-help-form-main .form .field-wrapper {
+    padding: 0;
+    margin: 0;
 }
 
 .need-help-form-main .form-wrapper .form {
     width: auto;
 }
 
-.need-help-form-main .form-wrapper .field-wrapper{
-    position:relative;
+.need-help-form-main .form-wrapper .field-wrapper {
+    position: relative;
     margin-top: 10px;
 }
 
-.need-help-form-main .form-wrapper .field-wrapper label{
+.need-help-form-main .form-wrapper .field-wrapper label {
     position: absolute;
     font-size: 12px;
     left: 0;
@@ -346,54 +343,54 @@ margin:0;
     pointer-events: none;
 }
 
-.need-help-form-main .form-wrapper .field-wrapper .select-wrapper label{
-    display:none;
+.need-help-form-main .form-wrapper .field-wrapper .select-wrapper label {
+    display: none;
 }
 
-.need-help-form-main .form-wrapper .field-wrapper input{
+.need-help-form-main .form-wrapper .field-wrapper input {
     font-size: 1rem;
     outline: none;
     border: 1px solid #fff;
-    border-radius: 5px;  
+    border-radius: 5px;
     padding: 1rem 0.7rem;
     color: #fff;
     transition: 0.1s ease-out;
     background-color: inherit;
 }
 
-.need-help-form-main .form-wrapper .field-wrapper input:focus{
-    border-color: #6200EE;  
+.need-help-form-main .form-wrapper .field-wrapper input:focus {
+    border-color: #6200EE;
 }
 
-.need-help-form-main .form-wrapper .field-wrapper input:focus + label{
+.need-help-form-main .form-wrapper .field-wrapper input:focus+label {
     color: #fff;
     top: 0;
     transform: translateY(-50%) scale(.9);
 }
 
-.need-help-form-main .form-wrapper .field-wrapper input:not(:placeholder-shown) + label{
-    
+.need-help-form-main .form-wrapper .field-wrapper input:not(:placeholder-shown)+label {
+
     /* top: 0; */
     transform: translateY(-50%) scale(.9);
 }
 
 
-.hero-container .form-wrapper .heading-wrapper p{
-    margin:0;
-    padding:10px;
+.hero-container .form-wrapper .heading-wrapper p {
+    margin: 0;
+    padding: 10px;
 }
 
-.hero-container .checkbox-wrapper{
-    height:16px;
+.hero-container .checkbox-wrapper {
+    height: 16px;
     align-content: center;
     border: 1px solid rgb(17 17 17 / 12%);
     box-shadow: 2px 2px 4px rgb(0 0 0 / 10%);
 }
 
-.hero-container .form-wrapper .plaintext-wrapper #form-headline{
-    margin:0;
+.hero-container .form-wrapper .plaintext-wrapper #form-headline {
+    margin: 0;
     font-size: 16px;
-    padding:10px;
+    /* padding: 10px; */
 }
 
 .plaintext-wrapper #form-description {
@@ -402,46 +399,48 @@ margin:0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.hero-container .plaintext-wrapper #form-description{
+.hero-container .plaintext-wrapper #form-description {
     font-size: small;
     font-weight: 600;
-    margin:0;
+    margin: 0;
     color: rgb(17 17 17 / 72%);
 }
 
-.hero-container .form-wrapper .plaintext-wrapper #form-description-1{
-    margin:0;
+.hero-container .form-wrapper .plaintext-wrapper #form-description-1 {
+    margin: 0;
     font-size: 14px;
     color: rgb(17 17 17 / 72%);
 }
 
-.hero-container .fieldset-wrapper{
-    padding:unset;
+.hero-container .fieldset-wrapper {
+    padding: unset;
 }
 
-.hero-container .submit-wrapper button{
-    margin:0;
-    width:100%;
+.hero-container .submit-wrapper button {
+    margin: 0;
+    width: 100%;
     background-color: #4169e2;
     border-radius: 8px;
+    margin-top: 8px;
 }
 
-.hero-container .form-wrapper form{
-    padding:20px;
-    min-height:unset;
-    
-    @media (width <= 786px){
-        padding:unset;
+.hero-container .form-wrapper form {
+    padding: 20px;
+    min-height: unset;
+    padding-top: 0;
+
+    @media (width <=786px) {
+        padding: unset;
     }
 }
 
-@media (width <= 786px){
-    .hero-container .form-wrapper .form 
-    #form-persontypefs,
+@media (width <=786px) {
+
+    .hero-container .form-wrapper .form #form-persontypefs,
     #form-self-spouse,
     #form-children,
     #form-grandparent,
-    #form-relation{
+    #form-relation {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
@@ -468,18 +467,17 @@ margin:0;
     height: 50px;
     border-radius: 50%;
     border: 0.1em solid var(--dark-color);
-  }
-  
-  #form-loader[data-progress]:after {
+}
+
+#form-loader[data-progress]:after {
 
     /* border-color: red; */
     /* clip-path: polygon(100% 100%, 100% 0, 100% 0, 100% 100%, 100% 100%); */
     transform: rotate(calc(360 * var(--progress) / 100)) scale(0.8);
     transform-origin: center;
-  }
+}
 
-#form-headline{
+#form-headline {
     margin-top: -12px;
     margin-bottom: 0;
 }
-

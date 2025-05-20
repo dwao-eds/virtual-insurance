@@ -197,8 +197,10 @@ main .section {
 }
 
 main .section.hero-container {
-  padding: 64px 16px;
+  /* padding: 64px 16px; */
   margin-top: 125px;
+  margin-bottom: -25px;
+    padding-bottom: 125px;
   
   @media (width <= 786px){
     padding: 16px 8px;
