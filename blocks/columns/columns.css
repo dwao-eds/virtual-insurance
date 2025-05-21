@@ -168,3 +168,27 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
+.comprehensive-page{
+   background-color: #4169E1;
+}
+
+.comprehensive-page .columns-wrapper .calculate>div>div h1+p{
+color: #FFFFFF;
+}
+
+.comprehensive-page > div.columns-wrapper > div > div > div{
+color: #FFFFFF;
+}
+.comprehensive-page .calculate>div>div>table:first-of-type{
+  top: 0;
+}
+
+.comprehensive-page .columns-wrapper table > tbody > tr > td:nth-child(1) p img{
+  width: 14px;
+  margin-right: 8px;
+}
+
+.comprehensive-page .columns-wrapper table > tbody > tr > td:nth-child(2) img{
+  width: 80%;
+}
