@@ -213,7 +213,7 @@ async function loadEager(doc) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  autolinkModals(doc);
+  // autolinkModals(doc);
   const main = doc.querySelector('main');
   await loadBlocks(main);
 
