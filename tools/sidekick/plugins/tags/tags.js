@@ -2,7 +2,7 @@
 import { PLUGIN_EVENTS } from "https://www.hlx.live/tools/sidekick/library/events/events.js";
 
 const selectedTags = [];
-let apiData=[];
+let apiData = [];
 
 function getSelectedLabel() {
   return selectedTags.length > 0
@@ -14,63 +14,48 @@ function getFilteredTags(data, query) {
   if (!query) {
     return data;
   }
-
   return data.filter((item) =>
     item.tag.toLowerCase().includes(query.toLowerCase())
   );
 }
 
-
 async function getData() {
-  console.log("codebasepath" + `${window.location.origin}`);
-  let apiUrl = window.location.origin + "/tools/sidekick/library.json";
-  fetch(apiUrl)
-    .then((response) => {  
-      if (!response.ok) {
-        throw new Error("Network response was not OK");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const val = data.data.map((item) => {
-        return item;
-      });
-    })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-    });
+  try {
+    console.log("codebasepath: " + window.location.origin);
+    const apiUrl = `${window.location.origin}/tools/sidekick/library.json`;
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+    const data = await response.json();
+    return data.data || []; // Make sure to return the actual array
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return [];
+  }
 }
-const loadAndRenderTags = async () => {
-  apiData = await getData(); 
-  const menuHtml = await createMenuItems(apiData);
-};
+
+async function createMenuItems(apiData) {
+  return apiData
+    .map((item) => {
+      const isSelected = selectedTags.includes(item.tag);
+      return `
+        <div class="tag-item-wrapper">
+          <ion-icon name="pricetag-outline"></ion-icon>
+          <ion-icon name="pricetag"></ion-icon>
+          <sp-menu-item value="${item.tag}" ${isSelected ? "selected" : ""}>
+            ${item.tag}
+          </sp-menu-item>
+        </div>`;
+    })
+    .join("");
+}
 
 export async function decorate(container, data, query) {
-  // if (!data) {
-  //   console.warn("Tag sheet is not configured");
-  //   return;
-  // }
+  apiData = await getData(); // Wait for data to be fetched
 
-  const selectedTags = [];
-  loadAndRenderTags();
   const getSelectedLabel = () => {
     return selectedTags.length ? selectedTags.join(", ") : "No tags selected";
-  };
-
-  const createMenuItems = async (apiData) => {
-    return apiData
-      .map((item) => {
-        const isSelected = selectedTags.includes(item.tag); // 
-        return `
-          <div class="tag-item-wrapper">
-            <ion-icon name="pricetag-outline"></ion-icon>
-            <ion-icon name="pricetag"></ion-icon>
-            <sp-menu-item value="${item.tag}" ${isSelected ? "selected" : ""}>
-              ${item.tag}
-            </sp-menu-item>
-          </div>`;
-      })
-      .join("");
   };
 
   const handleMenuItemClick = (e) => {
@@ -97,10 +82,7 @@ export async function decorate(container, data, query) {
     );
   };
 
-  // ↓↓↓ Make sure to filter data based on query (optional)
-  // const filteredData = getFilteredTags(data, query);
-
-  // Await with actual data
+  // const filteredData = getFilteredTags(apiData, query);
   const menuItems = await createMenuItems(apiData);
 
   const sp = /* html */ `
@@ -130,7 +112,6 @@ export async function decorate(container, data, query) {
   const copyButton = spContainer.querySelector("sp-action-button");
   copyButton.addEventListener("click", handleCopyButtonClick);
 }
-
 
 export default {
   title: "Tags",
