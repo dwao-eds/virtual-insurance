@@ -1,32 +1,54 @@
-.virtualinsurance-container{
-    display:flex;
+.virtualinsurance-container {
+    display: flex;
     background-image: url('../../icons/new-image.webp');
     background-size: cover;
-    background-position:center;
+    background-position: center;
     background-repeat: no-repeat;
     transform: scale(1);
     min-height: 440px;
 }
 
-.virtualinsurance-container 
-.virtualinsurance-wrapper{
-    color:#fff;
+.virtualinsurance-container .virtualinsurance-wrapper {
+    color: #fff;
     font-size: 20px;
     line-height: 20px;
     width: 100%;
 }
 
-#download-virtual-insurance-mobile-app{
+#download-virtual-insurance-mobile-app {
     font-size: 40px;
     width: 60%;
 }
 
-.virtualimage-wrapper{
+.virtualimage-wrapper {
     display: none;
 }
 
 @media (width >=786px) {
-  .virtualimage-wrapper {
-    display: block;
-  }
+    .virtualimage-wrapper {
+        display: block;
+    }
+}
+
+.download-banner {
+    background-color: #4169E1;
+    background-image: none;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.download-banner .virtualinsurance-wrapper p img {
+    width: 18px;
+}
+
+.download-banner .virtualinsurance-wrapper>div>div:nth-child(3)>div>p {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    border-radius: 8px;
+    justify-content: space-around;
+    padding: 14px;
+    font-weight: bold;
+    margin-top: 50px;
 }
