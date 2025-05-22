@@ -18,8 +18,9 @@ function getFilteredTags(data, query) {
 
 async function getData(){
 
-  console.log("codebasepath"+`${window.hlx.codeBasePath}`)
-  fetch('https://main--virtual-insurance--dwao-eds.aem.live/tools/sidekick/library.json')
+  console.log("codebasepath"+`${window.location.origin}`)
+  let apiUrl=window.location.origin+"/tools/sidekick/library.json"
+  fetch(apiUrl)
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not OK');
