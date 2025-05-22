@@ -15,15 +15,40 @@ function getFilteredTags(data, query) {
   return data.filter((item) => item.tag.toLowerCase().includes(query.toLowerCase()));
 }
 
+
+async function getData(){
+
+  console.log("codebasepath"+`${window.hlx.codeBasePath}`)
+  fetch('https://main--virtual-insurance--dwao-eds.aem.live/tools/sidekick/library.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not OK');
+    }
+    return response.json();
+  })
+  .then(data => {
+    const val= data.data.map(item => item.tags);
+    
+    console.log(val);
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
+}
 export async function decorate(container, data, query) {
-  if (!data) {
-    // eslint-disable-next-line no-console
-    console.warn('Tag sheet is not configured');
-    return;
-  }
-  const createMenuItems = () => {
-    const filteredTags = getFilteredTags(data, query);
-    return filteredTags.map((item) => {
+  // if (!data) {
+  //   debugger
+  //   // eslint-disable-next-line no-console
+  //   console.warn('Tag sheet is not configured');
+  //   return;
+  // }
+
+  const data = await getData();
+
+   const createMenuItems = (data) => {
+    // const filteredTags = getFilteredTags(data, query); 
+
+    return data.map((item) => {
       const isSelected = selectedTags.includes(item.tag);
       return `
       <div class="tag-item-wrapper">
