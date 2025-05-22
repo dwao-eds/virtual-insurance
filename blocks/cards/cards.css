@@ -163,6 +163,10 @@
   /* margin:auto ; */
   padding-bottom: 25px;
   background-color: #FFFFFF !important;
+
+   @media (width <=786px) {
+    width: 100%;
+  }
 }
 
 

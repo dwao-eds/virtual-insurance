@@ -76,6 +76,10 @@
 
 .question-container .heading-label {
     width: 80%;
+
+     @media (width <=786px) {
+        width: 100%;
+  }
 }
 
 .how-it-work .content-div {
