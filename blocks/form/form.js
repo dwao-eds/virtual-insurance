@@ -136,7 +136,7 @@ function getFormData(){
 
   const emailInput = form.querySelector('input[name="Email"]');
   if (emailInput && emailInput.value.trim() !== '') {
-    formData.email = emailInput.value.trim();
+    formData.Email = emailInput.value.trim();
   }
   return formData;
 }
