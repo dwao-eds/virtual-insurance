@@ -49,7 +49,7 @@ export async function decorate(container, data, query) {
 
   const apiData = await getData();
 
-  const createMenuItems = (apiData) => {
+  const  createMenuItems = (apiData) => {
     // const filteredTags = getFilteredTags(data, query);
 
     return apiData
@@ -91,7 +91,7 @@ export async function decorate(container, data, query) {
     );
   };
 
-  const menuItems = createMenuItems();
+  const menuItems = await createMenuItems();
   const sp = /* html */ `
     <sp-menu
       label="Select tags"
