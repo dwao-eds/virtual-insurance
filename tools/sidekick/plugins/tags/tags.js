@@ -19,8 +19,8 @@ function getFilteredTags(data, query) {
   );
 }
 
+
 async function getData() {
-  let respArray = [];
   console.log("codebasepath" + `${window.location.origin}`);
   let apiUrl = window.location.origin + "/tools/sidekick/library.json";
   fetch(apiUrl)
@@ -39,31 +39,35 @@ async function getData() {
       console.error("Fetch error:", error);
     });
 }
+const loadAndRenderTags = async () => {
+  const apiData = await getData(); 
+  const menuHtml = await createMenuItems(apiData);
+};
+
 export async function decorate(container, data, query) {
   // if (!data) {
-  //   debugger
-  //   // eslint-disable-next-line no-console
-  //   console.warn('Tag sheet is not configured');
+  //   console.warn("Tag sheet is not configured");
   //   return;
   // }
 
-  const apiData = await getData();
-  
+  const selectedTags = [];
+  loadAndRenderTags();
+  const getSelectedLabel = () => {
+    return selectedTags.length ? selectedTags.join(", ") : "No tags selected";
+  };
 
-  const  createMenuItems = (apiData) => {
-    // const filteredTags = getFilteredTags(data, query);
-
+  const createMenuItems = async (apiData) => {
     return apiData
       .map((item) => {
-        const isSelected = selectedTags.includes(item.tag);
+        const isSelected = selectedTags.includes(item.tag); // 
         return `
-      <div class="tag-item-wrapper">
-        <ion-icon name="pricetag-outline"></ion-icon>
-        <ion-icon name="pricetag"></ion-icon>
-        <sp-menu-item value="${item.tag}" ${isSelected ? "selected" : ""}>${
-          item.tag
-        }</sp-menu-item>
-      </div>`;
+          <div class="tag-item-wrapper">
+            <ion-icon name="pricetag-outline"></ion-icon>
+            <ion-icon name="pricetag"></ion-icon>
+            <sp-menu-item value="${item.tag}" ${isSelected ? "selected" : ""}>
+              ${item.tag}
+            </sp-menu-item>
+          </div>`;
       })
       .join("");
   };
@@ -86,23 +90,25 @@ export async function decorate(container, data, query) {
   const handleCopyButtonClick = () => {
     navigator.clipboard.writeText(selectedTags.join(", "));
     container.dispatchEvent(
-      new CustomEvent(PLUGIN_EVENTS.TOAST, {
+      new CustomEvent("TOAST", {
         detail: { message: "Copied Tags" },
       })
     );
   };
 
-  const menuItems = await createMenuItems();
+  // ↓↓↓ Make sure to filter data based on query (optional)
+  // const filteredData = getFilteredTags(data, query);
+
+  // Await with actual data
+  const menuItems = await createMenuItems(apiData);
+
   const sp = /* html */ `
-    <sp-menu
-      label="Select tags"
-      selects="multiple"
-    >
+    <sp-menu label="Select tags" selects="multiple">
       ${menuItems}
     </sp-menu>
     <sp-divider size="s"></sp-divider>
     <div class="footer">
-    <sp-icon-info slot="icon"></sp-icon-info>
+      <sp-icon-info slot="icon"></sp-icon-info>
       <span class="selectedLabel">${getSelectedLabel()}</span>
       <sp-action-button label="Copy" quiet>
         <sp-icon-copy slot="icon"></sp-icon-copy>
@@ -123,6 +129,7 @@ export async function decorate(container, data, query) {
   const copyButton = spContainer.querySelector("sp-action-button");
   copyButton.addEventListener("click", handleCopyButtonClick);
 }
+
 
 export default {
   title: "Tags",
