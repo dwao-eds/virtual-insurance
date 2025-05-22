@@ -1,10 +1,12 @@
 // eslint-disable-next-line import/no-unresolved
-import { PLUGIN_EVENTS } from 'https://www.hlx.live/tools/sidekick/library/events/events.js';
+import { PLUGIN_EVENTS } from "https://www.hlx.live/tools/sidekick/library/events/events.js";
 
 const selectedTags = [];
 
 function getSelectedLabel() {
-  return selectedTags.length > 0 ? `${selectedTags.length} tag${selectedTags.length > 1 ? 's' : ''} selected` : 'No tags selected';
+  return selectedTags.length > 0
+    ? `${selectedTags.length} tag${selectedTags.length > 1 ? "s" : ""} selected`
+    : "No tags selected";
 }
 
 function getFilteredTags(data, query) {
@@ -12,29 +14,30 @@ function getFilteredTags(data, query) {
     return data;
   }
 
-  return data.filter((item) => item.tag.toLowerCase().includes(query.toLowerCase()));
+  return data.filter((item) =>
+    item.tag.toLowerCase().includes(query.toLowerCase())
+  );
 }
 
-
-async function getData(){
-
-  console.log("codebasepath"+`${window.location.origin}`)
-  let apiUrl=window.location.origin+"/tools/sidekick/library.json"
+async function getData() {
+  let respArray = [];
+  console.log("codebasepath" + `${window.location.origin}`);
+  let apiUrl = window.location.origin + "/tools/sidekick/library.json";
   fetch(apiUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not OK');
-    }
-    return response.json();
-  })
-  .then(data => {
-    const val= data.data.map(item => item.tags);
-    
-    console.log("api val"+val);
-  })
-  .catch(error => {
-    console.error('Fetch error:', error);
-  });
+    .then((response) => {  
+      if (!response.ok) {
+        throw new Error("Network response was not OK");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const val = data.data.map((item) => {
+        return item;
+      });
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
 }
 export async function decorate(container, data, query) {
   // if (!data) {
@@ -46,18 +49,22 @@ export async function decorate(container, data, query) {
 
   const apiData = await getData();
 
-   const createMenuItems = (apiData) => {
-    // const filteredTags = getFilteredTags(data, query); 
+  const createMenuItems = (apiData) => {
+    // const filteredTags = getFilteredTags(data, query);
 
-    return apiData.map((item) => {
-      const isSelected = selectedTags.includes(item.tag);
-      return `
+    return apiData
+      .map((item) => {
+        const isSelected = selectedTags.includes(item.tag);
+        return `
       <div class="tag-item-wrapper">
         <ion-icon name="pricetag-outline"></ion-icon>
         <ion-icon name="pricetag"></ion-icon>
-        <sp-menu-item value="${item.tag}" ${isSelected ? 'selected' : ''}>${item.tag}</sp-menu-item>
+        <sp-menu-item value="${item.tag}" ${isSelected ? "selected" : ""}>${
+          item.tag
+        }</sp-menu-item>
       </div>`;
-    }).join('');
+      })
+      .join("");
   };
 
   const handleMenuItemClick = (e) => {
@@ -71,21 +78,21 @@ export async function decorate(container, data, query) {
       selectedTags.push(value);
     }
 
-    const selectedLabel = container.querySelector('.selectedLabel');
+    const selectedLabel = container.querySelector(".selectedLabel");
     selectedLabel.textContent = getSelectedLabel();
   };
 
   const handleCopyButtonClick = () => {
-    navigator.clipboard.writeText(selectedTags.join(', '));
+    navigator.clipboard.writeText(selectedTags.join(", "));
     container.dispatchEvent(
       new CustomEvent(PLUGIN_EVENTS.TOAST, {
-        detail: { message: 'Copied Tags' },
-      }),
+        detail: { message: "Copied Tags" },
+      })
     );
   };
 
   const menuItems = createMenuItems();
-  const sp = /* html */`
+  const sp = /* html */ `
     <sp-menu
       label="Select tags"
       selects="multiple"
@@ -102,21 +109,21 @@ export async function decorate(container, data, query) {
     </div>
   `;
 
-  const spContainer = document.createElement('div');
-  spContainer.classList.add('container');
+  const spContainer = document.createElement("div");
+  spContainer.classList.add("container");
   spContainer.innerHTML = sp;
   container.append(spContainer);
 
-  const menuItemElements = spContainer.querySelectorAll('sp-menu-item');
+  const menuItemElements = spContainer.querySelectorAll("sp-menu-item");
   menuItemElements.forEach((item) => {
-    item.addEventListener('click', handleMenuItemClick);
+    item.addEventListener("click", handleMenuItemClick);
   });
 
-  const copyButton = spContainer.querySelector('sp-action-button');
-  copyButton.addEventListener('click', handleCopyButtonClick);
+  const copyButton = spContainer.querySelector("sp-action-button");
+  copyButton.addEventListener("click", handleCopyButtonClick);
 }
 
 export default {
-  title: 'Tags',
+  title: "Tags",
   searchEnabled: true,
 };
