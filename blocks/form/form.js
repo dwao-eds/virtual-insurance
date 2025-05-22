@@ -1,5 +1,6 @@
 import createField from './form-fields.js';
 import { sampleRUM } from '../../scripts/aem.js';
+import { linkModals } from '../../scripts/scripts.js';
 
 async function createForm(formHref) {
   const { pathname } = new URL(formHref);
@@ -58,7 +59,7 @@ function handleSubmitError(form, error) {
   sampleRUM('form:error', { source: '.form', target: error.stack || error.message || 'unknown error' });
 }
 
-async function handleSubmit(form) {
+async function handleSubmit(form,paylod) {
   if (form.getAttribute('data-submitting') === 'true') return;
 
   const submit = form.querySelector('button[type="submit"]');
@@ -67,19 +68,21 @@ async function handleSubmit(form) {
     submit.disabled = true;
 
     // create payload
-    const payload = generatePayload(form);
-    const response = await fetch(form.dataset.action, {
+    // const payload = generatePayload(form);
+    const response = await fetch("https://682dcac34fae1889475790a7.mockapi.io/dummy-data", {
       method: 'POST',
-      body: JSON.stringify({ data: payload }),
+      body: JSON.stringify(paylod),
       headers: {
         'Content-Type': 'application/json',
       },
     });
     if (response.ok) {
-      sampleRUM('form:submit', { source: '.form', target: form.dataset.action });
-      if (form.dataset.confirmation) {
-        window.location.href = form.dataset.confirmation;
-      }
+      linkModals()
+      // sampleRUM('form:submit', { source: '.form', target: form.dataset.action });
+      // if (form.dataset.confirmation) {
+      //   window.location.href = form.dataset.confirmation;
+
+      // }
     } else {
       const error = await response.text();
       throw new Error(error);
@@ -91,6 +94,32 @@ async function handleSubmit(form) {
   }
 }
 
+
+function getFormData(){
+  
+  const form = document.querySelector('form[data-action="/forms/calculate-insurance-form"]');
+  const formData = {};
+
+  // Get radio values (like gender)
+  const gender = form.querySelector('input[name="gender"]:checked');
+  if (gender) {
+    formData.gender = gender.value;
+  }
+
+  // Get all checked checkboxes
+  const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+  checkboxes.forEach(checkbox => {
+    formData[checkbox.name] = true; // Set true for checked
+  });
+
+  // Get phone number input
+  const phoneInput = form.querySelector('input[name="phoneNumber"]');
+  if (phoneInput && phoneInput.value.trim() !== '') {
+    formData.phoneNumber = phoneInput.value.trim();
+  }
+
+  return formData;
+}
 export default async function decorate(block) {
   const formLink = block.querySelector('a[href$=".json"]');
   if (!formLink) return;
@@ -115,10 +144,15 @@ export default async function decorate(block) {
   // Append the anchor tag with the button inside to the wrapper element
   submitWrapper.appendChild(anchor);
   form.addEventListener('submit', (e) => {
+    
     e.preventDefault();
     const valid = form.checkValidity();
+    
+    const data = getFormData();
+
+    
     if (valid) {
-      handleSubmit(form);
+      handleSubmit(form,data);
     } else {
       const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
       if (firstInvalidEl) {
