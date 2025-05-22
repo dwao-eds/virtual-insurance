@@ -9,15 +9,16 @@
 
 .tabs .tabs-list button {
   flex: 1;
-  margin: 0;
-  border-radius: 0;
+  margin: 2px;
+  border-radius: 0px;
   padding: 8px 16px;
+  padding: 0;
   background-color: white;
   color: rgb(17 17 17 / 60%);
   font-size: 16px;
   font-weight: bold;
-  line-height: unset;
-  text-align: initial;
+  /* line-height: unset; */
+  /* text-align: initial; */
   text-overflow: unset;
   overflow: unset;
   white-space: unset;
@@ -30,6 +31,7 @@
     background-color: var(--background-color);
     cursor: initial;
     color: red;
+    cursor: initial;
   }
 }
 
@@ -177,4 +179,45 @@
   text-decoration: none;
   border: 1px solid grey;
   border-radius: 8px;
+}
+
+.card-tab {
+  width: 30%;
+    margin: auto;
+}
+
+.card-tab .tabs-list{
+   border: 2px solid #d5cccc;
+  border-radius: 8px;
+}
+
+.card-tab .tabs-list button{
+  margin: 2px;
+  border-radius: 8px;
+  padding: 0;
+  line-height: normal;
+  text-align: center;
+}
+
+@media (width >=786px) {
+  .card-tab .tabs-list button[aria-selected="true"] {
+    border-bottom: none;
+    cursor: initial;
+    color: white;
+    background: #DC143C;
+  }
+}
+
+.card-tab .tabs-panel {
+  padding: 0;
+  overflow:auto ;
+}
+
+@media (width >=786px) {
+  .card-tab .tabs-list button[aria-selected="true"] {
+    border-bottom: 2px solid red;
+    color: red;
+    color: white;
+    background: #DC143C;
+  }
 }
