@@ -46,7 +46,7 @@
   margin: 0;
 }
 
-.table table td p + p {
+.table table td p+p {
   margin-top: 0.25em;
 }
 
@@ -66,35 +66,86 @@
   border: 1px solid #dadada;
 }
 
-.coverage > table > tbody > tr> td:nth-child(1){
-    width: 70%;
+.coverage>table>tbody>tr>td:nth-child(1) {
+  width: 70%;
 }
 
 /* .coverage > table > tbody > tr{
     border: 2px solid #F5F9FF;
 } */
 
-.coverage table th, .table.bordered table td{
-    border: 1.5px solid #dadada;
+.coverage table th,
+.table.bordered table td {
+  border: 1.5px solid #dadada;
 }
 
 /* .coverage table th, .table.bordered table thead tr{
     border-top-left-radius: 10px;
 } */
 
-.coverage table th, .table.bordered table th{
-    border: 1.5px solid #dadada;
-    background-color: #E0E3FA;
+.coverage table th,
+.table.bordered table th {
+  border: 1.5px solid #dadada;
+  background-color: #E0E3FA;
 }
 
-.section-coverage{
-    background-color: #F5F9FF;
+.section-coverage {
+  background-color: #F5F9FF;
 }
 
-.section-coverage .table-wrapper{
-    background-color: #ffffff
+.section-coverage .table-wrapper {
+  background-color: #ffffff
 }
 
-.coverage table th, .table.bordered table img{
-    width: 15px;
+.section-coverage .default-content-wrapper p strong {
+  font-size: 32px;
+  text-align: center;
+}
+
+.coverage table th,
+.table.bordered table img {
+  width: 15px;
+}
+
+.eligibility .coverage>table>tbody>tr>td:nth-child(1) {
+  width: 25%;
+}
+
+/* .eligibility .coverage>table>tbody>tr>th:nth-child(1) {
+  
+} */
+
+.eligibility .table-wrapper>div>table>thead>tr>th {
+  border-right: none;
+  background: none;
+  font-weight: normal;
+  border-top: none;
+}
+
+.eligibility .table table {
+  border: 2px solid #4169E1 !important;
+  /* border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px; */
+}
+
+.eligibility .default-content-wrapper p {
+  background: #4169E1;
+  margin: 0;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+  border: 1px solid #4169E1;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 30px;
+}
+
+.eligibility .default-content-wrapper p img {
+  width: 70px;
+  padding: 24px;
+  padding-bottom: 12px;
+}
+
+.eligibility .table table thead tr {
+  border-top: none;
 }

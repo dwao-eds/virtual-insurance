@@ -147,17 +147,17 @@
   font-size: 28px;
 }
 
-.financial-cards ul li img{
+.financial-cards ul li img {
   width: 10% !important;
- padding-top: 25px;
+  padding-top: 25px;
 }
 
-.financial-cards ul{
+.financial-cards ul {
   grid-gap: 35px 0;
   justify-content: space-between;
 }
 
-.financial-cards ul li{
+.financial-cards ul li {
   flex: none;
   width: 31%;
   /* margin:auto ; */
@@ -166,11 +166,45 @@
 }
 
 
-.financial-cards ul li:hover{
+.financial-cards ul li:hover {
   box-shadow: -1px 3px 6px 4px rgb(0% 0 0 / 10%);
-  
+
 }
 
-.financial-cards .cards-card-body>*:first-child{
-  width:70%;
+.financial-cards .cards-card-body>*:first-child {
+  width: 70%;
+}
+
+.shieldplus .cards-card-image p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shieldplus .cards-card-image p strong {
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.shieldplus .cards-card-image img {
+  width: 50% !important;
+  padding: 10px;
+  padding-right: 0;
+}
+
+.shieldplus .cards-card-image {
+  line-height: normal;
+}
+
+.shieldplus-cards .default-content-wrapper {
+  text-align: center;
+}
+
+.shieldplus-cards .default-content-wrapper p strong{
+  font-size: 40px !important;
+}
+
+.waiting-cards .default-content-wrapper {
+  text-align: center;
+  font-size: 32px !important;
 }

@@ -20,3 +20,13 @@
     font-size: 40px;
     width: 60%;
 }
+
+.virtualimage-wrapper{
+    display: none;
+}
+
+@media (width >=786px) {
+  .virtualimage-wrapper {
+    display: block;
+  }
+}
