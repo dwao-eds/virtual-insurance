@@ -101,9 +101,9 @@
 
 .hero-container .calculate>div>div>table:first-of-type {
 
-    position: relative;
-    top: 51px;
-    z-index: 2;
+  position: relative;
+  top: 51px;
+  z-index: 2;
 
 }
 
@@ -128,6 +128,10 @@
 .hero-container .calculate>div>div>table:first-of-type tr td:nth-child(2) {
   font-size: 12px;
   vertical-align: top;
+
+   @media (width <=786px) {
+    text-align: center;
+  }
 }
 
 .hero-container .calculate>div>div>table:first-of-type tr td:nth-child(2) p {
@@ -169,26 +173,34 @@
   flex-direction: row-reverse;
 }
 
-.comprehensive-page{
-   background-color: #4169E1;
+.comprehensive-page {
+  background-color: #4169E1;
 }
 
-.comprehensive-page .columns-wrapper .calculate>div>div h1+p{
-color: #FFFFFF;
+.comprehensive-page .columns-wrapper .calculate>div>div h1+p {
+  color: #FFFFFF;
 }
 
-.comprehensive-page > div.columns-wrapper > div > div > div{
-color: #FFFFFF;
+.comprehensive-page>div.columns-wrapper>div>div>div {
+  color: #FFFFFF;
 }
-.comprehensive-page .calculate>div>div>table:first-of-type{
+
+.comprehensive-page .calculate>div>div>table:first-of-type {
   top: 0;
 }
 
-.comprehensive-page .columns-wrapper table > tbody > tr > td:nth-child(1) p img{
+.comprehensive-page .columns-wrapper table>tbody>tr>td:nth-child(1) p img {
   width: 14px;
   margin-right: 8px;
 }
 
-.comprehensive-page .columns-wrapper table > tbody > tr > td:nth-child(2) img{
+.comprehensive-page .columns-wrapper table>tbody>tr>td:nth-child(2) img {
   width: 80%;
+}
+
+@media (width <=786px) {
+  .hero-container.comprehensive-page .columns-wrapper>div>div>div>table>tbody>tr {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }

@@ -5,6 +5,10 @@
   border-bottom: 2px solid #d5cccc;
   justify-content: space-between;
   margin-bottom: 30px;
+
+   @media (width <=786px) {
+    margin-bottom: 0;
+  }
 }
 
 .tabs .tabs-list button {
@@ -184,6 +188,10 @@
 .card-tab {
   width: 30%;
     margin: auto;
+
+     @media (width <=786px) {
+      width: 100%;
+  }
 }
 
 .card-tab .tabs-list{
@@ -197,6 +205,10 @@
   padding: 0;
   line-height: normal;
   text-align: center;
+
+   @media (width <=786px) {
+    font-size: 12px;
+  }
 }
 
 @media (width >=786px) {

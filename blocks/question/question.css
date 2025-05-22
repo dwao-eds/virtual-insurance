@@ -24,6 +24,7 @@
 
     .question-container .q-wrap .heading-label {
         margin: 0;
+        width: 100%;
     }
 
     .question-container .q-wrap .label-text-0 .label-text-1,
@@ -96,14 +97,22 @@
     width: 80%;
     border-radius: 0;
     padding: 0;
+
+    @media (width <=786px) {
+        width: 100%;
+    }
 }
 
 .how-it-work .content-div table td {
     font-size: 14px;
 }
 
-.how-it-work .label-text-0{
+.how-it-work .label-text-0 {
     width: 80%;
+
+    @media (width <=786px) {
+        width: 100%;
+    }
 }
 
 .how-it-work .content-div table td picture img {
@@ -111,6 +120,6 @@
     height: 18px;
 }
 
-.hospital-banner{
+.hospital-banner {
     background-color: #F5F9FF;
 }

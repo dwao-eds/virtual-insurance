@@ -6,6 +6,10 @@
     background-repeat: no-repeat;
     transform: scale(1);
     min-height: 440px;
+
+     @media (width <=786px) {
+        min-height: auto;
+  }
 }
 
 .virtualinsurance-container .virtualinsurance-wrapper {
@@ -51,4 +55,15 @@
     padding: 14px;
     font-weight: bold;
     margin-top: 50px;
+
+     @media (width <=786px) {
+        width: auto;
+  }
 }
+
+ @media (width <=786px) {
+    #download-the-brochure-for-shieldplus-protection{
+        font-size: 28px;
+    }
+  }
+

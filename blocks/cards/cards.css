@@ -173,6 +173,10 @@
 
 .financial-cards .cards-card-body>*:first-child {
   width: 70%;
+
+   @media (width <=786px) {
+    width: 100%;
+  }
 }
 
 .shieldplus .cards-card-image p {
@@ -200,11 +204,17 @@
   text-align: center;
 }
 
-.shieldplus-cards .default-content-wrapper p strong{
-  font-size: 40px !important;
+.shieldplus-cards .default-content-wrapper p strong {
+  font-size: 40px;
 }
 
 .waiting-cards .default-content-wrapper {
   text-align: center;
   font-size: 32px !important;
+}
+
+@media (width <=786px) {
+  .financial-cards ul li {
+    width: 100%;
+  }
 }
