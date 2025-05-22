@@ -430,7 +430,7 @@ h4 {
     /* padding-top: 0; */
 
     @media (width <=786px) {
-        padding: unset;
+        padding: 10px;
     }
 }
 

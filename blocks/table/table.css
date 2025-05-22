@@ -100,6 +100,10 @@
 .section-coverage .default-content-wrapper p strong {
   font-size: 32px;
   text-align: center;
+
+   @media (width <=786px) {
+    font-size: 25px;
+  }
 }
 
 .coverage table th,

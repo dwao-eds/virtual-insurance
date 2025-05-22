@@ -56,7 +56,7 @@ footer .footer .default-content-wrapper strong{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     font-size: 12px;
   }
 }
