@@ -60,6 +60,7 @@ function handleSubmitError(form, error) {
 }
 
 async function handleSubmit(form,paylod) {
+  var templateParams = {};
   if (form.getAttribute('data-submitting') === 'true') return;
 
   const submit = form.querySelector('button[type="submit"]');
@@ -77,7 +78,22 @@ async function handleSubmit(form,paylod) {
       },
     });
     if (response.ok) {
-      linkModals()
+      const emailInput = document.querySelector("form").querySelector('input[name="Email"]');
+      if (emailInput && emailInput.value.trim() !== '') {
+        templateParams.email = emailInput.value.trim();
+      }
+      
+      emailjs.send('service_pu9bnco', 'template_gq2p1vr', templateParams).then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          emailInput.value="";
+          linkModals()
+        },
+        (error) => {
+          console.log('FAILED...', error);
+        },
+      );
+    
       // sampleRUM('form:submit', { source: '.form', target: form.dataset.action });
       // if (form.dataset.confirmation) {
       //   window.location.href = form.dataset.confirmation;
@@ -118,6 +134,10 @@ function getFormData(){
     formData.phoneNumber = phoneInput.value.trim();
   }
 
+  const emailInput = form.querySelector('input[name="Email"]');
+  if (emailInput && emailInput.value.trim() !== '') {
+    formData.email = emailInput.value.trim();
+  }
   return formData;
 }
 export default async function decorate(block) {
