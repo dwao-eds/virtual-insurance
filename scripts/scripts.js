@@ -45,7 +45,14 @@ function autolinkModals(element) {
     }
   });
 }
+export async function linkModals(element) {
+  const origin = document.querySelector("form").querySelector("a");
 
+ 
+    const { openModal } =  await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
+    openModal(origin.href);
+
+}
 /**
  * load fonts.css and set a session storage flag
  */
@@ -213,7 +220,7 @@ async function loadEager(doc) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  autolinkModals(doc);
+  // autolinkModals(doc);
   const main = doc.querySelector('main');
   await loadBlocks(main);
 
