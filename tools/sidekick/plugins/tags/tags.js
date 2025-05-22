@@ -2,7 +2,7 @@
 import { PLUGIN_EVENTS } from "https://www.hlx.live/tools/sidekick/library/events/events.js";
 
 const selectedTags = [];
-const apiData=[];
+let apiData=[];
 
 function getSelectedLabel() {
   return selectedTags.length > 0
