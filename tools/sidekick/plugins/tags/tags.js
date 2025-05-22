@@ -29,7 +29,7 @@ async function getData(){
   .then(data => {
     const val= data.data.map(item => item.tags);
     
-    console.log(val);
+    console.log("api val"+val);
   })
   .catch(error => {
     console.error('Fetch error:', error);
@@ -43,12 +43,12 @@ export async function decorate(container, data, query) {
   //   return;
   // }
 
-  const data = await getData();
+  const apiData = await getData();
 
-   const createMenuItems = (data) => {
+   const createMenuItems = (apiData) => {
     // const filteredTags = getFilteredTags(data, query); 
 
-    return data.map((item) => {
+    return apiData.map((item) => {
       const isSelected = selectedTags.includes(item.tag);
       return `
       <div class="tag-item-wrapper">
