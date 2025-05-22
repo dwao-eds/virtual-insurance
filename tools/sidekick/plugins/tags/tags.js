@@ -48,6 +48,7 @@ export async function decorate(container, data, query) {
   // }
 
   const apiData = await getData();
+  
 
   const  createMenuItems = (apiData) => {
     // const filteredTags = getFilteredTags(data, query);
