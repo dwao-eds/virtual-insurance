@@ -49,6 +49,7 @@ footer .footer .default-content-wrapper strong{
 .footer-container .default-content-wrapper p:last-child {
   display: flex;
   align-items: center;
+  
 }
 
 @media (width <= 786px){

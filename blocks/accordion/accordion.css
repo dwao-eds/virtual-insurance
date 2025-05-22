@@ -213,7 +213,7 @@ text-align: center; */
   margin-right: 100px;
 
   @media (width <=786px) {
-    margin: 0;
+    margin-right: 0;
     text-align: center;
   }
 }
