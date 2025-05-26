@@ -21,6 +21,21 @@
       "isPalette": true,
       "includePaths": ["**.docx**"],
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
+    },
+    {
+      "id": "tools",
+      "title": "Tools",
+      "isContainer": true
+    },
+    {
+      "containerId": "tools",
+      "id": "localize",
+      "title": "Localize",
+      "environments": [ "edit" ],
+      "url": "/tools/plugins/loc/index.html?project=milo--adobecom",
+      "passReferrer": true,
+      "excludePaths": [ "/**" ],
+      "includePaths": [ "**/:x**" ]
     }
   ]
 }
