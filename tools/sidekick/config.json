@@ -32,7 +32,7 @@
       "id": "localize",
       "title": "Localize",
       "environments": [ "edit" ],
-      "url": "/tools/plugins/loc/index.html?project=milo--adobecom",
+      "url": "/tools/sidekick/plugins/loc/index.html",
       "passReferrer": true,
       "excludePaths": [ "/**" ],
       "includePaths": [ "**/:x**" ]
