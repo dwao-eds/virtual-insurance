@@ -1,8 +1,8 @@
 import createField from "./form-fields.js";
 let emiValue = {};
 async function createForm(formHref) {
-  const { pathname } = new URL(formHref);
-  const resp = await fetch(pathname);
+  const { pathname,search } = new URL(formHref);
+  const resp = await fetch(pathname+search);
   const json = await resp.json();
 
   const form = document.createElement("form");
@@ -84,7 +84,11 @@ export default async function decorate(block) {
 
   const inputDiv = document.createElement("div");
   inputDiv.classList.add("inputdiv");
-  const form = await createForm(formLink.href);
+  const langCode = getMetadata("language-code")
+      ? getMetadata("language-code")
+      : "en";
+    const queryParamFormLink = `${formLink.href}?sheet=${langCode}`;
+  const form = await createForm(queryParamFormLink);
   inputDiv.appendChild(form);
   mainWrapper.appendChild(inputDiv);
 
