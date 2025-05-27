@@ -5,7 +5,7 @@
   /* display: grid;
   grid-template-columns: repeat(auto-fill, minmax(278px, 1fr)); */
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding-left: 15px;
   grid-gap: 20px;
 
