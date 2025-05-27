@@ -157,7 +157,6 @@ function getFormData() {
 }
 export default async function decorate(block) {
   const formLink = block.querySelector('a[href$=".json"]');
-  debugger;
   if (!formLink) return;
   const langCode = getMetadata("language-code")
     ? getMetadata("language-code")
