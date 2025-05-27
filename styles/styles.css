@@ -226,3 +226,7 @@ main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
 }
+
+.main .section-health-accordion-first.padd-top{
+  padding-top: 10%;
+}

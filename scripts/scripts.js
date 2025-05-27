@@ -188,7 +188,9 @@ if (getMetadata('target')) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  let langCode="";
+   langCode=getMetadata('language-code') ? getMetadata('language-code') :'en';
+  document.documentElement.lang = langCode;
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {

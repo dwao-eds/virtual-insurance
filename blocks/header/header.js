@@ -100,9 +100,11 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
+  
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const langCode=getMetadata('language-code')
+  const navPath= langCode ?  `/${langCode}/nav`:'/nav'
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM

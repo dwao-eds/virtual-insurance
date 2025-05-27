@@ -256,3 +256,7 @@ text-align: center; */
   font-size: 14px;
   /* width: 80%; */
 }
+
+main .section-health-accordion-first.padd-top{
+  padding-top: 10%;
+}

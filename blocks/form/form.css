@@ -482,3 +482,14 @@ h4 {
     margin-top: -12px;
     margin-bottom: 0;
 }
+
+main .need-help-form-main.padd-top {
+padding: 0;
+margin: 0;
+}
+
+main .need-help-form-main.padd-top {
+    @media (width <= 786px) {
+        padding: 16px 8px;
+    }
+}
