@@ -1,3 +1,4 @@
+import { getMetadata } from "../../scripts/aem.js";
 import createField from "./form-fields.js";
 let emiValue = {};
 async function createForm(formHref) {
