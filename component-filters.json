@@ -1,0 +1,34 @@
+[
+  {
+    "id": "main",
+    "components": [
+      "section"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "quote",
+      "teaser",
+      "accordion-group",
+      "accordian",
+      "text-with-image",
+      "cards-with-paragraph",
+      "card-with-paragraph",
+      "form-with-banner",
+      "spreedsheetfragment",
+      "inputform",
+      "topsearches",
+      "most-mopular-quick",
+      "cf-component"
+    ]
+  }
+]

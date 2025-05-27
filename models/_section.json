@@ -1,0 +1,126 @@
+{
+  "definitions": [
+    {
+      "title": "Section",
+      "id": "section",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "section",
+      "fields": [
+        {
+          "component": "text",
+          "name": "name",
+          "label": "Section Name",
+          "description": "The label shown for this section in the Content Tree"
+        },
+        {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Style",
+          "options": [
+            {
+              "name": "Highlight",
+              "value": "highlight"
+            },
+            {
+              "name": "ban-why-choose-model",
+              "value": "ban-why-choose-model"
+            },
+            {
+              "name": "most-pop",
+              "value": "most-pop"
+            },
+            {
+              "name": "quick-link",
+              "value": "quick-link"
+            },
+            {
+              "name": "Smart Calculator",
+              "value": "smart-cal"
+            },
+            {
+              "name": "most-pop-left",
+              "value": "most-pop-left"
+            },
+            {
+              "name": "section-container",
+              "value": "section-container"
+            },
+            {
+              "name": "Why iTerm Prime?",
+              "value": "bandhan-iterm-prime-cards"
+            },
+            {
+              "name": "lets go card",
+              "value": "lets-go-card"
+            },
+            {
+              "name": "lets go card11",
+              "value": "lets-go-card1"
+            },
+            {
+              "name": "people-search-buttons",
+              "value": "people-search-buttons"
+            },
+            {
+              "name": " Certified Card",
+              "value": "certified-card"
+            },
+            {
+              "name": "Settlement Card",
+              "value": "settlement-card"
+            },
+            {
+              "name": "Mail us card",
+              "value": "mail-us-card"
+            },
+            {
+              "name": "Bandhan Footer",
+              "value": "bandhan-footer"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "image",
+        "button",
+        "title",
+        "hero",
+        "cards",
+        "columns",
+        "fragment",
+        "quote",
+        "teaser",
+        "accordion-group",
+        "accordian",
+        "text-with-image",
+        "cards-with-paragraph",
+        "card-with-paragraph",
+        "form-with-banner",
+        "spreedsheetfragment",
+        "inputform",
+        "topsearches",
+        "most-mopular-quick",
+        "cf-component"
+      ]
+    }
+  ]
+}
