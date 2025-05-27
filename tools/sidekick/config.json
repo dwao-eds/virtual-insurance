@@ -1,41 +1,5 @@
 {
-  "plugins": [
-    {
-      "id": "aemedit",
-      "title": "Edit",
-      "environments": [ "dev", "preview", "live" ],
-      "event": "aemedit"
-    },
-    {
-      "id": "library",
-      "title": "Library",
-      "environments": [ "edit" ],
-      "url": "/tools/sidekick/library.html",
-      "includePaths": [ "**.docx**" ,"**.xlsx**"]
-    },
-    {
-      "id": "asset-library",
-      "title": "AEM Assets Selector",
-      "environments": ["edit"],
-      "url": "https://experience.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/franklin/asset-selector.html",
-      "isPalette": true,
-      "includePaths": ["**.docx**"],
-      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
-    },
-    {
-      "id": "tools",
-      "title": "Tools",
-      "isContainer": true
-    },
-    {
-      "containerId": "tools",
-      "id": "localize",
-      "title": "Localize",
-      "environments": [ "edit" ],
-      "url": "/tools/sidekick/plugins/loc/index.html",
-      "passReferrer": true,
-      "excludePaths": [ "/**" ],
-      "includePaths": [ "**/:x**" ]
-    }
-  ]
+  "project": "AEM XWalk Boilerplate",
+  "editUrlLabel": "AEM Editor",
+  "editUrlPattern": "{{contentSourceUrl}}{{pathname}}?cmd=open"
 }
