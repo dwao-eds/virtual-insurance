@@ -87,12 +87,22 @@
   /* margin:0; */
   font-size: 14px;
   /* display:inline; */
+
+  @media (width <=768px) {
+    font-size: 12px;
+  }
 }
 
 .hero-container .columns-wrapper .calculate>div>div p:last-child {
   margin: 0;
   font-size: 14px;
   width: 80%;
+
+  @media (width <=768px) {
+    width: 100%;
+    font-size: 12px;
+    margin: 1rem;
+  }
 }
 
 .hero-container .form-wrapper #form-headingcommon {
@@ -104,6 +114,10 @@
   position: relative;
   top: 51px;
   z-index: 2;
+
+ @media (width <=768px) {
+    position: unset;
+  }
 
 }
 
@@ -129,9 +143,9 @@
   font-size: 12px;
   vertical-align: top;
 
-   @media (width <=786px) {
+  @media (width <=786px) {
     text-align: center;
-    
+
   }
 }
 
