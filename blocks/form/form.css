@@ -207,7 +207,7 @@ input#form-phonenumber {
     background-repeat: no-repeat;
     justify-content: center;
     margin: unset;
-    background-color: #dfe7fa;
+    background-color: #663DB333;
 
     @media (width <=768px) {
         margin-top: 64px;
