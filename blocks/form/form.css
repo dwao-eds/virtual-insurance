@@ -201,7 +201,7 @@ input#form-phonenumber {
 
 .premium-section {
     margin-top: 50px !important;
-    background-image: url(../../icons/pay-premium-image.png);
+    background-image: url(../../icons/pay-premium-banner.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -260,11 +260,12 @@ h4 {
     /* background-size: cover; */
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("../../icons/need-help-img.png");
+    background-image: url("../../icons/need-help-banner.png");
     justify-content: space-evenly;
 
     @media (width <=768px) {
         margin-top: 64px;
+        margin-bottom: 0px;
     }
 
     /* @media (width >= 1499px){
@@ -290,8 +291,8 @@ h4 {
     height: 40px;
     border-radius: 5px;
     gap: 10px;
-    background-color: #fff;
-    color: #4169e2;
+    background-color: #fff !important;
+    color: #663DB3;
 }
 
 .need-help-form-main .field-wrapper .form-headline-4 {

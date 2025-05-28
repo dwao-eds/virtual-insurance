@@ -82,6 +82,10 @@
   }
 }
 
+.section-question-container{
+    padding-bottom: 0;
+}
+
 .how-it-work .content-div {
     flex: 1.7;
 }
@@ -92,7 +96,7 @@
 
 .how-it-work #how-does-it-work {
     font-size: 18px;
-    color: #DC143C;
+    color: #663DB3;
     margin-bottom: 16px;
 }
 

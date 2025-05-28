@@ -90,7 +90,12 @@
 
   @media (width <=768px) {
     font-size: 12px;
+    margin: 0;
   }
+}
+
+.hero-container .columns-wrapper .calculate>div>div p strong {
+  color: #663DB3;
 }
 
 .hero-container .columns-wrapper .calculate>div>div p:last-child {
@@ -101,7 +106,7 @@
   @media (width <=768px) {
     width: 100%;
     font-size: 12px;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
   }
 }
 
@@ -115,7 +120,7 @@
   top: 51px;
   z-index: 2;
 
- @media (width <=768px) {
+  @media (width <=768px) {
     position: unset;
   }
 
@@ -135,9 +140,9 @@
   border-image-slice: 1;
 }
 
-.hero-container .calculate>div>div>table:first-of-type tr picture {
+/* .hero-container .calculate>div>div>table:first-of-type tr picture {
   mix-blend-mode: multiply;
-}
+} */
 
 .hero-container .calculate>div>div>table:first-of-type tr td:nth-child(2) {
   font-size: 12px;
@@ -161,7 +166,7 @@
 }
 
 .hero-container .calculate>div>div>table:first-of-type tr td:nth-child(2) p strong {
-  color: red;
+  color: #663DB3;
 }
 
 .hero-container .calculate>div>div>table:not(:first-of-type) {
@@ -175,7 +180,12 @@
 }
 
 .hero-container .calculate>div>div>table:not(:first-of-type) strong {
-  color: red;
+  color: #663DB3;
+}
+
+.icon {
+  position: relative !important;
+  background-color: transparent !important;
 }
 
 .icon-icon_tick img {
@@ -186,10 +196,22 @@
 .hero-container.columns-container.form-container>div.columns-wrapper>div>div>div>table:nth-child(3)>tbody>tr {
   display: flex;
   flex-direction: row-reverse;
+
+  @media (width <=786px) {
+    flex-direction: column-reverse;
+  }
 }
 
 .comprehensive-page {
-  background-color: #4169E1;
+  background-color: #663DB3;
+}
+
+.comprehensive-page .columns-wrapper .calculate>div>div p strong {
+  color: #fff;
+}
+
+.comprehensive-page .columns-wrapper .calculate>div>div p {
+  color: #E0E3FA;
 }
 
 .comprehensive-page .columns-wrapper .calculate>div>div h1+p {
@@ -220,6 +242,6 @@
   }
 }
 
-.full-width .form-wrapper{
+.full-width .form-wrapper {
   display: none;
 }
