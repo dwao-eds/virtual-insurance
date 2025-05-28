@@ -1,6 +1,6 @@
 .virtualinsurance-container {
     display: flex;
-    background-image: url('../../icons/new-image.webp');
+    background-image: url('../../icons/new-webp-banner.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,19 +26,30 @@
 
 .virtualimage-wrapper {
     display: none;
+    
 }
 
-@media (width >=786px) {
-    .virtualimage-wrapper {
-        display: block;
-    }
+.download-banner .virtualimage-wrapper{
+    display: block;
+    margin-bottom: -10px !important;
 }
+
+/* @media (width <=786px) {
+    .virtualimage-wrapper {
+        display: none;
+    }
+} */
 
 .download-banner {
-    background-color: #4169E1;
+    background-color: #663DB3;
     background-image: none;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+@media (width <=786px)  {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
 
 .download-banner .virtualinsurance-wrapper p img {

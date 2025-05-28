@@ -8,12 +8,12 @@ header .nav-wrapper {
   box-shadow: 2px 2px 4px rgb(0 0 0 / 16%);
 }
 
-header{
+header {
   z-index: 10;
   position: fixed;
-  width:100%;
-  top:0;
-  order:2;
+  width: 100%;
+  top: 0;
+  order: 2;
 }
 
 header nav {
@@ -33,7 +33,7 @@ header nav {
   font-size: 16px;
   font-weight: 500;
 
-  @media (width <= 786px){
+  @media (width <=786px) {
     height: var(--nav-height);
   }
 }
@@ -68,11 +68,11 @@ header nav p {
   margin: 0;
   line-height: 1;
   display: flex;
-  gap:10px;
+  gap: 10px;
 }
 
 header nav a:any-link {
-  color: currentcolor;
+  color: #663DB3;
   font-size: 16px;
   display: flex;
   justify-content: center;
@@ -93,7 +93,7 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: var(--background-color) !important;
   color: inherit;
   overflow: initial;
   text-overflow: initial;
@@ -167,7 +167,7 @@ header .nav-brand {
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
-  color:blue;
+  color: blue;
 }
 
 header nav .nav-brand img {
@@ -277,7 +277,7 @@ header nav .nav-sections ul>li>ul>li {
     padding: 1em;
     background-color: var(--light-color);
     white-space: initial;
-    border-radius:8px;
+    border-radius: 8px;
     text-align: center;
   }
 
@@ -298,8 +298,8 @@ header nav .nav-sections ul>li>ul>li {
   }
 }
 
-@media (width <= 799px){
-  header nav .nav-sections ul > li:not(:last-child) {
+@media (width <=799px) {
+  header nav .nav-sections ul>li:not(:last-child) {
     margin-bottom: 20px;
   }
 
@@ -352,8 +352,8 @@ header nav .nav-tools {
 header nav .nav-tools .default-content-wrapper p {
   font-size: 12px;
   border-radius: 8px;
-  color:#fff;
-  gap:5px;
+  color: #fff;
+  gap: 5px;
   /* padding: 12px 20px; */
   background-color: #4169E1;
   display: flex;
@@ -372,43 +372,72 @@ header nav .nav-tools .default-content-wrapper p {
   background-color: #663DB3;
 }
 
-  .header-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .header {
-    order: 2;
-  }
-  
-  .subheader {
-    order: 1;
-    background-color: #dccaff;
+.header-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
-    @media (width <= 786px){
-      display:none;
-    }
-  }
+.header {
+  order: 2;
+}
 
-  .subheader .subheader-wrapper .default-content-wrapper ul{
-    display:flex;
-    justify-content: end;
-    font-size:14px;
-    gap:2em;
-    list-style: none;
-    line-height: 21px;
-  }
+.subheader {
+  order: 1;
+  background-color: #dccaff;
 
-  .subheader .subheader-wrapper .default-content-wrapper ul .subheader-list{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap:5px;
-    cursor: pointer;
+  @media (width <=786px) {
+    display: block;
+    /* background-color: #fff; */
   }
+}
 
-  .subheader .subheader-wrapper .default-content-wrapper ul .subheader-list picture{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.subheader .subheader-wrapper .default-content-wrapper ul {
+  display: flex;
+  justify-content: end;
+  font-size: 14px;
+  gap: 2em;
+  list-style: none;
+  line-height: 21px;
+
+  @media (width <=786px) {
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0px 10px;
+    margin: 6px;
   }
+}
+
+.subheader .subheader-wrapper .default-content-wrapper ul .subheader-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+
+}
+
+.subheader .subheader-wrapper .default-content-wrapper ul>li:last-child {
+  border: 1px solid #663DB3;
+  border-radius: 6px;
+  gap: 0;
+}
+
+.subheader .subheader-wrapper .default-content-wrapper ul>li:last-child a {
+  color: #663DB3;
+  text-decoration: none;
+  padding: 0px 10px;
+}
+
+.subheader .subheader-wrapper .default-content-wrapper ul>li:last-child a:hover {
+  text-decoration: none;
+  background-color: #663DB3;
+  color: #fff;
+}
+
+.subheader .subheader-wrapper .default-content-wrapper ul .subheader-list picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
