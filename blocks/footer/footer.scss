@@ -1,0 +1,120 @@
+footer {
+    padding: 2rem;
+    background-color: #273f87;
+    font-size: var(--body-font-size-s);
+    color: white;
+  
+    .footer {
+      max-width: 1200px;
+      margin: auto;
+  
+      p {
+        margin: 0;
+      }
+  
+      .default-content-wrapper {
+        p {
+          display: flex;
+          gap: 5px;
+          cursor: pointer;
+  
+          &:last-child {
+            display: flex;
+            align-items: center;
+  
+            @media (width <= 786px) {
+              flex-wrap: wrap;
+              font-size: 12px;
+            }
+          }
+  
+          &:nth-child(even) {
+            font-size: 12px;
+            opacity: 0.72;
+            line-height: 24px;
+            margin: 15px 0;
+          }
+        }
+  
+        strong {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+  
+        .icon-logo_icon {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+  
+  .aboutus-container {
+    display: flex;
+  
+    @media (width <= 786px) {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .default-content-wrapper {
+      display: unset !important;
+      margin: unset !important;
+  
+      p {
+        &:nth-child(even) {
+          font-size: 12px;
+          opacity: 0.72;
+          line-height: 24px;
+        }
+  
+        &:nth-child(3) {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+  
+  .footer-container {
+    .default-content-wrapper {
+      display: flex;
+      flex-direction: column;
+  
+      p {
+        &:nth-child(even) {
+          font-size: 12px;
+          opacity: 0.72;
+          line-height: 24px;
+          margin: 15px 0;
+        }
+  
+        &:last-child {
+          display: flex;
+          align-items: center;
+  
+          @media (width <= 786px) {
+            flex-wrap: wrap;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+  
+  .aboutus-wrapper,
+  .resource-wrapper,
+  .services-wrapper {
+    margin-top: unset !important;
+  
+    .aboutus,
+    .resource,
+    .services {
+      div:not(:first-child) {
+        font-size: 12px;
+        opacity: 0.72;
+        line-height: 24px;
+      }
+    }
+  }
+  

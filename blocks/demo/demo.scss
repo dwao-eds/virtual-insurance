@@ -1,0 +1,19 @@
+.columns {
+    > div {
+     
+      display: flex;
+      flex-direction: column;
+  
+      > div {
+        order: 1;
+      }
+  
+      > .columns-img-col {
+        order: 0;
+  
+        img {
+          display: block;
+        }
+      }
+    }
+  }
