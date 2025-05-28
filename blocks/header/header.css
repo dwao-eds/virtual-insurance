@@ -369,7 +369,7 @@ header nav .nav-tools .default-content-wrapper p {
   padding: 12px 20px;
   color: #4169E1;
   gap: 8px;
-  background-color: #4169E1!important;
+  background-color: #663DB3;
 }
 
   .header-wrapper {
@@ -383,7 +383,7 @@ header nav .nav-tools .default-content-wrapper p {
   
   .subheader {
     order: 1;
-    background-color: #dfe7fa;
+    background-color: #dccaff;
 
     @media (width <= 786px){
       display:none;

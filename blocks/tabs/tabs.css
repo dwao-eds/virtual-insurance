@@ -17,7 +17,7 @@
   border-radius: 0px;
   padding: 8px 16px;
   padding: 0;
-  background-color: white;
+  background-color: white !important;
   color: rgb(17 17 17 / 60%);
   font-size: 16px;
   font-weight: bold;
@@ -168,7 +168,7 @@
 .health-tabs-container .health-tabs-variation .tabs-panel table td:first-child a {
   display: inline-block;
   padding: 10px 26px;
-  background-color: #4169E1;
+  background-color: #663DB3;
   color: #fff;
   text-decoration: none;
   border-radius: 8px;

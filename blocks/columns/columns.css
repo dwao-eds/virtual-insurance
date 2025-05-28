@@ -33,7 +33,7 @@
   /* flex-wrap: wrap; */
   justify-content: center;
   gap: 60px;
-  background-color: #dfe7fa;
+  background-color: #663DB333;
 
   @media (width <=600px) {
     display: block;
