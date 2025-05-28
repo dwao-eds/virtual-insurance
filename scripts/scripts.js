@@ -192,6 +192,9 @@ async function loadEager(doc) {
    langCode=getMetadata('language-code') ? getMetadata('language-code') :'en';
   document.documentElement.lang = langCode;
   decorateTemplateAndTheme();
+  loadHeader(doc.querySelector('header'));
+  loadSubHeader(doc.querySelector('header'));
+
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
@@ -231,9 +234,9 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
 
   
-  loadHeader(doc.querySelector('header'));
+  // loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
-  loadSubHeader(doc.querySelector('header'));
+  // loadSubHeader(doc.querySelector('header'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
