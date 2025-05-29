@@ -257,7 +257,7 @@ h4 {
     margin-bottom: 125px;
     padding: 0;
     /* background-color: #4169e2; */
-    /* background-size: cover; */
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url("../../icons/need-help-banner.png");
