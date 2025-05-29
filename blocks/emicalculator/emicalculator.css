@@ -1,48 +1,49 @@
-main .emicalculator-container{
+main .emicalculator-container {
     padding-top: 15%;
 }
+
 .section.emi-cal.emicalculator-container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 84%;
+    margin: 0 auto;
+}
 
-        .emicalculator-wrapper {
-            padding: 0;
-        }
+.emicalculator-wrapper {
+    padding: 0;
+}
 
-        .emicalculator.block {
-            display: flex;
-            min-height: 500px;
-        }
+.emicalculator.block {
+    display: flex;
+    min-height: 500px;
+}
 
-        .mainwrapper {
-            display: flex;
-            width: 100%;
-            flex-direction: row-reverse;
-        }
+.mainwrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+}
 
-        .inputdiv {
-            flex: 1;
-            padding: 40px;
-            background: white;
-        }
+.inputdiv {
+    flex: 1;
+    padding: 40px;
+    background: white;
+}
 
-        .outputdiv {
-            flex: 1;
-            background-color: #dccaff;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+.outputdiv {
+    flex: 1;
+    background-color: #dccaff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 
-        /* .outputdiv::before {
+/* .outputdiv::before {
             content: '';
             position: absolute;
             top: 20px;
@@ -54,170 +55,178 @@ main .emicalculator-container{
             opacity: 0.3;
         } */
 
-        .outputdiv p {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 10px;
-            text-align: center;
-        }
+.outputdiv p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+    text-align: center;
+}
 
-        .emiamount {
-            font-size: 48px;
-            font-weight: bold;
-            color: #663DB3;
-            margin-bottom: 30px;
-        }
+.emiamount {
+    font-size: 48px;
+    font-weight: bold;
+    color: #663DB3;
+    margin-bottom: 30px;
+}
 
-        .emiamount::before {
-            content: '₹';
-            margin-right: 5px;
-        }
+.emiamount::before {
+    content: '₹';
+    margin-right: 5px;
+}
 
-        .emiamount::after {
-            content: '/-';
-            font-size: 24px;
-            margin-left: 5px;
-        }
+.emiamount::after {
+    content: '/-';
+    font-size: 24px;
+    margin-left: 5px;
+}
 
-        .breakdown {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-        }
+.breakdown {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
 
-        .breakdown-item {
-            text-align: center;
-        }
+.breakdown-item {
+    text-align: center;
+}
 
-        .breakdown-label {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
+.breakdown-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
 
-        .breakdown-value {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
+.breakdown-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
 
-        .outerdiv {
-            margin-bottom: 30px;
-        }
+.outerdiv {
+    margin-bottom: 30px;
+}
 
-        .data {
-            margin-bottom: 15px;
-        }
+.data {
+    margin-bottom: 15px;
+}
 
-        #form-label, #form-label-1, #form-label-2 {
-            display: block;
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
+#form-label,
+#form-label-1,
+#form-label-2 {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
 
-        .inputDiv {
-            position: relative;
-            margin-bottom: 15px;
-        }
+.inputDiv {
+    position: relative;
+    margin-bottom: 15px;
+}
 
-        .calValinput {
-            width: 94%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            background: white;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
+.calValinput {
+    width: 94%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    background: white;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
 
-        .calValinput:focus {
-            border-color: #2c5aa0;
-        }
+.calValinput:focus {
+    border-color: #2c5aa0;
+}
 
-        .inputinnerspan {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            font-size: 14px;
-            pointer-events: none;
-        }
+.inputinnerspan {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 14px;
+    pointer-events: none;
+}
 
-        .rangediv {
-            position: relative;
-            margin-bottom: 10px;
-        }
+.rangediv {
+    position: relative;
+    margin-bottom: 10px;
+}
 
-        input[type="range"] {
-            width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: #dccaff;
-            outline: none;
-            -webkit-appearance: none;
-            cursor: pointer;
-        }
+input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #dccaff;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
 
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #663DB3;
-            cursor: pointer;
-            border: 3px solid white;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #663DB3;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
 
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #ff4444;
-            cursor: pointer;
-            border: 3px solid white;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff4444;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
 
-        input[type="range"]::-webkit-slider-track {
-            background: linear-gradient(to right, #ff4444 0%, #ff4444 30%, #e0e0e0 30%, #e0e0e0 100%);
-            height: 6px;
-            border-radius: 3px;
-        }
+input[type="range"]::-webkit-slider-track {
+    background: linear-gradient(to right, #ff4444 0%, #ff4444 30%, #e0e0e0 30%, #e0e0e0 100%);
+    height: 6px;
+    border-radius: 3px;
+}
 
-        .values {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
-        }
+.values {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
 
-        .values .text {
-            font-size: 12px;
-            color: #663DB3;
-            font-weight: bold;
-        }
+.values .text {
+    font-size: 12px;
+    color: #663DB3;
+    font-weight: bold;
+}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .emicalculator.block {
-                flex-direction: column;
-            }
-            
-            .inputdiv, .outputdiv {
-                padding: 20px;
-            }
-            
-            .emiamount {
-                font-size: 36px;
-            }
-        }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .emicalculator.block {
+        flex-direction: column;
+    }
+
+    .inputdiv,
+    .outputdiv {
+        padding: 20px;
+    }
+
+    .emiamount {
+        font-size: 36px;
+    }
+
+    .mainwrapper {
+        flex-direction: column;
+
+    }
+}
