@@ -79,7 +79,7 @@
   /* width: 100%;
 text-align: center; */
   width: auto;
-  margin-right: 200px;
+  /* margin-right: 200px; */
 
   @media (width <=1400px) {
     text-align: unset;
@@ -127,6 +127,10 @@ background-color: #fff;
   }
 }
 
+.section-health-accordion-first .default-content-wrapper p img{
+  width: 60%;
+}
+
 .section-health-accordion-second .default-content-wrapper .button-container a {
   background-color: #4169e2;
 }
@@ -161,7 +165,7 @@ background-color: #fff;
 }
 
 .section-health-accordion-first .accordion-wrapper {
-  width: 100%;
+  width: 70%;
   margin: 0;
 
   @media (width <=1400px) {

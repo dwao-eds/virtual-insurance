@@ -200,8 +200,8 @@ input#form-phonenumber {
 }
 
 .premium-section {
-    margin-top: 50px !important;
-    background-image: url(../../icons/pay-premium-banner.png);
+    /* margin-top: 50px !important; */
+    background-image: url(../../icons/premium-section-banner.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -253,15 +253,16 @@ h4 {
 }
 
 .need-help-form-main {
-    margin-top: 100px;
-    margin-bottom: 125px;
+    /* margin-top: 100px; */
+    /* margin-bottom: 125px; */
     padding: 0;
     /* background-color: #4169e2; */
-    background-size: cover;
+    /* background-size: cover; */
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("../../icons/need-help-banner.png");
+    background-image: url("../../icons/get-call-back.png");
     justify-content: space-evenly;
+        padding-top: 0 !important;
 
     @media (width <=768px) {
         margin-top: 64px;
@@ -427,9 +428,9 @@ h4 {
 }
 
 .hero-container .form-wrapper form {
-    padding: 0 20px;
+    padding: 10px 20px;
     min-height: unset;
-    /* padding-top: 0; */
+    padding-top: 0;
 
     @media (width <=786px) {
         padding: 10px;
