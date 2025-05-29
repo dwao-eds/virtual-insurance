@@ -122,7 +122,7 @@ main pre {
 
 /* links */
 a:any-link {
-  color: var(--link-color);
+  color: #663DB3;
   text-decoration: none;
 }
 
@@ -200,11 +200,11 @@ main .section.hero-container {
   /* padding: 64px 16px; */
   margin-top: 125px;
   margin-bottom: -25px;
-    padding-bottom: 125px;
+    /* padding-bottom: 125px; */
   
   @media (width <= 786px){
     padding: 16px 8px;
-    margin-top: 64px;
+    /* margin-top: 64px; */
   }
 }
 

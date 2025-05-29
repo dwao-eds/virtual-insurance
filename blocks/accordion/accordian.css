@@ -29,7 +29,7 @@
   transition: transform 0.2s;
 }
 .accordion details[open] {
-  background-color: #F5F9FF;
+  background-color: #663DB30D;
 }
 .accordion details[open] summary::after {
   transform: translateY(-50%) rotate(-45deg);
@@ -43,6 +43,7 @@
 .accordion .accordion-item[open] .accordion-item-label p strong {
   background-color: #4169E1;
   color: white;
+  padding: 8px;
 }
 
 @media (min-width: 786px) {
@@ -110,7 +111,11 @@
 }
 
 .section-health-accordion-second {
-  background-color: #f5f8ff;
+  background-color: #663DB30D;
+}
+
+.section-health-accordion-second .accordion details[open]{
+background-color: #fff;
 }
 @media (min-width: 768px) {
   .section-health-accordion-second .default-content-wrapper p {
@@ -153,7 +158,7 @@
 }
 
 .understanding {
-  background-color: #F5F9FF;
+  background-color: #26026A0D;
   align-items: flex-end;
 }
 .understanding .default-content-wrapper {
@@ -202,7 +207,7 @@
   position: absolute;
   left: -65px;
   top: 18px;
-  background-color: #4169E1;
+  background-color: #663DB3;
   color: white;
   border-radius: 8px;
   padding: 6px 10px;

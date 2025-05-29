@@ -11,6 +11,15 @@ header .nav-wrapper {
   width: 100%;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.16);
 }
+
+header {
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  order: 2;
+}
+
 header nav {
   box-sizing: border-box;
   display: grid;
@@ -24,9 +33,8 @@ header nav {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 500;
-}
-@media (width <= 786px) {
-  header nav {
+
+  @media (width <=786px) {
     height: var(--nav-height);
   }
 }
@@ -57,7 +65,7 @@ header nav p {
   gap: 10px;
 }
 header nav a:any-link {
-  color: currentcolor;
+  color: #663DB3;
   font-size: 16px;
   display: flex;
   justify-content: center;
@@ -75,7 +83,7 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: var(--background-color) !important;
   color: inherit;
   overflow: initial;
   text-overflow: initial;
@@ -219,8 +227,22 @@ header nav .nav-sections ul > li > ul > li {
     display: none;
     position: relative;
   }
-  header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
-    content: "";
+
+  header nav .nav-sections .default-content-wrapper>ul>li[aria-expanded="true"]>ul {
+    display: block;
+    position: absolute;
+    left: -1em;
+    width: 200px;
+    margin-top: 12px;
+    padding: 1em;
+    background-color: var(--light-color);
+    white-space: initial;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  header nav .nav-sections .default-content-wrapper>ul>li>ul::before {
+    content: '';
     position: absolute;
     top: -8px;
     left: 8px;
@@ -246,8 +268,9 @@ header nav .nav-sections ul > li > ul > li {
     text-align: center;
   }
 }
-@media (width <= 799px) {
-  header nav .nav-sections ul > li:not(:last-child) {
+
+@media (width <=799px) {
+  header nav .nav-sections ul>li:not(:last-child) {
     margin-bottom: 20px;
   }
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
@@ -294,7 +317,8 @@ header nav .nav-tools .default-content-wrapper p {
   border-radius: 8px;
   color: #fff;
   gap: 5px;
-  background-color: #4169e1;
+  /* padding: 12px 20px; */
+  background-color: #4169E1;
   display: flex;
   justify-content: center;
 }
@@ -312,39 +336,71 @@ header nav .nav-tools .default-content-wrapper p {
   background-color: #663db3;
 }
 
-/* Header Wrapper Layout */
 .header-wrapper {
   display: flex;
   flex-direction: column;
 }
-.header-wrapper .header {
+
+.header {
   order: 2;
 }
-.header-wrapper .subheader {
+
+.subheader {
   order: 1;
   background-color: #dccaff;
-}
-@media (width <= 786px) {
-  .header-wrapper .subheader {
-    display: none;
+
+  @media (width <=786px) {
+    display: block;
+    /* background-color: #fff; */
   }
 }
-.header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul {
+
+.subheader .subheader-wrapper .default-content-wrapper ul {
   display: flex;
   justify-content: end;
   font-size: 14px;
   gap: 2em;
   list-style: none;
   line-height: 21px;
+
+  @media (width <=786px) {
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0px 10px;
+    margin: 6px;
+  }
 }
-.header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul .subheader-list {
+
+.subheader .subheader-wrapper .default-content-wrapper ul .subheader-list {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   cursor: pointer;
+
 }
-.header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul .subheader-list picture {
+
+.subheader .subheader-wrapper .default-content-wrapper ul>li:last-child {
+  border: 1px solid #663DB3;
+  border-radius: 6px;
+  gap: 0;
+}
+
+.subheader .subheader-wrapper .default-content-wrapper ul>li:last-child a {
+  color: #663DB3;
+  text-decoration: none;
+  padding: 0px 10px;
+}
+
+.subheader .subheader-wrapper .default-content-wrapper ul>li:last-child a:hover {
+  text-decoration: none;
+  background-color: #663DB3;
+  color: #fff;
+}
+
+.subheader .subheader-wrapper .default-content-wrapper ul .subheader-list picture {
   display: flex;
   justify-content: center;
   align-items: center;

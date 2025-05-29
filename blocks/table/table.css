@@ -90,7 +90,7 @@
 }
 
 .section-coverage {
-  background-color: #F5F9FF;
+  background-color: #26026A0D;
   
 }
 
@@ -128,17 +128,17 @@
 }
 
 .eligibility .table table {
-  border: 2px solid #4169E1 !important;
+  border: 2px solid #663DB3 !important;
   /* border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px; */
 }
 
 .eligibility .default-content-wrapper p {
-  background: #4169E1;
+  background: #663DB3;
   margin: 0;
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;
-  border: 1px solid #4169E1;
+  border: 1px solid #663DB3;
   display: flex;
   align-items: center;
   color: #fff;

@@ -6,7 +6,7 @@
   justify-content: space-between;
   margin-bottom: 30px;
 
-   @media (width <=786px) {
+  @media (width <=786px) {
     margin-bottom: 0;
   }
 }
@@ -31,10 +31,10 @@
 
 @media (width >=786px) {
   .tabs .tabs-list button[aria-selected="true"] {
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #663DB3;
     background-color: var(--background-color);
     cursor: initial;
-    color: red;
+    color: #663DB3;
     cursor: initial;
   }
 }
@@ -43,7 +43,7 @@
   .tabs .tabs-list button[aria-selected="true"] {
     background-color: var(--background-color);
     cursor: initial;
-    color: red;
+    color: #663DB3;
   }
 }
 
@@ -102,6 +102,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+    width: 100%;
   }
 }
 
@@ -152,12 +153,14 @@
 @media (width <=786px) {
   .health-tabs-container .health-tabs-variation .tabs-panel table {
     width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
   }
 }
 
 .health-tabs-container .health-tabs-variation .tabs-panel table tr:nth-child(2) td {
-  color: #4275c2;
-  background: #f5f8ff;
+  color: #663DB3;
+  background: #663DB30D;
   text-align: center;
 }
 
@@ -187,27 +190,27 @@
 
 .card-tab {
   width: 30%;
-    margin: auto;
+  margin: auto;
 
-     @media (width <=786px) {
-      width: 100%;
-      
+  @media (width <=786px) {
+    width: 100%;
+
   }
 }
 
-.card-tab .tabs-list{
-   border: 2px solid #d5cccc;
+.card-tab .tabs-list {
+  border: 2px solid #d5cccc;
   border-radius: 8px;
 }
 
-.card-tab .tabs-list button{
+.card-tab .tabs-list button {
   margin: 2px;
   border-radius: 8px;
   padding: 0;
   line-height: normal;
   text-align: center;
 
-   @media (width <=786px) {
+  @media (width <=786px) {
     font-size: 12px;
   }
 }
@@ -217,19 +220,19 @@
     border-bottom: none;
     cursor: initial;
     color: white;
-    background: #DC143C;
+    background: #663DB3 !important;
   }
 }
 
 .card-tab .tabs-panel {
   padding: 0;
-  overflow:auto ;
+  overflow: auto;
 }
 
 @media (width >=786px) {
   .card-tab .tabs-list button[aria-selected="true"] {
-    border-bottom: 2px solid red;
-    color: red;
+    border-bottom: 2px solid #663DB3;
+    color: #663DB3;
     color: white;
     background: #DC143C;
   }

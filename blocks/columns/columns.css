@@ -67,9 +67,15 @@
 @media (width <= 768px) {
   .hero-container .columns-wrapper .calculate > div > div p {
     font-size: 12px;
+    margin: 0;
   }
 }
-.hero-container .columns-wrapper .calculate > div > div p:last-child {
+
+.hero-container .columns-wrapper .calculate>div>div p strong {
+  color: #663DB3;
+}
+
+.hero-container .columns-wrapper .calculate>div>div p:last-child {
   margin: 0;
   width: 80%;
 }
@@ -77,23 +83,38 @@
   .hero-container .columns-wrapper .calculate > div > div p:last-child {
     width: 100%;
     font-size: 12px;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
   }
 }
 .hero-container .columns-wrapper .calculate > div > div table:first-of-type {
   position: relative;
   top: 51px;
   z-index: 2;
-}
-@media (width <= 768px) {
-  .hero-container .columns-wrapper .calculate > div > div table:first-of-type {
+
+  @media (width <=768px) {
     position: unset;
   }
 }
-.hero-container .columns-wrapper .calculate > div > div table:first-of-type tr picture {
-  mix-blend-mode: multiply;
+
+.hero-container .calculate>div>div>table:not(:first-of-type) td {
+  padding: 14px 28px;
+
+  @media (width <=768px) {
+    padding: 5px 10px;
+  }
 }
-.hero-container .columns-wrapper .calculate > div > div table:first-of-type tr td:nth-child(2) {
+
+.hero-container .calculate>div>div>table:not(:first-of-type) td:nth-child(-n+2) {
+  border-right: 2px solid;
+  border-image-source: linear-gradient(180deg, rgb(36 150 173 / 0%) 0%, rgb(204 204 204 / 100%) 50%, rgb(92 92 92 / 0%) 100%);
+  border-image-slice: 1;
+}
+
+/* .hero-container .calculate>div>div>table:first-of-type tr picture {
+  mix-blend-mode: multiply;
+} */
+
+.hero-container .calculate>div>div>table:first-of-type tr td:nth-child(2) {
   font-size: 12px;
   vertical-align: top;
 }
@@ -113,8 +134,9 @@
     display: block;
   }
 }
-.hero-container .columns-wrapper .calculate > div > div table:first-of-type tr td:nth-child(2) p strong {
-  color: red;
+
+.hero-container .calculate>div>div>table:first-of-type tr td:nth-child(2) p strong {
+  color: #663DB3;
 }
 .hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) {
   background: white;
@@ -126,25 +148,14 @@
     position: relative;
   }
 }
-.hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) td {
-  padding: 14px 28px;
+
+.hero-container .calculate>div>div>table:not(:first-of-type) strong {
+  color: #663DB3;
 }
-@media (width <= 768px) {
-  .hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) td {
-    padding: 5px 10px;
-  }
-}
-.hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) td:nth-child(-n+2) {
-  border-right: 2px solid;
-  border-image-source: linear-gradient(180deg, rgba(36, 150, 173, 0) 0%, rgb(204, 204, 204) 50%, rgba(92, 92, 92, 0) 100%);
-  border-image-slice: 1;
-}
-.hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) td p {
-  font-size: 14px;
-  margin: 0;
-}
-.hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) strong {
-  color: red;
+
+.icon {
+  position: relative !important;
+  background-color: transparent !important;
 }
 .hero-container .form-wrapper #form-headingcommon {
   grid-template-columns: 80% 1fr;
@@ -183,6 +194,55 @@
 .icon-icon_tick img {
   width: 16px;
   height: 16px;
+}
+
+.hero-container.columns-container.form-container>div.columns-wrapper>div>div>div>table:nth-child(3)>tbody>tr {
+  display: flex;
+  flex-direction: row-reverse;
+
+  @media (width <=786px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.comprehensive-page {
+  background-color: #663DB3;
+}
+
+.comprehensive-page .columns-wrapper .calculate>div>div p strong {
+  color: #fff;
+}
+
+.comprehensive-page .columns-wrapper .calculate>div>div p {
+  color: #E0E3FA;
+}
+
+.comprehensive-page .columns-wrapper .calculate>div>div h1+p {
+  color: #FFFFFF;
+}
+
+.comprehensive-page>div.columns-wrapper>div>div>div {
+  color: #FFFFFF;
+}
+
+.comprehensive-page .calculate>div>div>table:first-of-type {
+  top: 0;
+}
+
+.comprehensive-page .columns-wrapper table>tbody>tr>td:nth-child(1) p img {
+  width: 14px;
+  margin-right: 8px;
+}
+
+.comprehensive-page .columns-wrapper table>tbody>tr>td:nth-child(2) img {
+  width: 80%;
+}
+
+@media (width <=786px) {
+  .hero-container.comprehensive-page .columns-wrapper>div>div>div>table>tbody>tr {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 .full-width .form-wrapper {

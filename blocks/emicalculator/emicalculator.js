@@ -2,8 +2,8 @@ import { getMetadata } from "../../scripts/aem.js";
 import createField from "./form-fields.js";
 let emiValue = {};
 async function createForm(formHref) {
-  const { pathname,search } = new URL(formHref);
-  const resp = await fetch(pathname+search);
+  const { pathname, search } = new URL(formHref);
+  const resp = await fetch(pathname + search);
   const json = await resp.json();
 
   const form = document.createElement("form");
@@ -71,10 +71,58 @@ async function createOutputDiv() {
 }
 
 async function inputEventRegeister() {
-  loanInput.addEventListener("input", updateEMI);
-  rateInput.addEventListener("input", updateEMI);
-  tenureInput.addEventListener("input", updateEMI);
+  const inputFields = document.querySelectorAll(".emicalculator input.calValinput");
+  const rangeFields = document.querySelectorAll(".emicalculator input[type='range']");
+  
+  const getOuterDivAndRange = (el) => {
+    const outerDiv = el.closest('.outerdiv');
+    const rangeInput = outerDiv.querySelector('input[type="range"]');
+    return { outerDiv, rangeInput };
+  };
+
+  const updateEMI = async () => {
+    const emi = await calculateEMI();
+    document.getElementById("emiamount").textContent = emi;
+  };
+
+  rangeFields.forEach((el) => {
+    el.addEventListener("input", async (event) => {
+      event.preventDefault();
+      const { outerDiv, rangeInput } = getOuterDivAndRange(event.currentTarget);
+      outerDiv.querySelector(".calValinput").value = rangeInput.value;
+      
+      console.log(rangeInput.value);
+      await updateEMI();  
+    });
+  });
+
+  // Handle text input focusout events
+  inputFields.forEach((el) => {
+    el.addEventListener("focusout", async (event) => {
+      event.preventDefault();
+      const { outerDiv, rangeInput } = getOuterDivAndRange(event.currentTarget);
+
+      const currentVal = parseInt(event.currentTarget.value, 10);
+      const minVal = parseInt(rangeInput.min, 10);
+      const maxVal = parseInt(rangeInput.max, 10);
+
+
+      let clampedVal = Math.max(minVal, Math.min(currentVal, maxVal));
+
+      if (currentVal !== clampedVal) {
+        outerDiv.querySelector(".calValinput").value = clampedVal;
+      }
+
+      // Update the range input to match the clamped value
+      rangeInput.value = clampedVal;
+      
+      await updateEMI();  // Update EMI
+    });
+  });
 }
+
+
+
 export default async function decorate(block) {
   const formLink = block.querySelector('a[href$=".json"]');
   const mainWrapper = document.createElement("div");
@@ -86,9 +134,9 @@ export default async function decorate(block) {
   const inputDiv = document.createElement("div");
   inputDiv.classList.add("inputdiv");
   const langCode = getMetadata("language-code")
-      ? getMetadata("language-code")
-      : "en";
-    const queryParamFormLink = `${formLink.href}?sheet=${langCode}`;
+    ? getMetadata("language-code")
+    : "en";
+  const queryParamFormLink = `${formLink.href}?sheet=${langCode}`;
   const form = await createForm(queryParamFormLink);
   inputDiv.appendChild(form);
   mainWrapper.appendChild(inputDiv);
@@ -96,4 +144,5 @@ export default async function decorate(block) {
   block.replaceChildren(mainWrapper);
   const emi = await calculateEMI();
   const sds = (block.getElementsByClassName("emiamount")[0].textContent = emi);
+  inputEventRegeister();
 }
