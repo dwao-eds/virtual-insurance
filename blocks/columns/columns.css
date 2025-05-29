@@ -122,6 +122,7 @@
 
   @media (width <=768px) {
     position: unset;
+    width: 100%;
   }
 
 }
