@@ -68,22 +68,23 @@
 }
 
 .question-container .picture-div {
-    flex: 1;
+    flex: 0.8;
     justify-content: center;
     align-items: center;
     display: flex;
+    margin-bottom: -37px;
 }
 
 .question-container .heading-label {
     width: 80%;
 
-     @media (width <=786px) {
+    @media (width <=786px) {
         width: 100%;
-  }
+    }
 }
 
-.section-question-container{
-    padding-bottom: 0;
+.section.question-container {
+    padding-bottom: 0 !important;
 }
 
 .how-it-work .content-div {
