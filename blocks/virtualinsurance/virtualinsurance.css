@@ -1,62 +1,58 @@
-.virtualinsurance-container {
-    display: flex;
-    background-image: url('../../icons/new-webp.png');
-    /* background-size: cover; */
-    background-position: center;
-    background-repeat: no-repeat;
-    transform: scale(1);
-    min-height: 440px;
-
-     @media (width <=786px) {
-        min-height: auto;
-  }
-}
-
-.virtualinsurance-container .virtualinsurance-wrapper {
-    color: #fff;
-    font-size: 20px;
-    line-height: 20px;
-    width: 100%;
-}
-
-#download-virtual-insurance-mobile-app {
-    font-size: 40px;
-    width: 60%;
-}
-
-.virtualimage-wrapper {
-    display: none;
-    
-}
-
-.download-banner .virtualimage-wrapper{
-    display: block;
-    margin-bottom: -10px !important;
-}
-
 /* @media (width <=786px) {
     .virtualimage-wrapper {
         display: none;
     }
 } */
+.virtualinsurance-container {
+  display: flex;
+  background-image: url("../../icons/new-webp.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1);
+  min-height: 440px;
+}
+@media (width <= 786px) {
+  .virtualinsurance-container {
+    min-height: auto;
+  }
+}
 
-.download-banner {
-    background-color: #663DB3;
-    background-image: none;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-@media (width <=786px)  {
-        display: flex;
-        flex-direction: column;
-    }
-
+.virtualinsurance-container .virtualinsurance-wrapper {
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  width: 100%;
 }
 
 .download-banner .virtualinsurance-wrapper p img {
-    width: 18px;
+  width: 18px;
 }
 
-.download-banner .virtualinsurance-wrapper>div>div:nth-child(3)>div>p {
+#download-virtual-insurance-mobile-app {
+  font-size: 40px;
+  width: 60%;
+}
+
+.virtualimage-wrapper {
+  display: none;
+}
+
+.download-banner {
+  background-color: #663DB3;
+  background-image: none;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.download-banner .virtualimage-wrapper {
+  display: block;
+  margin-bottom: -10px !important;
+}
+@media (width <= 786px) {
+  .download-banner {
+    display: flex;
+    flex-direction: column;
+  }
+  .download-banner .virtualinsurance-wrapper > div > div:nth-child(3) > div > p {
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
@@ -66,17 +62,16 @@
     padding: 14px;
     font-weight: bold;
     margin-top: 50px;
-
-     @media (width <=786px) {
-        width: auto;
+  }
+}
+@media (width <= 786px) and (width <= 786px) {
+  .download-banner .virtualinsurance-wrapper > div > div:nth-child(3) > div > p {
+    width: auto;
   }
 }
 
- @media (width <=786px) {
-    #download-the-brochure-for-shieldplus-protection{
-        font-size: 28px;
-    }
+@media (width <= 786px) {
+  #download-the-brochure-for-shieldplus-protection {
+    font-size: 28px;
   }
-
-
-  
+}

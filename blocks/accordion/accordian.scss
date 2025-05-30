@@ -1,22 +1,23 @@
-// Variables
-$light-bg: #F5F9FF;
-$primary-blue: #4169E1;
-$light-blue: #f5f8ff;
-$button-blue: #4169e2;
-$text-blue: #4e6abd;
-$dark-color: var(--dark-color); // Or define a hex if needed
+$color_1: white;
+$color_2: #663DB3;
+$background-color_1: #663DB30D;
+$background-color_2: #663DB3;
+$background-color_3: #fff;
+$background-color_4: #4169e2;
+$background-color_5: white;
+$background-color_6: #26026A0D;
 
+/* stylelint-disable-next-line no-descending-specificity */
+/* accordion container starts  */
+/* accordion second  */
+/* margin-left: unset !important; */
 .accordion {
   details {
-    border: 1px solid $dark-color;
-
-    + details {
-      margin-top: 16px;
-    }
+    border: 1px solid var(--dark-color);
 
     summary {
       position: relative;
-      padding: 0 16px 0 16px;
+      padding: 0 16px;
       padding-right: 48px;
       cursor: pointer;
       list-style: none;
@@ -41,214 +42,307 @@ $dark-color: var(--dark-color); // Or define a hex if needed
       }
     }
 
-    &[open] {
-      background-color: $light-bg;
-
-      summary::after {
-        transform: translateY(-50%) rotate(-45deg);
-      }
-
-      .accordion-item-body {
-        border-top: 1px solid $dark-color;
-      }
-    }
-
     .accordion-item-body {
       padding: 0 16px;
     }
   }
 
-  .accordion-item[open] .accordion-item-label p strong {
-    background-color: $primary-blue;
-    color: white;
+  details+details {
+    margin-top: 16px;
+  }
+
+  details[open] {
+    summary {
+      &::after {
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+
+    .accordion-item-body {
+      border-top: 1px solid var(--dark-color);
+    }
+
+    background-color: $background-color_1;
   }
 }
 
-// Accordion First Section
+.accordion-item[open] {
+  .accordion-item-label {
+    p {
+      strong {
+        background-color: $background-color_2;
+        color: $color_1;
+        padding: 8px;
+      }
+    }
+  }
+}
+
+.accordion-first {
+  .default-content-wrapper {
+    margin-right: 0;
+  }
+}
+
 .section-health-accordion-first {
-  @media (min-width: 786px) {
-    display: flex;
-    justify-content: center;
-  }
-
-  &.accordion-container .default-content-wrapper > p:nth-child(1) > strong {
-    font-size: 28px;
-  }
-
-  .accordion-wrapper {
-    width: 27%;
-    margin: 0;
-
-    @media (max-width: 1400px) {
-      width: 65%;
-    }
-
-    @media (max-width: 786px) {
-      width: auto;
-    }
-  }
-
   .default-content-wrapper {
     margin: 0;
     width: auto;
-    margin-right: 200px;
 
-    @media (max-width: 1400px) {
+    @media (width <=1400px) {
       text-align: unset;
-    }
-
-    @media (max-width: 768px) {
-      margin-right: unset;
-    }
-  }
-
-  .accordion-first {
-    .default-content-wrapper {
-      margin-right: 0;
-    }
-
-    .accordion-item {
-      border-radius: 25px;
-
-      @media (max-width: 786px) {
-        border-radius: 10px;
-      }
 
       p {
-        @media (max-width: 786px) {
-          font-size: 14px;
+        img {
+          width: 60%;
+          padding-top: 30px;
+
+          @media (width <=768px) {
+            width: 100%;
+          }
         }
       }
 
-      strong {
-        background-color: $light-bg;
-        border-radius: 8px;
-        padding: 8px;
-        color: $primary-blue;
-      }
-    }
-  }
-
-  &.padd-top {
-    padding-top: 10%;
-  }
-}
-
-// Accordion Second Section
-.section-health-accordion-second {
-  background-color: $light-blue;
-
-  .default-content-wrapper {
-    p {
-      @media (min-width: 768px) {
-        font-size: 48px;
-        width: 50%;
-        line-height: 1;
-        margin-bottom: 1.5rem;
-      }
-    }
-
-    .button-container {
-      a {
-        background-color: $button-blue;
-      }
-
-      @media (max-width: 768px) {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-      }
-    }
-  }
-
-  &.accordion-container > div:nth-child(3) > p {
-    width: 100%;
-    text-align: center;
-    line-height: 1;
-    margin-bottom: 1.5rem;
-    margin-top: 20px;
-  }
-
-  .accordion-second {
-    .accordion-item {
-      border-radius: 20px;
-      background-color: white;
-
-      @media (max-width: 786px) {
-        font-size: 14px;
-        border-radius: 10px;
-      }
-
-      strong {
-        color: $text-blue;
-      }
-    }
-  }
-}
-
-// Understanding Section
-.understanding {
-  background-color: $light-bg;
-  align-items: flex-end;
-
-  .default-content-wrapper {
-    margin-right: 100px;
-
-    @media (max-width: 786px) {
-      margin-right: 0;
-      text-align: center;
-    }
-
-    p {
-      @media (max-width: 786px) {
-        font-size: 15px;
-      }
-
-      strong {
-        font-size: 40px;
-
-        @media (max-width: 786px) {
-          font-size: 25px !important;
-        }
-      }
-    }
-
-    img {
-      max-width: 60%;
-    }
-  }
-
-  .accordion-first-wrapper {
-    width: 70%;
-
-    @media (max-width: 786px) {
-      width: 100%;
-    }
-
-    > div > div {
-      display: flex;
-      flex-wrap: wrap;
-      position: relative;
-      margin: 25px 0;
-
-      p {
+      .accordion-wrapper {
+        // width: 70%;
         margin: 0;
-      }
 
-      > div:nth-child(1) > p:nth-child(1) {
-        position: absolute;
-        left: -65px;
-        top: 18px;
-        background-color: $primary-blue;
-        color: white;
-        border-radius: 8px;
-        padding: 6px 10px;
-      }
-
-      > div:nth-child(2) > p {
-        font-size: 14px;
+        @media (width <=1400px) {
+          width: 80%;
+        }
       }
     }
-  }
-}
+
+  }}
+      .section-health-accordion-second {
+        background-color: $background-color_1;
+
+        .default-content-wrapper {
+          .button-container {
+            a {
+              background-color: $background-color_4;
+            }
+          }
+        }
+      }
+
+      .section-health-accordion-first {
+        .accordion-first {
+          .accordion-item {
+            border-radius: 25px;
+
+            @media (width <=786px) {
+              border-radius: 10px;
+
+              strong {
+                background-color: $background-color_1;
+                border-radius: 8px;
+                padding: 8px;
+                color: $color_2;
+              }
+            }
+          }
+        }
+
+        .understanding {
+          .default-content-wrapper {
+            img {
+              max-width: 60%;
+            }
+          }
+
+          .accordion-first-wrapper {
+            >div {
+              >div {
+                >div {
+                  &:nth-child(2) {
+                    >p {
+                      font-size: 14px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .section-health-accordion-second {
+        .accordion {
+          details[open] {
+            background-color: $background-color_3;
+          }
+        }
+      }
+
+      .accordion-second {
+        .accordion-item {
+          border-radius: 20px;
+          background-color: $background-color_5;
+
+          strong {
+            color: $color_2;
+          }
+        }
+      }
+
+      .section-health-accordion-first.accordion-container {
+        .default-content-wrapper {
+          >p {
+            &:nth-child(1) {
+              >strong {
+                font-size: 34px;
+              }
+            }
+          }
+        }
+      }
+
+      .understanding {
+        background-color: $background-color_6;
+        align-items: flex-end;
+
+        .default-content-wrapper {
+          margin-right: 100px;
+          p {
+            strong {
+              font-size: 40px;
+
+              @media (width <=786px) {
+                font-size: 25px !important;
+              }
+            }
+
+            
+          }
+            @media (width <=786px) {
+              margin-right: 0;
+              text-align: center;
+            }
+          }
+        }
+            .accordion-first-wrapper {
+              >div {
+                >div {
+                  display: flex;
+                  flex-wrap: wrap;
+                  position: relative;
+                  margin: 25px 0;
+
+                  >div {
+                    &:nth-child(1) {
+                      >p {
+                        &:nth-child(1) {
+                          position: absolute;
+                          left: -65px;
+                          top: 18px;
+                          background-color: $background-color_2;
+                          color: $color_1;
+                          border-radius: 8px;
+                          padding: 6px 10px;
+                        }
+                      }
+                    }
+                  }
+
+                  p {
+                    margin: 0;
+                  }
+                }
+              }
+
+              width: 70%;
+
+              @media (width <=786px) {
+                width: 100%;
+              }
+            }
+
+            main {
+              .section-health-accordion-first.padd-top {
+                padding-top: 10%;
+              }
+            }
+
+            @media (width >=786px) {
+              .section-health-accordion-first {
+                display: flex;
+                justify-content: center;
+
+                .accordion-wrapper {
+                  width: auto;
+                  margin-left: unset !important;
+                }
+              }
+            }
+
+            @media (width >=768px) {
+              .section-health-accordion-second {
+                .default-content-wrapper {
+                  p {
+                    font-size: 48px;
+                    width: 50%;
+                    line-height: 1;
+                    margin-bottom: 1.5rem;
+                  }
+                }
+              }
+
+              .section.section-health-accordion-second.accordion-container {
+                >div {
+                  &:nth-child(3) {
+                    >p {
+                      width: 100%;
+                      text-align: center;
+                      line-height: 1;
+                      margin-bottom: 1.5rem;
+                      margin-top: 20px;
+                    }
+                  }
+                }
+              }
+            }
+
+            @media (width <=768px) {
+              .section-health-accordion-second {
+                .default-content-wrapper {
+                  .button-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                  }
+                }
+              }
+            }
+
+            @media (width <=786px) {
+              .accordion-second {
+                .accordion-item {
+                  p {
+                    font-size: 14px;
+                  }
+
+                  border-radius: 10px;
+                }
+              }
+
+              .accordion-first {
+                .accordion-item {
+                  p {
+                    font-size: 14px;
+                  }
+
+                  border-radius: 10px;
+                }
+              }
+
+              .understanding {
+                .default-content-wrapper {
+                  p {
+                    font-size: 15px;
+                  }
+
+                }
+              }
+            }

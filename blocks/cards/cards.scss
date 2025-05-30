@@ -1,251 +1,225 @@
 .cards {
-    > ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      // display: grid;
-      // grid-template-columns: repeat(auto-fill, minmax(278px, 1fr));
-      display: flex;
-      justify-content: space-between;
-      padding-left: 15px;
-      grid-gap: 20px;
-  
-      @media (width <= 786px) {
-        display: block;
-        padding-left: 20px;
-      }
-  
-      > li {
-        border: 1px solid var(--dark-color);
-        background-color: var(--background-color);
-  
-        img {
-          width: auto;
-          aspect-ratio: 4 / 3;
-          object-fit: cover;
-        }
-      }
+  >ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 15px;
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 20px;
+
+    @media (width <=786px) {
+      display: block;
+      padding-left: 20px;
     }
-  
-    .cards-card-body {
-      margin: 16px;
-  
-      > *:first-child {
-        margin-top: 0;
-      }
-    }
-  
-    .cards-card-image {
-      line-height: 0;
-    }
-  }
-  
-  .cards-choice {
-    > ul {
-      display: flex;
-      list-style-type: none;
-      padding: 0;
-      margin-top: 30px;
-      flex-wrap: wrap;
-  
-      @media (width <= 786px) {
-        display: block;
-      }
-  
-      > li {
-        flex: 1;
-        background-color: #f5f8ff !important;
-        margin-right: 10px;
-        border-radius: 10px;
-        font-size: 14px;
-  
-        @media (width <= 786px) {
-          margin: 10px 0;
-          width: 100%;
-        }
-  
-        img {
-          width: unset !important;
-          padding: 20px;
-          padding-bottom: 0;
-        }
-      }
-    }
-  }
-  
-  .second-card-container {
-    width: 80%;
-    margin: auto;
-    border-radius: 24px;
-    padding: 10px !important;
-    bottom: 55px;
-    background: white;
-    position: relative;
-    box-shadow: 2px 2px 4px rgb(0 0 0 / 10%);
-  
-    @media (width <= 786px) {
-      width: auto;
-      position: unset;
-      border-radius: 12px;
-    }
-  
-    .default-content-wrapper {
-      margin-left: 35px;
-      margin-top: 20px;
-    }
-  
-    .virtual-health-insurance {
-      ul {
-        li {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border: none;
-  
-          @media (width <= 786px) {
-            display: flex;
-            justify-content: unset;
-          }
-  
-          p {
-            margin: unset;
-  
-            &:first-child {
-              font-size: 16px;
-              color: rgb(17 17 17 / 60%);
-              font-weight: 400;
-            }
-          }
-        }
-  
-        @media (width >= 786px) {
-          li:not(:last-child) {
-            border-left: 1px solid;
-            border-image-source: linear-gradient(
-              180deg,
-              rgb(36 150 173 / 0%) 0%,
-              rgb(204 204 204 / 100%) 50%,
-              rgb(92 92 92 / 0%) 100%
-            );
-            border-image-slice: 1;
-            padding-left: 20px;
-          }
-        }
-      }
-    }
-  
-    .cards-wrapper {
-      .cards-card-image {
-        img {
-          width: 30px;
-          height: 30px;
-          min-width: 100%;
-          min-height: 100%;
-          max-width: none;
-          max-height: none;
-          object-fit: cover;
-        }
-      }
-    }
-  }
-  
-  .section.cards-container {
-    .default-content-wrapper {
-      // > p:nth-child(1) > strong {
-      //   color: Red;
-      // }
-  
-      > p:nth-child(2) > strong {
-        font-size: 28px;
-      }
-    }
-  }
-  
-  .financial-cards {
-    ul {
-      grid-gap: 35px 0;
-      justify-content: space-between;
-  
-      li {
-        flex: none;
-        width: 31%;
-        // margin:auto;
-        padding-bottom: 25px;
-        background-color: #ffffff !important;
-  
-        @media (width <= 786px) {
-          width: 100%;
-        }
-  
-        &:hover {
-          box-shadow: -1px 3px 6px 4px rgb(0 0 0 / 10%);
-        }
-  
-        img {
-          width: 10% !important;
-          padding-top: 25px;
-        }
-      }
-    }
-  
-    .cards-card-body {
-      > *:first-child {
-        width: 70%;
-  
-        @media (width <= 786px) {
-          width: 100%;
-        }
-      }
-    }
-  }
-  
-  .shieldplus {
-    .cards-card-image {
-      p {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-  
-        strong {
-          padding-left: 20px;
-          font-size: 18px;
-        }
-      }
-  
+
+    >li {
+      border: 1px solid var(--dark-color);
+      background-color: var(--background-color);
+
       img {
-        width: 50% !important;
-        padding: 10px;
-        padding-right: 0;
-      }
-  
-      line-height: normal;
-    }
-  }
-  
-  .shieldplus-cards {
-    .default-content-wrapper {
-      text-align: center;
-  
-      p strong {
-        font-size: 40px;
+        width: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
       }
     }
   }
-  
-  .waiting-cards {
-    .default-content-wrapper {
-      text-align: center;
-      font-size: 32px !important;
+
+  .cards-card-body {
+    margin: 16px;
+
+    >*:first-child {
+      margin-top: 0;
     }
   }
-  
-  @media (width <= 786px) {
-    .financial-cards {
-      ul {
-        li {
-          width: 100%;
+
+  .cards-card-image {
+    line-height: 0;
+  }
+}
+
+.cards-choice {
+  ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+    flex-wrap: wrap;
+
+    @media (width <=786px) {
+      display: block;
+    }
+
+    li {
+      flex: 1;
+      background-color: #f5f8ff !important;
+      margin-right: 10px;
+      border-radius: 10px;
+      font-size: 14px;
+
+      @media (width <=786px) {
+        margin: 10px 0;
+        width: 100%;
+      }
+
+      img {
+        width: unset !important;
+        padding: 20px 20px 0;
+      }
+    }
+  }
+}
+
+.second-card-container {
+  width: 80%;
+  margin: auto;
+  border-radius: 24px;
+  padding: 10px !important;
+  bottom: 55px;
+  background: white;
+  position: relative;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (width <=786px) {
+    width: auto;
+    position: unset;
+    border-radius: 12px;
+  }
+
+  .default-content-wrapper {
+    margin-left: 35px;
+    margin-top: 20px;
+  }
+
+  .virtual-health-insurance {
+    ul {
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+
+        @media (width <=786px) {
+          justify-content: unset;
+        }
+
+        p {
+          margin: unset;
+
+          &:first-child {
+            font-size: 16px;
+            color: rgba(17, 17, 17, 0.6);
+            font-weight: 400;
+          }
+        }
+      }
+
+      @media (width >=786px) {
+        li:not(:last-child) {
+          border-left: 1px solid;
+          border-image-source: linear-gradient(180deg, rgba(36, 150, 173, 0%) 0%, rgba(204, 204, 204, 100%) 50%, rgba(92, 92, 92, 0%) 100%);
+          border-image-slice: 1;
+          padding-left: 20px;
         }
       }
     }
   }
-  
+
+  .cards-wrapper {
+    .cards-card-image {
+      img {
+        width: 30px;
+        height: 30px;
+        min-width: 100%;
+        min-height: 100%;
+        max-width: none;
+        max-height: none;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.section.cards-container {
+  .default-content-wrapper {
+    >p:nth-child(2)>strong {
+      font-size: 28px;
+    }
+  }
+}
+
+.financial-cards {
+  ul {
+    grid-gap: 35px 0;
+    justify-content: space-between;
+
+    li {
+      flex: none;
+      width: 31%;
+      padding-bottom: 25px;
+      background-color: #fff !important;
+
+      &:hover {
+        box-shadow: -1px 3px 6px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      img {
+        width: 10% !important;
+        padding-top: 25px;
+      }
+
+      @media (width <=786px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .cards-card-body {
+    >*:first-child {
+      width: 70%;
+
+      @media (width <=786px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.shieldplus {
+  .cards-card-image {
+    line-height: normal;
+
+    p {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      strong {
+        padding-left: 20px;
+        font-size: 18px;
+      }
+    }
+
+    img {
+      width: 50% !important;
+      padding: 10px;
+      padding-right: 0;
+    }
+  }
+}
+
+.shieldplus-cards {
+  .default-content-wrapper {
+    text-align: center;
+
+    p strong {
+      font-size: 40px;
+    }
+  }
+}
+
+.waiting-cards {
+  .default-content-wrapper {
+    text-align: center;
+    font-size: 32px !important;
+  }
+}

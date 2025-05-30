@@ -9,7 +9,6 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 :root {
   /* colors */
   --link-color: #035fe6;
@@ -18,17 +17,14 @@
   --light-color: #eee;
   --dark-color: #ccc;
   --text-color: black;
-
   /* fonts */
   --body-font-family: roboto, roboto-fallback;
   --heading-font-family: var(--body-font-family);
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
-
+  --fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono", monospace;
   /* body sizes */
   --body-font-size-m: 22px;
   --body-font-size-s: 18px;
   --body-font-size-xs: 16px;
-
   /* heading sizes */
   --heading-font-size-xxl: 48px;
   --heading-font-size-xl: 40px;
@@ -36,7 +32,6 @@
   --heading-font-size-m: 24px;
   --heading-font-size-s: 20px;
   --heading-font-size-xs: 18px;
-
   /* nav height */
   --nav-height: 64px;
 }
@@ -45,10 +40,9 @@
   font-family: roboto-fallback;
   size-adjust: 100.06%;
   ascent-override: 95%;
-  src: local('Arial');
+  src: local("Arial");
 }
-
-@media (width >=900px) {
+@media (width >= 900px) {
   :root {
     --heading-font-size-xxl: 60px;
     --heading-font-size-xl: 48px;
@@ -58,7 +52,6 @@
     --heading-font-size-xs: 22px;
   }
 }
-
 body {
   font-size: var(--body-font-size-m);
   margin: 0;
@@ -87,32 +80,32 @@ h6 {
   font-weight: 600;
   line-height: 1.25;
   margin-top: 1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
 h1 {
-  font-size: var(--heading-font-size-xxl)
+  font-size: var(--heading-font-size-xxl);
 }
 
 h2 {
-  font-size: var(--heading-font-size-xl)
+  font-size: var(--heading-font-size-xl);
 }
 
 h3 {
-  font-size: var(--heading-font-size-l)
+  font-size: var(--heading-font-size-l);
 }
 
 h4 {
-  font-size: var(--heading-font-size-m)
+  font-size: var(--heading-font-size-m);
 }
 
 h5 {
-  font-size: var(--heading-font-size-s)
+  font-size: var(--heading-font-size-s);
 }
 
 h6 {
-  font-size: var(--heading-font-size-xs)
+  font-size: var(--heading-font-size-xs);
 }
 
 p,
@@ -132,7 +125,7 @@ pre {
 }
 
 code {
-  padding: .125em;
+  padding: 0.125em;
 }
 
 pre {
@@ -142,7 +135,7 @@ pre {
 main pre {
   background-color: var(--light-color);
   padding: 1em;
-  border-radius: .25em;
+  border-radius: 0.25em;
   overflow-x: auto;
   white-space: pre;
 }
@@ -198,7 +191,7 @@ a.button.secondary,
 button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 main img {
@@ -223,8 +216,9 @@ main img {
 /* sections */
 main .section {
   padding: 64px 16px;
-
-  @media (width <=786px) {
+}
+@media (width <= 786px) {
+  main .section {
     padding: 16px 8px;
   }
 }
@@ -234,27 +228,26 @@ main .section.hero-container {
   margin-top: 125px;
   margin-bottom: -25px;
   padding-bottom: 125px;
-
-  @media (width <=786px) {
+}
+@media (width <= 786px) {
+  main .section.hero-container {
     padding: 16px 8px;
     /* margin-top: 64px; */
     margin-bottom: 0;
   }
 }
 
-@media (width >=600px) {
+@media (width >= 600px) {
   main .section {
     padding: 64px 32px;
   }
 }
-
-@media (width >=900px) {
-  .section>div {
+@media (width >= 900px) {
+  .section > div {
     max-width: 1200px;
     margin: auto;
   }
 }
-
 /* section metadata */
 main .section.light,
 main .section.highlight {

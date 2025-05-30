@@ -5,60 +5,51 @@
   border-bottom: 2px solid #d5cccc;
   justify-content: space-between;
   margin-bottom: 30px;
-
-  @media (width <=786px) {
+}
+@media (width <= 786px) {
+  .tabs .tabs-list {
     margin-bottom: 0;
   }
 }
-
 .tabs .tabs-list button {
   flex: 1;
   margin: 2px;
-  border-radius: 0px;
+  border-radius: 0;
   padding: 8px 16px;
   padding: 0;
   background-color: white !important;
-  color: rgb(17 17 17 / 60%);
+  color: rgba(17, 17, 17, 0.6);
   font-size: 16px;
   font-weight: bold;
-  /* line-height: unset; */
-  /* text-align: initial; */
   text-overflow: unset;
   overflow: unset;
   white-space: unset;
   transition: background-color 0.2s;
 }
-
-@media (width >=786px) {
-  .tabs .tabs-list button[aria-selected="true"] {
+@media (width >= 786px) {
+  .tabs .tabs-list button[aria-selected=true] {
     border-bottom: 2px solid #663DB3;
     background-color: var(--background-color);
     cursor: initial;
     color: #663DB3;
-    cursor: initial;
   }
 }
-
-@media (width <=786px) {
-  .tabs .tabs-list button[aria-selected="true"] {
+@media (width <= 786px) {
+  .tabs .tabs-list button[aria-selected=true] {
     background-color: var(--background-color);
     cursor: initial;
     color: #663DB3;
   }
 }
-
-/* .tabs .tabs-list button[aria-selected="false"]:hover,
-  .tabs .tabs-list button[aria-selected="false"]:focus {
-    background-color: var(--dark-color);
-  } */
-
+.tabs .tabs-list .tab {
+  flex-grow: 1;
+}
 .tabs .tabs-panel {
   margin-top: -1px;
   padding: 0 16px;
   overflow: auto;
 }
-
-.tabs .tabs-panel[aria-hidden="true"] {
+.tabs .tabs-panel[aria-hidden=true] {
   display: none;
 }
 
@@ -66,109 +57,57 @@
 .default-content-wrapper p {
   margin: 0;
 }
-
 .default-content-wrapper .button-container {
   margin-left: auto;
-
-  @media (width <=786px) {
+}
+@media (width <= 786px) {
+  .default-content-wrapper .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
 
-.tabs .tabs-list .tab {
-  flex-grow: 1;
-}
-
 .health-tabs-container .default-content-wrapper {
   display: flex;
-
-  @media (width <=786px) {
+}
+@media (width <= 786px) {
+  .health-tabs-container .default-content-wrapper {
     display: block;
   }
 }
-
 .health-tabs-container .default-content-wrapper h3 {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 36%;
 }
-
-@media (width <=786px) {
+@media (width <= 786px) {
   .health-tabs-container .default-content-wrapper h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 1.5rem;
     width: 100%;
   }
 }
-
-.health-tabs-container .health-tabs-variation .tabs-panel>div {
+.health-tabs-container .health-tabs-variation .tabs-panel > div {
   display: flex;
 }
-
-@media (width <=786px) {
-  .health-tabs-container .health-tabs-variation .tabs-panel>div {
+@media (width <= 786px) {
+  .health-tabs-container .health-tabs-variation .tabs-panel > div {
     display: block;
   }
 }
-
 .health-tabs-container .health-tabs-variation .tabs-panel td {
   font-size: 12px;
 }
-
-/* .health-tabs-container .health-tabs-variation .tabs-panel tr {
-  display: flex;
-} */
-
-
 .health-tabs-container .health-tabs-variation .tabs-panel td img {
   width: 48px;
-  /* Adjust the width of the image */
   height: 48px;
 }
-
 .health-tabs-container .health-tabs-variation .tabs-panel td p img {
   width: 15px;
   height: 10px;
 }
-
-.health-tabs-container .health-tabs-variation .tabs-panel table {
-  border: 1px solid rgb(17 17 17 / 12%);
-  margin: 20px;
-  border-radius: 16px;
-  flex: 1;
-}
-
-@media (width >=900px) {
-  .health-tabs-container .health-tabs-variation .tabs-panel table tbody {
-    padding: 10px;
-    display: table-cell;
-  }
-}
-
-@media (width <=786px) {
-  .health-tabs-container .health-tabs-variation .tabs-panel table {
-    width: 100%;
-    margin: 0;
-    margin-bottom: 20px;
-  }
-}
-
-.health-tabs-container .health-tabs-variation .tabs-panel table tr:nth-child(2) td {
-  color: #663DB3;
-  background: #663DB30D;
-  text-align: center;
-}
-
-.health-tabs-container .health-tabs-variation .tabs-panel table tr:last-child {
-  text-align: center;
-}
-
-.health-tabs-container .health-tabs-variation .tabs-panel table td:first-child a {
+.health-tabs-container .health-tabs-variation .tabs-panel td:first-child a {
   display: inline-block;
   padding: 10px 26px;
   background-color: #663DB3;
@@ -177,8 +116,7 @@
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
-
-.health-tabs-container .health-tabs-variation .tabs-panel table td:last-child a {
+.health-tabs-container .health-tabs-variation .tabs-panel td:last-child a {
   display: inline-block;
   padding: 10px 20px;
   background-color: white;
@@ -187,53 +125,74 @@
   border: 1px solid grey;
   border-radius: 8px;
 }
+.health-tabs-container .health-tabs-variation .tabs-panel table {
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  margin: 20px;
+  border-radius: 16px;
+  flex: 1;
+}
+@media (width <= 786px) {
+  .health-tabs-container .health-tabs-variation .tabs-panel table {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+}
+@media (width >= 900px) {
+  .health-tabs-container .health-tabs-variation .tabs-panel table tbody {
+    padding: 10px;
+    display: table-cell;
+  }
+}
+.health-tabs-container .health-tabs-variation .tabs-panel table tr:nth-child(2) td {
+  color: #663DB3;
+  background: rgba(102, 61, 179, 0.0509803922);
+  text-align: center;
+}
+.health-tabs-container .health-tabs-variation .tabs-panel table tr:last-child {
+  text-align: center;
+}
 
 .card-tab {
   width: 30%;
   margin: auto;
-
-  @media (width <=786px) {
+}
+@media (width <= 786px) {
+  .card-tab {
     width: 100%;
-
   }
 }
-
 .card-tab .tabs-list {
   border: 2px solid #d5cccc;
   border-radius: 8px;
 }
-
 .card-tab .tabs-list button {
   margin: 2px;
   border-radius: 8px;
   padding: 0;
   line-height: normal;
   text-align: center;
-
-  @media (width <=786px) {
+}
+@media (width <= 786px) {
+  .card-tab .tabs-list button {
     font-size: 12px;
   }
 }
-
-@media (width >=786px) {
-  .card-tab .tabs-list button[aria-selected="true"] {
+@media (width >= 786px) {
+  .card-tab .tabs-list button[aria-selected=true] {
     border-bottom: none;
     cursor: initial;
     color: white;
     background: #663DB3 !important;
   }
 }
-
-.card-tab .tabs-panel {
-  padding: 0;
-  overflow: auto;
-}
-
-@media (width >=786px) {
-  .card-tab .tabs-list button[aria-selected="true"] {
+@media (width >= 786px) {
+  .card-tab .tabs-list button[aria-selected=true] {
     border-bottom: 2px solid #663DB3;
-    color: #663DB3;
     color: white;
     background: #DC143C;
   }
+}
+.card-tab .tabs-panel {
+  padding: 0;
+  overflow: auto;
 }

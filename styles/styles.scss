@@ -1,0 +1,235 @@
+:root {
+  // Colors
+  --link-color: #035fe6;
+  --link-hover-color: #136ff6;
+  --background-color: white;
+  --light-color: #eee;
+  --dark-color: #ccc;
+  --text-color: black;
+
+  // Fonts
+  --body-font-family: roboto, roboto-fallback;
+  --heading-font-family: var(--body-font-family);
+  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
+
+  // Body Sizes
+  --body-font-size-m: 22px;
+  --body-font-size-s: 18px;
+  --body-font-size-xs: 16px;
+
+  // Heading Sizes
+  --heading-font-size-xxl: 48px;
+  --heading-font-size-xl: 40px;
+  --heading-font-size-l: 32px;
+  --heading-font-size-m: 24px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 18px;
+
+  --nav-height: 64px;
+}
+
+@font-face {
+  font-family: roboto-fallback;
+  size-adjust: 100.06%;
+  ascent-override: 95%;
+  src: local('Arial');
+}
+
+@media screen and (min-width: 900px) {
+  :root {
+    --heading-font-size-xxl: 60px;
+    --heading-font-size-xl: 48px;
+    --heading-font-size-l: 36px;
+    --heading-font-size-m: 30px;
+    --heading-font-size-s: 24px;
+    --heading-font-size-xs: 22px;
+  }
+}
+
+// Body + Typography
+body {
+  font-size: var(--body-font-size-m);
+  margin: 0;
+  font-family: var(--body-font-family);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  display: none;
+
+  &.appear {
+    display: block;
+  }
+}
+
+header {
+  height: var(--nav-height);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 1em 0 0.5em;
+  scroll-margin: calc(var(--nav-height) + 1em);
+}
+
+h1 { font-size: var(--heading-font-size-xxl); }
+h2 { font-size: var(--heading-font-size-xl); }
+h3 { font-size: var(--heading-font-size-l); }
+h4 { font-size: var(--heading-font-size-m); }
+h5 { font-size: var(--heading-font-size-s); }
+h6 { font-size: var(--heading-font-size-xs); }
+
+p, dl, ol, ul, pre, blockquote {
+  margin: 1em 0;
+}
+
+code, pre {
+  font-family: var(--fixed-font-family);
+  font-size: var(--body-font-size-s);
+}
+
+code {
+  padding: 0.125em;
+}
+
+pre {
+  overflow: scroll;
+}
+
+main {
+  pre {
+    background-color: var(--light-color);
+    padding: 1em;
+    border-radius: 0.25em;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+
+  .section {
+    padding: 64px 16px;
+
+    @media screen and (max-width: 786px) {
+      padding: 16px 8px;
+    }
+
+    &.hero-container {
+      margin-top: 125px;
+      margin-bottom: -25px;
+      padding-bottom: 125px;
+
+      @media screen and (max-width: 786px) {
+        padding: 16px 8px;
+        margin-bottom: 0;
+      }
+    }
+
+    &.light,
+    &.highlight {
+      background-color: var(--light-color);
+    }
+
+    @media screen and (min-width: 600px) {
+      padding: 64px 32px;
+    }
+
+    > div {
+      @media screen and (min-width: 900px) {
+        max-width: 1200px;
+        margin: auto;
+      }
+    }
+  }
+}
+
+// Links
+a:any-link {
+  color: #663DB3;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--link-hover-color);
+  }
+}
+
+// Buttons
+a.button:any-link,
+button {
+  font-family: var(--body-font-family);
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: 2px solid transparent;
+  padding: 5px 30px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--background-color);
+  background-color: #663DB3 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 30px;
+
+  &:hover,
+  &:focus {
+    background-color: var(--link-hover-color);
+    cursor: pointer;
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    background-color: var(--light-color);
+    cursor: unset;
+  }
+
+  &.secondary {
+    background-color: unset;
+    border: 2px solid currentcolor;
+    color: var(--text-color);
+  }
+}
+
+// Icons
+.icon {
+  display: inline-block;
+  height: auto;
+  width: auto;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+// Section Overrides
+.main {
+  .section-health-accordion-first {
+    &.padd-top {
+      padding-top: 10%;
+    }
+  }
+}
+// @mixin respond($break) {
+//   @if $break == small {
+//     @media screen and (max-width: 786px) { @content; }
+//   }
+//   @else if $break == large {
+//     @media screen and (min-width: 900px) { @content; }
+//   }
+// }
+
+.section {
+  padding: 64px 16px;
+  @include respond(small) {
+    padding: 16px 8px;
+  }
+}

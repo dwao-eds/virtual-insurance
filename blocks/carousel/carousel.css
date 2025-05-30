@@ -196,13 +196,6 @@
   background-color: #f5f8ff;
 }
 
-.section.carousel-head-container.carousel-container .carousel-head-wrapper > div > div > div > p {
-  width: 40%;
-
- @media (width <=786px) {
-    width: 100%;
-  }
-}
 .section.carousel-head-container.carousel-container .carousel-head-wrapper > div > div > div > p strong {
   font-size: 35px;
 }

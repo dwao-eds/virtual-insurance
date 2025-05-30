@@ -1,0 +1,97 @@
+.insurance-container {
+    .insurance-wrapper {
+        .insurance {
+            div>div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                @media (width <=786px) {
+                    display: block;
+                }
+
+                .button-container {
+                    @media (width <=786px) {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 10px 0;
+                    }
+                }
+            }
+
+            div {
+                h3 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    @media (width <=786px) {
+                        margin: 0;
+                    }
+                }
+            }
+
+            a {
+                display: inline-block;
+                padding: 10px 24px;
+                font-size: 16px;
+                background-color: #4169e1;
+                color: #fff;
+                border-radius: 8px;
+                text-decoration: none;
+            }
+
+            div:last-child {
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .insuranceblock {
+        >div:first-child {
+            @media (width >=768px) {
+                display: flex;
+                gap: 32px;
+            }
+
+            >div:first-child {
+                p {
+                    font-size: 12px;
+                    margin: 5px 0;
+
+                    a {
+                        color: black;
+                        background-color: #fff !important;
+                        border: 1px solid #ccc;
+                    }
+                }
+            }
+
+            table {
+                margin-bottom: 10px;
+
+                td {
+                    font-size: 12px;
+                    vertical-align: top;
+
+                    a {
+                        border: 1px solid grey;
+                        padding: 10px;
+                        border-radius: 4px;
+                        color: black;
+                        margin-left: 20px;
+                    }
+
+                    p {
+                        margin: 10px 20px 0;
+                    }
+                }
+            }
+        }
+    }
+}

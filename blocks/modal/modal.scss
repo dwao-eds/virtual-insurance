@@ -1,0 +1,59 @@
+$background-color_1: rgb(0 0 0 / 50%);
+$background-color_2: unset;
+
+body.modal-open {
+	overflow: hidden;
+}
+.modal {
+	dialog {
+		overscroll-behavior: none;
+		border: 1px solid #ccc;
+		border-radius: var(--dialog-border-radius);
+		width: 100vw;
+		.modal-content {
+			overflow-y: auto;
+			overscroll-behavior: none;
+			max-height: calc(100dvh - 60px);
+		}
+		&::backdrop {
+			background-color: $background-color_1;
+		}
+		.section {
+			padding: 0;
+		}
+	}
+	.close-button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 20px;
+		height: 100%;
+		max-height: 54px;
+		border-radius: 0 var(--dialog-border-radius) 0 0;
+		background-color: $background-color_2;
+		text-overflow: clip;
+		margin: 0;
+		border: none;
+		padding-right: 30px;
+	}
+	.modal-content {
+		.default-content-wrapper {
+			>p {
+				text-align: center;
+				font-weight: 600;
+			}
+		}
+	}
+}
+@media (width >= 600px) {
+	.modal {
+		dialog {
+			padding: 30px;
+			width: 20vw;
+			max-width: 700px;
+			.modal-content {
+				max-height: calc(100vh - 90px);
+			}
+		}
+	}
+}

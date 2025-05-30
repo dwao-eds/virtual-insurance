@@ -1,10 +1,9 @@
 .cards > ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 15px;
   display: flex;
   justify-content: space-between;
-  padding-left: 15px;
   grid-gap: 20px;
 }
 @media (width <= 786px) {
@@ -32,7 +31,7 @@
   line-height: 0;
 }
 
-.cards-choice > ul {
+.cards-choice ul {
   display: flex;
   list-style-type: none;
   padding: 0;
@@ -40,11 +39,11 @@
   flex-wrap: wrap;
 }
 @media (width <= 786px) {
-  .cards-choice > ul {
+  .cards-choice ul {
     display: block;
   }
 }
-.cards-choice > ul > li {
+.cards-choice ul li {
   flex: 1;
   background-color: #f5f8ff !important;
   margin-right: 10px;
@@ -52,15 +51,14 @@
   font-size: 14px;
 }
 @media (width <= 786px) {
-  .cards-choice > ul > li {
+  .cards-choice ul li {
     margin: 10px 0;
     width: 100%;
   }
 }
-.cards-choice > ul > li img {
+.cards-choice ul li img {
   width: unset !important;
-  padding: 20px;
-  padding-bottom: 0;
+  padding: 20px 20px 0;
 }
 
 .second-card-container {
@@ -92,7 +90,6 @@
 }
 @media (width <= 786px) {
   .second-card-container .virtual-health-insurance ul li {
-    display: flex;
     justify-content: unset;
   }
 }
@@ -134,12 +131,7 @@
   flex: none;
   width: 31%;
   padding-bottom: 25px;
-  background-color: #ffffff !important;
-}
-@media (width <= 786px) {
-  .financial-cards ul li {
-    width: 100%;
-  }
+  background-color: #fff !important;
 }
 .financial-cards ul li:hover {
   box-shadow: -1px 3px 6px 4px rgba(0, 0, 0, 0.1);
@@ -147,6 +139,11 @@
 .financial-cards ul li img {
   width: 10% !important;
   padding-top: 25px;
+}
+@media (width <= 786px) {
+  .financial-cards ul li {
+    width: 100%;
+  }
 }
 .financial-cards .cards-card-body > *:first-child {
   width: 70%;
@@ -185,10 +182,4 @@
 .waiting-cards .default-content-wrapper {
   text-align: center;
   font-size: 32px !important;
-}
-
-@media (width <= 786px) {
-  .financial-cards ul li {
-    width: 100%;
-  }
 }

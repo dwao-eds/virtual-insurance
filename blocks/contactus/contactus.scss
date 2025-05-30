@@ -1,0 +1,38 @@
+$color_1: #fff;
+$background-color_1: #4169E2;
+
+.contactus-container {
+	position: fixed;
+	bottom: 0;
+	right: 20px;
+	z-index: 9999;
+	.contactus-wrapper {
+		p {
+			background-color: $background-color_1;
+			padding: 10px;
+			border-radius: 12px;
+			font-size: 16px;
+			display: flex;
+			gap: 12px;
+		}
+		a {
+			color: $color_1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			picture {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				justify-content: center;
+			}
+		}
+	}
+	.button-container {
+		a.button {
+			width: 100%;
+			color: $color_1;
+			background-color: $background-color_1;
+		}
+	}
+}

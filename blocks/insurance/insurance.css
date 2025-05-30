@@ -1,83 +1,74 @@
-.insurance-container .insurance-wrapper .insurance div > div{
+.insurance-container .insurance-wrapper .insurance div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (width <= 786px) {
+  .insurance-container .insurance-wrapper .insurance div > div {
+    display: block;
+  }
+}
+@media (width <= 786px) {
+  .insurance-container .insurance-wrapper .insurance div > div .button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
-    @media (width <= 786px){
-        display: block;
-    }
+    margin: 10px 0;
+  }
 }
-
-@media (width <= 786px){
-.insurance-container .insurance-wrapper .insurance div > div .button-container{
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    margin: 10px 0px;
-}
-}
-
 .insurance-container .insurance-wrapper .insurance div h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    @media (width <= 786px){
-        margin: 0;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.insurance-container .insuranceblock table td a{
-    border:1px solid grey;
-    padding:10px;
-    border-radius:4px;
-    color:black;
-    margin-left: 20px;
+@media (width <= 786px) {
+  .insurance-container .insurance-wrapper .insurance div h3 {
+    margin: 0;
+  }
 }
-
 .insurance-container .insurance-wrapper .insurance a {
-    display: inline-block;
-    padding: 10px 24px;
-    font-size: 16px;
-    background-color: #4169E1; 
-    color: #fff;
-    border-radius: 8px;
-    text-decoration: none;
+  display: inline-block;
+  padding: 10px 24px;
+  font-size: 16px;
+  background-color: #4169e1;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
 }
-
 .insurance-container .insurance-wrapper .insurance div:last-child a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (width >= 768px) {
+  .insurance-container .insuranceblock > div:first-child {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 32px;
+  }
 }
-
-@media (width >= 768px){
-    .insurance-container .insuranceblock > div:first-child{
-    display:flex;
-    gap:32px;
-    }
+.insurance-container .insuranceblock > div:first-child > div:first-child p {
+  font-size: 12px;
+  margin: 5px 0;
 }
-
-.insurance-container .insuranceblock > div> div:first-child p{
-    font-size: 12px;
-    margin: 5px 0;
+.insurance-container .insuranceblock > div:first-child > div:first-child p a {
+  color: black;
+  background-color: #fff !important;
+  border: 1px solid #ccc;
 }
-
-.insurance-container .insuranceblock > div> div:first-child p a{
-    color: black;
-    background-color: #fff !important;
-    border: 1px solid #ccc;
+.insurance-container .insuranceblock > div:first-child table {
+  margin-bottom: 10px;
 }
-
-.insurance-container .insuranceblock table td{
-font-size: 12px;
-vertical-align: top;
+.insurance-container .insuranceblock > div:first-child table td {
+  font-size: 12px;
+  vertical-align: top;
 }
-
-.insurance-container .insuranceblock table td p{
-margin:10px 20px 0px;
+.insurance-container .insuranceblock > div:first-child table td a {
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 4px;
+  color: black;
+  margin-left: 20px;
 }
-
-.insurance-container .insuranceblock table{
-    margin-bottom: 10px;
+.insurance-container .insuranceblock > div:first-child table td p {
+  margin: 10px 20px 0;
 }

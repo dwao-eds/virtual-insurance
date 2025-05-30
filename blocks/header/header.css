@@ -1,4 +1,3 @@
-/* SCSS Conversion of Header and Nav Layout */
 header {
   z-index: 10;
   position: fixed;
@@ -11,15 +10,6 @@ header .nav-wrapper {
   width: 100%;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.16);
 }
-
-header {
-  z-index: 10;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  order: 2;
-}
-
 header nav {
   box-sizing: border-box;
   display: grid;
@@ -30,11 +20,10 @@ header nav {
   max-width: 1264px;
   height: 76px;
   padding: 0 1rem;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-
-  @media (width <=786px) {
+  font: 500 16px Arial, Helvetica, sans-serif;
+}
+@media (width <= 786px) {
+  header nav {
     height: var(--nav-height);
   }
 }
@@ -81,13 +70,9 @@ header nav .nav-hamburger button {
   height: 22px;
   margin: 0;
   border: 0;
-  border-radius: 0;
   padding: 0;
   background-color: var(--background-color) !important;
   color: inherit;
-  overflow: initial;
-  text-overflow: initial;
-  white-space: initial;
 }
 header nav .nav-hamburger .nav-hamburger-icon,
 header nav .nav-hamburger .nav-hamburger-icon::before,
@@ -97,38 +82,32 @@ header nav .nav-hamburger .nav-hamburger-icon::after {
   position: relative;
   width: 20px;
 }
-header nav .nav-hamburger .nav-hamburger-icon::before,
-header nav .nav-hamburger .nav-hamburger-icon::after {
-  content: "";
-  position: absolute;
-  background: currentcolor;
-}
-header nav[aria-expanded=false] .nav-hamburger-icon,
-header nav[aria-expanded=false] .nav-hamburger-icon::before,
-header nav[aria-expanded=false] .nav-hamburger-icon::after {
+header nav .nav-hamburger[aria-expanded=false] .nav-hamburger-icon,
+header nav .nav-hamburger[aria-expanded=false] .nav-hamburger-icon::before,
+header nav .nav-hamburger[aria-expanded=false] .nav-hamburger-icon::after {
   height: 2px;
   border-radius: 2px;
   background: currentcolor;
 }
-header nav[aria-expanded=false] .nav-hamburger-icon::before {
+header nav .nav-hamburger[aria-expanded=false] .nav-hamburger-icon::before {
   top: -6px;
 }
-header nav[aria-expanded=false] .nav-hamburger-icon::after {
+header nav .nav-hamburger[aria-expanded=false] .nav-hamburger-icon::after {
   top: 6px;
 }
-header nav[aria-expanded=true] .nav-hamburger-icon {
+header nav .nav-hamburger[aria-expanded=true] .nav-hamburger-icon {
   height: 22px;
 }
-header nav[aria-expanded=true] .nav-hamburger-icon::before, header nav[aria-expanded=true] .nav-hamburger-icon::after {
+header nav .nav-hamburger[aria-expanded=true] .nav-hamburger-icon::before, header nav .nav-hamburger[aria-expanded=true] .nav-hamburger-icon::after {
   top: 3px;
   left: 1px;
-  transform: rotate(45deg);
-  transform-origin: 2px 1px;
   width: 24px;
   height: 2px;
   border-radius: 2px;
+  transform: rotate(45deg);
+  transform-origin: 2px 1px;
 }
-header nav[aria-expanded=true] .nav-hamburger-icon::after {
+header nav .nav-hamburger[aria-expanded=true] .nav-hamburger-icon::after {
   top: unset;
   bottom: 3px;
   transform: rotate(-45deg);
@@ -194,14 +173,10 @@ header nav .nav-sections ul > li > ul > li {
   }
   header nav .nav-sections .nav-drop::after {
     content: "";
-    display: inline-block;
     position: absolute;
     top: 0.4em;
     right: -1px;
-    transform: rotate(360deg);
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
+    border: 0px solid currentcolor;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-top: 6px solid #000;
@@ -221,14 +196,13 @@ header nav .nav-sections ul > li > ul > li {
     flex: 0 1 auto;
     position: relative;
     font-weight: 600;
-    line-height: 19.52px;
+    line-height: 1.2;
   }
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
     display: none;
     position: relative;
   }
-
-  header nav .nav-sections .default-content-wrapper>ul>li[aria-expanded="true"]>ul {
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded=true] > ul {
     display: block;
     position: absolute;
     left: -1em;
@@ -236,74 +210,51 @@ header nav .nav-sections ul > li > ul > li {
     margin-top: 12px;
     padding: 1em;
     background-color: var(--light-color);
-    white-space: initial;
     border-radius: 8px;
     text-align: center;
   }
-
-  header nav .nav-sections .default-content-wrapper>ul>li>ul::before {
-    content: '';
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded=true] > ul::before {
+    content: "";
     position: absolute;
     top: -8px;
     left: 8px;
-    width: 0;
-    height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 8px solid var(--light-color);
   }
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded=true] > ul > li {
     padding: 8px 0;
   }
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded=true] > ul {
-    display: block;
-    position: absolute;
-    left: -1em;
-    width: 200px;
-    margin-top: 12px;
-    padding: 1em;
-    background-color: var(--light-color);
-    white-space: initial;
-    border-radius: 8px;
-    text-align: center;
-  }
 }
-
-@media (width <=799px) {
-  header nav .nav-sections ul>li:not(:last-child) {
+@media (width <= 799px) {
+  header nav .nav-sections ul > li:not(:last-child) {
     margin-bottom: 20px;
   }
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
     display: none;
-    position: relative;
   }
   header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded=true] > ul {
     display: block;
     padding: 1em;
     background-color: var(--light-color);
-    white-space: initial;
     text-align: center;
   }
   header nav .nav-sections .nav-drop {
+    padding: 10px;
+    border: 1px solid #4169E1;
+    border-radius: 4px;
     position: relative;
     cursor: pointer;
-    padding: 10px;
-    border: 1px solid #4169e1;
-    border-radius: 4px;
   }
   header nav .nav-sections .nav-drop[aria-expanded=true]::after {
     transform: rotate(180deg);
   }
   header nav .nav-sections .nav-drop::after {
     content: "";
-    display: inline-block;
     position: absolute;
     top: 1.1em;
     right: 0.5rem;
-    transform: rotate(360deg);
     border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-top: 6px solid #000;
@@ -316,14 +267,12 @@ header nav .nav-tools .default-content-wrapper p {
   font-size: 12px;
   border-radius: 8px;
   color: #fff;
-  gap: 5px;
-  /* padding: 12px 20px; */
   background-color: #4169E1;
   display: flex;
   justify-content: center;
+  gap: 5px;
 }
 
-/* Button Styles */
 .button-container .button {
   width: auto;
   height: 44px;
@@ -331,77 +280,70 @@ header nav .nav-tools .default-content-wrapper p {
   font-size: 16px;
   border-radius: 8px !important;
   padding: 12px 20px;
-  color: #4169e1;
+  color: #4169E1;
   gap: 8px;
-  background-color: #663db3;
+  background-color: #663DB3;
 }
 
 .header-wrapper {
   display: flex;
   flex-direction: column;
 }
-
-.header {
+.header-wrapper .header {
   order: 2;
 }
-
-.subheader {
+.header-wrapper .subheader {
   order: 1;
   background-color: #dccaff;
-
-  @media (width <=786px) {
+}
+@media (width <= 786px) {
+  .header-wrapper .subheader {
     display: block;
-    /* background-color: #fff; */
   }
 }
-
-.subheader .subheader-wrapper .default-content-wrapper ul {
+.header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul {
   display: flex;
   justify-content: end;
   font-size: 14px;
   gap: 2em;
   list-style: none;
   line-height: 21px;
-
-  @media (width <=786px) {
+}
+@media (width <= 786px) {
+  .header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul {
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5px;
-    padding: 0px 10px;
+    padding: 0 10px;
     margin: 6px;
   }
 }
-
-.subheader .subheader-wrapper .default-content-wrapper ul .subheader-list {
+.header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul .subheader-list {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   cursor: pointer;
-
 }
-
-.subheader .subheader-wrapper .default-content-wrapper ul>li:last-child {
+.header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul .subheader-list picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul > li:last-child {
   border: 1px solid #663DB3;
   border-radius: 6px;
   gap: 0;
 }
-
-.subheader .subheader-wrapper .default-content-wrapper ul>li:last-child a {
+.header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul > li:last-child a {
   color: #663DB3;
   text-decoration: none;
-  padding: 0px 10px;
+  padding: 0 10px;
 }
-
-.subheader .subheader-wrapper .default-content-wrapper ul>li:last-child a:hover {
+.header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul > li:last-child a:hover {
   text-decoration: none;
   background-color: #663DB3;
   color: #fff;
-}
-
-.subheader .subheader-wrapper .default-content-wrapper ul .subheader-list picture {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 4px;
 }

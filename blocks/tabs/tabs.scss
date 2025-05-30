@@ -1,0 +1,219 @@
+.tabs {
+  .tabs-list {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    border-bottom: 2px solid #d5cccc;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    @media (width <= 786px) {
+      margin-bottom: 0;
+    }
+
+    button {
+      flex: 1;
+      margin: 2px;
+      border-radius: 0;
+      padding: 8px 16px;
+      padding: 0;
+      background-color: white !important;
+      color: rgb(17 17 17 / 60%);
+      font-size: 16px;
+      font-weight: bold;
+      text-overflow: unset;
+      overflow: unset;
+      white-space: unset;
+      transition: background-color 0.2s;
+
+      &[aria-selected="true"] {
+        @media (width >= 786px) {
+          border-bottom: 2px solid #663DB3;
+          background-color: var(--background-color);
+          cursor: initial;
+          color: #663DB3;
+        }
+
+        @media (width <= 786px) {
+          background-color: var(--background-color);
+          cursor: initial;
+          color: #663DB3;
+        }
+      }
+    }
+
+    .tab {
+      flex-grow: 1;
+    }
+  }
+
+  .tabs-panel {
+    margin-top: -1px;
+    padding: 0 16px;
+    overflow: auto;
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+  }
+}
+
+.default-content-wrapper {
+  h3,
+  p {
+    margin: 0;
+  }
+
+  .button-container {
+    margin-left: auto;
+
+    @media (width <= 786px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.health-tabs-container {
+  .default-content-wrapper {
+    display: flex;
+
+    @media (width <= 786px) {
+      display: block;
+    }
+
+    h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36%;
+
+      @media (width <= 786px) {
+        font-size: 1.5rem;
+        width: 100%;
+      }
+    }
+  }
+
+  .health-tabs-variation {
+    .tabs-panel {
+      > div {
+        display: flex;
+
+        @media (width <= 786px) {
+          display: block;
+        }
+      }
+
+      td {
+        font-size: 12px;
+
+        img {
+          width: 48px;
+          height: 48px;
+        }
+
+        p img {
+          width: 15px;
+          height: 10px;
+        }
+
+        &:first-child a {
+          display: inline-block;
+          padding: 10px 26px;
+          background-color: #663DB3;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 8px;
+          transition: background-color 0.3s ease;
+        }
+
+        &:last-child a {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: white;
+          color: black;
+          text-decoration: none;
+          border: 1px solid grey;
+          border-radius: 8px;
+        }
+      }
+
+      table {
+        border: 1px solid rgb(17 17 17 / 12%);
+        margin: 20px;
+        border-radius: 16px;
+        flex: 1;
+
+        @media (width <= 786px) {
+          width: 100%;
+          margin: 0 0 20px 0;
+        }
+
+        tbody {
+          @media (width >= 900px) {
+            padding: 10px;
+            display: table-cell;
+          }
+        }
+
+        tr:nth-child(2) td {
+          color: #663DB3;
+          background: #663DB30D;
+          text-align: center;
+        }
+
+        tr:last-child {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.card-tab {
+  width: 30%;
+  margin: auto;
+
+  @media (width <= 786px) {
+    width: 100%;
+  }
+
+  .tabs-list {
+    border: 2px solid #d5cccc;
+    border-radius: 8px;
+
+    button {
+      margin: 2px;
+      border-radius: 8px;
+      padding: 0;
+      line-height: normal;
+      text-align: center;
+
+      @media (width <= 786px) {
+        font-size: 12px;
+      }
+
+      &[aria-selected="true"] {
+        @media (width >= 786px) {
+          border-bottom: none;
+          cursor: initial;
+          color: white;
+          background: #663DB3 !important;
+        }
+
+        @media (width >= 786px) {
+          border-bottom: 2px solid #663DB3;
+          color: white;
+          background: #DC143C;
+        }
+      }
+    }
+  }
+
+  .tabs-panel {
+    padding: 0;
+    overflow: auto;
+  }
+}

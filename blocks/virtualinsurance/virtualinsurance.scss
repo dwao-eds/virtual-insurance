@@ -1,0 +1,100 @@
+$color_1: #fff;
+$background-color_1: #663DB3;
+$background-color_2: #FFFFFF;
+
+/* @media (width <=786px) {
+    .virtualimage-wrapper {
+        display: none;
+    }
+} */
+.virtualinsurance-container {
+    display: flex;
+    background-image: url('../../icons/new-webp.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1);
+    min-height: 440px;
+
+    @media (width <=786px) {
+        min-height: auto;
+    }
+}
+
+    
+    .virtualinsurance-container {
+        .virtualinsurance-wrapper {
+            color: $color_1;
+            font-size: 20px;
+            line-height: 20px;
+            width: 100%;
+        }
+    }
+
+    .download-banner {
+        .virtualinsurance-wrapper {
+            p {
+                img {
+                    width: 18px;
+                }
+            }
+        }
+    }
+
+
+#download-virtual-insurance-mobile-app {
+    font-size: 40px;
+    width: 60%;
+}
+
+.virtualimage-wrapper {
+    display: none;
+}
+
+.download-banner {
+    .virtualimage-wrapper {
+        display: block;
+        margin-bottom: -10px !important;
+    }
+
+    background-color: $background-color_1;
+    background-image: none;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    @media (width <=786px) {
+        display: flex;
+        flex-direction: column;
+
+        .virtualinsurance-wrapper {
+            >div {
+                >div {
+                    &:nth-child(3) {
+                        >div {
+                            >p {
+                                background-color: $background-color_2;
+                                display: flex;
+                                align-items: center;
+                                width: 30%;
+                                border-radius: 8px;
+                                justify-content: space-around;
+                                padding: 14px;
+                                font-weight: bold;
+                                margin-top: 50px;
+
+                                @media (width <=786px) {
+                                    width: auto;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width <=786px) {
+    #download-the-brochure-for-shieldplus-protection {
+        font-size: 28px;
+    }
+}

@@ -1,134 +1,122 @@
 .question-container .q-wrap {
-    display: flex;
+  display: flex;
 }
-
 .question-container .q-wrap table {
-    border: 1px solid var(--dark-color);
-    width: 50%;
-    border-radius: 12px;
-    padding: 5px;
-
-    @media (width <=786px) {
-        width: 100%;
-    }
+  border: 1px solid var(--dark-color);
+  width: 50%;
+  border-radius: 12px;
+  padding: 5px;
 }
-
 .question-container .q-wrap table:nth-of-type(2) {
-    margin-top: 10px;
+  margin-top: 10px;
 }
-
-@media (width <=786px) {
-    .question-container .q-wrap {
-        display: block;
-    }
-
-    .question-container .q-wrap .heading-label {
-        margin: 0;
-        width: 100%;
-    }
-
-    .question-container .q-wrap .label-text-0 .label-text-1,
-    .label-text-2,
-    .label-text-3,
-    .label-text-4,
-    .label-text-5,
-    .label-text-6,
-    .label-text-7 {
-        margin: 0;
-    }
-
-    .question-container .picture-div {
-        display: none !important;
-    }
+@media (width <= 786px) {
+  .question-container .q-wrap table {
+    width: 100%;
+  }
 }
-
+@media (width <= 786px) {
+  .question-container .q-wrap {
+    display: block;
+  }
+  .question-container .q-wrap .heading-label {
+    margin: 0;
+    width: 100%;
+  }
+  .question-container .q-wrap .label-text-0 .label-text-1,
+  .question-container .q-wrap .label-text-2,
+  .question-container .q-wrap .label-text-3,
+  .question-container .q-wrap .label-text-4,
+  .question-container .q-wrap .label-text-5,
+  .question-container .q-wrap .label-text-6,
+  .question-container .q-wrap .label-text-7 {
+    margin: 0;
+  }
+}
 .question-container .content-div {
-    flex: 1;
+  flex: 1;
 }
-
 .question-container .content-div table td {
-    height: 30px;
-    padding-left: 10px;
-    font-size: 12px;
-
-    @media (width <=786px) {
-        font-size: unset;
-    }
+  height: 30px;
+  padding-left: 10px;
+  font-size: 12px;
 }
-
+@media (width <= 786px) {
+  .question-container .content-div table td {
+    font-size: unset;
+  }
+}
 .question-container .content-div table td picture img {
-    width: 55px;
-    height: 55px;
-    font-size: 12px;
-
+  width: 55px;
+  height: 55px;
+  font-size: 12px;
 }
-
 .question-container .content-div:first-child {
-    font-size: 16px;
+  font-size: 16px;
 }
-
 .question-container .picture-div {
-    flex: 0.6;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin-bottom: -11px;
+  flex: 0.6;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: -11px;
 }
-
+@media (width <= 786px) {
+  .question-container .picture-div {
+    display: none !important;
+  }
+}
 .question-container .heading-label {
-    width: 80%;
-
-    @media (width <=786px) {
-        width: 100%;
-    }
+  width: 80%;
+}
+@media (width <= 786px) {
+  .question-container .heading-label {
+    width: 100%;
+  }
 }
 
 .section.question-container {
-    padding-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .how-it-work .content-div {
-    flex: 1.7;
+  flex: 1.7;
 }
-
-.how-it-work .heading-label {
-    font-size: 24px;
-}
-
-.how-it-work #how-does-it-work {
-    font-size: 18px;
-    color: #663DB3;
-    margin-bottom: 16px;
-}
-
-.how-it-work .q-wrap table {
-    border: none;
-    width: 80%;
-    border-radius: 0;
-    padding: 0;
-
-    @media (width <=786px) {
-        width: 100%;
-    }
-}
-
 .how-it-work .content-div table td {
-    font-size: 14px;
+  font-size: 14px;
 }
-
-.how-it-work .label-text-0 {
-    width: 80%;
-
-    @media (width <=786px) {
-        width: 100%;
-    }
-}
-
 .how-it-work .content-div table td picture img {
-    width: 23px;
-    height: 18px;
+  width: 23px;
+  height: 18px;
+}
+.how-it-work .heading-label {
+  font-size: 24px;
+}
+.how-it-work #how-does-it-work {
+  font-size: 18px;
+  color: #663DB3;
+  margin-bottom: 16px;
+}
+.how-it-work .q-wrap table {
+  border: none;
+  width: 80%;
+  border-radius: 0;
+  padding: 0;
+}
+@media (width <= 786px) {
+  .how-it-work .q-wrap table {
+    width: 100%;
+  }
+}
+.how-it-work .label-text-0 {
+  width: 80%;
+}
+@media (width <= 786px) {
+  .how-it-work .label-text-0 {
+    width: 100%;
+  }
 }
 
 .hospital-banner {
-    background-color: #F5F9FF;
+  background-color: #F5F9FF;
 }
