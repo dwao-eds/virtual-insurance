@@ -65,7 +65,12 @@ header {
   height: var(--nav-height);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--heading-font-family);
   font-weight: 600;
   line-height: 1.25;
@@ -73,18 +78,41 @@ h1, h2, h3, h4, h5, h6 {
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+}
 
-p, dl, ol, ul, pre, blockquote {
+h2 {
+  font-size: var(--heading-font-size-xl);
+}
+
+h3 {
+  font-size: var(--heading-font-size-l);
+}
+
+h4 {
+  font-size: var(--heading-font-size-m);
+}
+
+h5 {
+  font-size: var(--heading-font-size-s);
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs);
+}
+
+p,
+dl,
+ol,
+ul,
+pre,
+blockquote {
   margin: 1em 0;
 }
 
-code, pre {
+code,
+pre {
   font-family: var(--fixed-font-family);
   font-size: var(--body-font-size-s);
 }
@@ -139,11 +167,9 @@ main {
       padding: 64px 32px;
     }
 
-    > div {
-      @media screen and (min-width: 900px) {
-        max-width: 1200px;
-        margin: auto;
-      }
+    >div {
+      max-width: 1200px;
+      margin: auto;
     }
   }
 }
@@ -218,6 +244,7 @@ button {
     }
   }
 }
+
 // @mixin respond($break) {
 //   @if $break == small {
 //     @media screen and (max-width: 786px) { @content; }
@@ -229,6 +256,7 @@ button {
 
 .section {
   padding: 64px 16px;
+
   @include respond(small) {
     padding: 16px 8px;
   }
