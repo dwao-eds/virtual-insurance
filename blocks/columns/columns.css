@@ -173,8 +173,9 @@
 .hero-container.comprehensive-page .columns-wrapper .calculate > div > div h1 {
   color: #FFF !important;
 }
-.hero-container.comprehensive-page .columns-wrapper .calculate > div > div p {
+.hero-container.comprehensive-page .columns-wrapper .calculate > div > div tr p {
   color: #FFF;
+  margin: 30px 0px;
 }
 .hero-container.comprehensive-page .columns-wrapper table > tbody > tr > td:nth-child(1) p img {
   width: 14px;
