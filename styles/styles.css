@@ -42,7 +42,8 @@
   ascent-override: 95%;
   src: local("Arial");
 }
-@media (width >= 900px) {
+
+@media (width >=900px) {
   :root {
     --heading-font-size-xxl: 60px;
     --heading-font-size-xl: 48px;
@@ -52,6 +53,7 @@
     --heading-font-size-xs: 22px;
   }
 }
+
 body {
   font-size: var(--body-font-size-m);
   margin: 0;
@@ -217,7 +219,8 @@ main img {
 main .section {
   padding: 64px 16px;
 }
-@media (width <= 786px) {
+
+@media (width <=786px) {
   main .section {
     padding: 16px 8px;
   }
@@ -229,7 +232,8 @@ main .section.hero-container {
   margin-bottom: -25px;
   padding-bottom: 125px;
 }
-@media (width <= 786px) {
+
+@media (width <=786px) {
   main .section.hero-container {
     padding: 16px 8px;
     /* margin-top: 64px; */
@@ -237,17 +241,17 @@ main .section.hero-container {
   }
 }
 
-@media (width >= 600px) {
+@media (width >=600px) {
   main .section {
     padding: 64px 32px;
   }
 }
-@media (width >= 900px) {
-  .section > div {
-    max-width: 1200px;
-    margin: auto;
-  }
+
+.section>div {
+  max-width: 1200px;
+  margin: auto;
 }
+
 /* section metadata */
 main .section.light,
 main .section.highlight {
