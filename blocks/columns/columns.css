@@ -196,6 +196,7 @@
 .icon {
   position: relative !important;
   background-color: transparent !important;
+  font-size: 30px;
 }
 .icon-icon_tick img {
   width: 16px;
