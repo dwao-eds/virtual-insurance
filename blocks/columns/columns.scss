@@ -97,7 +97,7 @@
         table {
           &:first-of-type {
             position: relative;
-            top: 51px;
+            top: 10px;
             z-index: 2;
 
             @media (width <=768px) {
@@ -141,6 +141,7 @@
             @media (width >=787px) {
               z-index: 3;
               position: relative;
+              margin-bottom: 10px;
             }
 
             td {

@@ -85,7 +85,7 @@
 }
 .hero-container .columns-wrapper .calculate > div > div table:first-of-type {
   position: relative;
-  top: 51px;
+  top: 10px;
   z-index: 2;
 }
 @media (width <= 768px) {
@@ -125,6 +125,7 @@
   .hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) {
     z-index: 3;
     position: relative;
+    margin-bottom: 10px;
   }
 }
 .hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) td {
