@@ -45,7 +45,7 @@
 }
 .cards-choice ul li {
   flex: 1;
-  background-color: #f5f8ff !important;
+  background-color: rgba(102, 61, 179, 0.0509803922) !important;
   margin-right: 10px;
   border-radius: 10px;
   font-size: 14px;
@@ -102,7 +102,7 @@
   font-weight: 400;
 }
 @media (width >= 786px) {
-  .second-card-container .virtual-health-insurance ul li:not(:last-child) {
+  .second-card-container .virtual-health-insurance ul li:not(:first-child) {
     border-left: 1px solid;
     border-image-source: linear-gradient(180deg, rgba(36, 150, 173, 0) 0%, rgb(204, 204, 204) 50%, rgba(92, 92, 92, 0) 100%);
     border-image-slice: 1;
