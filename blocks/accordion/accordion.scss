@@ -88,261 +88,268 @@ $background-color_6: #26026A0D;
   .default-content-wrapper {
     margin: 0;
     width: auto;
+    text-align: unset;
 
-    @media (width <=1400px) {
-      text-align: unset;
+    p {
+      img {
+        width: 60%;
+        padding-top: 30px;
 
-      p {
-        img {
-          width: 60%;
-          padding-top: 30px;
-
-          @media (width <=768px) {
-            width: 100%;
-          }
-        }
-      }
-
-      .accordion-wrapper {
-        // width: 70%;
-        margin: 0;
-
-        @media (width <=1400px) {
-          width: 80%;
+        @media (width <=768px) {
+          width: 100%;
         }
       }
     }
 
-  }}
-      .section-health-accordion-second {
-        background-color: $background-color_1;
+    .accordion-wrapper {
+      width: 70%;
+      margin: 0;
 
-        .default-content-wrapper {
-          .button-container {
-            a {
-              background-color: $background-color_4;
-            }
-          }
+      @media (width <=1400px) {
+        width: 80%;
+      }
+    }
+
+
+  }
+}
+
+.section-health-accordion-second {
+  background-color: $background-color_1;
+
+  .default-content-wrapper {
+    .button-container {
+      a {
+        background-color: $background-color_4;
+      }
+    }
+  }
+}
+
+.section-health-accordion-first {
+  .accordion-first {
+    .accordion-item {
+      border-radius: 25px;
+
+      @media (width <=786px) {
+        border-radius: 10px;
+
+        strong {
+          background-color: $background-color_1;
+          border-radius: 8px;
+          padding: 8px;
+          color: $color_2;
         }
       }
+    }
+  }
 
-      .section-health-accordion-first {
-        .accordion-first {
-          .accordion-item {
-            border-radius: 25px;
+  .understanding {
+    .default-content-wrapper {
+      img {
+        max-width: 60%;
+      }
+    }
 
-            @media (width <=786px) {
-              border-radius: 10px;
+    .accordion-first-wrapper {
 
-              strong {
-                background-color: $background-color_1;
-                border-radius: 8px;
-                padding: 8px;
-                color: $color_2;
+      >div {
+        >div {
+          >div {
+            &:nth-child(2) {
+              >p {
+                font-size: 14px;
               }
             }
           }
         }
+      }
+    }
+  }
+}
 
-        .understanding {
-          .default-content-wrapper {
-            img {
-              max-width: 60%;
-            }
-          }
+.section-health-accordion-second {
+  .accordion {
+    details[open] {
+      background-color: $background-color_3;
+    }
+  }
+}
 
-          .accordion-first-wrapper {
-            >div {
-              >div {
-                >div {
-                  &:nth-child(2) {
-                    >p {
-                      font-size: 14px;
-                    }
-                  }
-                }
-              }
-            }
-          }
+.accordion-second {
+  .accordion-item {
+    border-radius: 20px;
+    background-color: $background-color_5;
+
+    strong {
+      color: $color_2;
+    }
+  }
+}
+
+.section-health-accordion-first.accordion-container {
+  .default-content-wrapper {
+    >p {
+      &:nth-child(1) {
+        >strong {
+          font-size: 34px;
+        }
+      }
+    }
+  }
+}
+
+.understanding {
+  background-color: $background-color_6;
+  align-items: flex-end;
+
+  .default-content-wrapper {
+    margin-right: 100px;
+
+    p {
+      strong {
+        font-size: 40px;
+
+        @media (width <=786px) {
+          font-size: 25px !important;
         }
       }
 
-      .section-health-accordion-second {
-        .accordion {
-          details[open] {
-            background-color: $background-color_3;
-          }
-        }
-      }
 
-      .accordion-second {
-        .accordion-item {
-          border-radius: 20px;
-          background-color: $background-color_5;
+    }
 
-          strong {
-            color: $color_2;
-          }
-        }
-      }
+    @media (width <=786px) {
+      margin-right: 0;
+      text-align: center;
+    }
+  }
+}
 
-      .section-health-accordion-first.accordion-container {
-        .default-content-wrapper {
+.accordion-first-wrapper {
+  margin: 0 !important;
+
+  >div {
+    >div {
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      margin: 25px 0;
+
+      >div {
+        &:nth-child(1) {
           >p {
             &:nth-child(1) {
-              >strong {
-                font-size: 34px;
-              }
+              position: absolute;
+              left: -65px;
+              top: 18px;
+              background-color: $background-color_2;
+              color: $color_1;
+              border-radius: 8px;
+              padding: 6px 10px;
             }
           }
         }
       }
 
-      .understanding {
-        background-color: $background-color_6;
-        align-items: flex-end;
+      p {
+        margin: 0;
+      }
+    }
+  }
 
-        .default-content-wrapper {
-          margin-right: 100px;
-          p {
-            strong {
-              font-size: 40px;
+  width: 70%;
 
-              @media (width <=786px) {
-                font-size: 25px !important;
-              }
-            }
+  @media (width <=786px) {
+    width: 100%;
+  }
+}
 
-            
-          }
-            @media (width <=786px) {
-              margin-right: 0;
-              text-align: center;
-            }
-          }
+main {
+  .section-health-accordion-first.padd-top {
+    padding-top: 10%;
+  }
+}
+
+@media (width >=786px) {
+  .section-health-accordion-first {
+    display: flex;
+    justify-content: center;
+
+    .accordion-wrapper {
+      width: 70%;
+      // margin-left: unset !important;
+      margin: 0;
+    }
+  }
+}
+
+@media (width >=768px) {
+  .section-health-accordion-second {
+    .default-content-wrapper {
+      p {
+        font-size: 48px;
+        width: 50%;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  .section.section-health-accordion-second.accordion-container {
+    >div {
+      &:nth-child(3) {
+        >p {
+          width: 100%;
+          text-align: center;
+          line-height: 1;
+          margin-bottom: 1.5rem;
+          margin-top: 20px;
         }
-            .accordion-first-wrapper {
-              >div {
-                >div {
-                  display: flex;
-                  flex-wrap: wrap;
-                  position: relative;
-                  margin: 25px 0;
+      }
+    }
+  }
+}
 
-                  >div {
-                    &:nth-child(1) {
-                      >p {
-                        &:nth-child(1) {
-                          position: absolute;
-                          left: -65px;
-                          top: 18px;
-                          background-color: $background-color_2;
-                          color: $color_1;
-                          border-radius: 8px;
-                          padding: 6px 10px;
-                        }
-                      }
-                    }
-                  }
+@media (width <=768px) {
+  .section-health-accordion-second {
+    .default-content-wrapper {
+      .button-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+      }
+    }
+  }
+}
 
-                  p {
-                    margin: 0;
-                  }
-                }
-              }
+@media (width <=786px) {
+  .accordion-second {
+    .accordion-item {
+      p {
+        font-size: 14px;
+      }
 
-              width: 70%;
+      border-radius: 10px;
+    }
+  }
 
-              @media (width <=786px) {
-                width: 100%;
-              }
-            }
+  .accordion-first {
+    .accordion-item {
+      p {
+        font-size: 14px;
+      }
 
-            main {
-              .section-health-accordion-first.padd-top {
-                padding-top: 10%;
-              }
-            }
+      border-radius: 10px;
+    }
+  }
 
-            @media (width >=786px) {
-              .section-health-accordion-first {
-                display: flex;
-                justify-content: center;
+  .understanding {
+    .default-content-wrapper {
+      p {
+        font-size: 15px;
+      }
 
-                .accordion-wrapper {
-                  width: auto;
-                  margin-left: unset !important;
-                }
-              }
-            }
-
-            @media (width >=768px) {
-              .section-health-accordion-second {
-                .default-content-wrapper {
-                  p {
-                    font-size: 48px;
-                    width: 50%;
-                    line-height: 1;
-                    margin-bottom: 1.5rem;
-                  }
-                }
-              }
-
-              .section.section-health-accordion-second.accordion-container {
-                >div {
-                  &:nth-child(3) {
-                    >p {
-                      width: 100%;
-                      text-align: center;
-                      line-height: 1;
-                      margin-bottom: 1.5rem;
-                      margin-top: 20px;
-                    }
-                  }
-                }
-              }
-            }
-
-            @media (width <=768px) {
-              .section-health-accordion-second {
-                .default-content-wrapper {
-                  .button-container {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-top: 10px;
-                  }
-                }
-              }
-            }
-
-            @media (width <=786px) {
-              .accordion-second {
-                .accordion-item {
-                  p {
-                    font-size: 14px;
-                  }
-
-                  border-radius: 10px;
-                }
-              }
-
-              .accordion-first {
-                .accordion-item {
-                  p {
-                    font-size: 14px;
-                  }
-
-                  border-radius: 10px;
-                }
-              }
-
-              .understanding {
-                .default-content-wrapper {
-                  p {
-                    font-size: 15px;
-                  }
-
-                }
-              }
-            }
+    }
+  }
+}

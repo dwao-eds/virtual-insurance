@@ -20,25 +20,25 @@ $background-color_2: #FFFFFF;
     }
 }
 
-    
-    .virtualinsurance-container {
-        .virtualinsurance-wrapper {
-            color: $color_1;
-            font-size: 20px;
-            line-height: 20px;
-            width: 100%;
-        }
-    }
 
-    .download-banner {
-        .virtualinsurance-wrapper {
-            p {
-                img {
-                    width: 18px;
-                }
+.virtualinsurance-container {
+    .virtualinsurance-wrapper {
+        color: $color_1;
+        font-size: 20px;
+        line-height: 20px;
+        width: 100%;
+    }
+}
+
+.download-banner {
+    .virtualinsurance-wrapper {
+        p {
+            img {
+                width: 18px;
             }
         }
     }
+}
 
 
 #download-virtual-insurance-mobile-app {
@@ -65,25 +65,26 @@ $background-color_2: #FFFFFF;
         display: flex;
         flex-direction: column;
 
-        .virtualinsurance-wrapper {
-            >div {
-                >div {
-                    &:nth-child(3) {
-                        >div {
-                            >p {
-                                background-color: $background-color_2;
-                                display: flex;
-                                align-items: center;
-                                width: 30%;
-                                border-radius: 8px;
-                                justify-content: space-around;
-                                padding: 14px;
-                                font-weight: bold;
-                                margin-top: 50px;
+    }
 
-                                @media (width <=786px) {
-                                    width: auto;
-                                }
+    .virtualinsurance-wrapper {
+        >div {
+            >div {
+                &:nth-child(3) {
+                    >div {
+                        >p {
+                            background-color: $background-color_2;
+                            display: flex;
+                            align-items: center;
+                            width: 30%;
+                            border-radius: 8px;
+                            justify-content: space-around;
+                            padding: 14px;
+                            font-weight: bold;
+                            margin-top: 50px;
+
+                            @media (width <=786px) {
+                                width: auto;
                             }
                         }
                     }
