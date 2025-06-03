@@ -179,7 +179,7 @@ let alloyLoadedPromise = initWebSDK('./alloy.js', {
   });
 //alloyLoadedPromise.then(() => getAndApplyRenderDecisions());
 console.log(getMetadata('target'));
-if (getMetadata('target')) {
+if (getMetadata('target')  && getMetadata('target')=='on') {
  alloyLoadedPromise.then(() => getAndApplyRenderDecisions());
 }
 
