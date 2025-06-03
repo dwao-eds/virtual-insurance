@@ -58,27 +58,22 @@
 .section-health-accordion-first .default-content-wrapper {
   margin: 0;
   width: auto;
+  text-align: unset;
 }
-@media (width <= 1400px) {
-  .section-health-accordion-first .default-content-wrapper {
-    text-align: unset;
-  }
-  .section-health-accordion-first .default-content-wrapper p img {
-    width: 60%;
-    padding-top: 30px;
-  }
+.section-health-accordion-first .default-content-wrapper p img {
+  width: 60%;
+  padding-top: 30px;
 }
-@media (width <= 1400px) and (width <= 768px) {
+@media (width <= 768px) {
   .section-health-accordion-first .default-content-wrapper p img {
     width: 100%;
   }
 }
-@media (width <= 1400px) {
-  .section-health-accordion-first .default-content-wrapper .accordion-wrapper {
-    margin: 0;
-  }
+.section-health-accordion-first .default-content-wrapper .accordion-wrapper {
+  width: 70%;
+  margin: 0;
 }
-@media (width <= 1400px) and (width <= 1400px) {
+@media (width <= 1400px) {
   .section-health-accordion-first .default-content-wrapper .accordion-wrapper {
     width: 80%;
   }
@@ -151,6 +146,7 @@
 }
 
 .accordion-first-wrapper {
+  margin: 0 !important;
   width: 70%;
 }
 .accordion-first-wrapper > div > div {
@@ -187,8 +183,8 @@ main .section-health-accordion-first.padd-top {
     justify-content: center;
   }
   .section-health-accordion-first .accordion-wrapper {
-    width: auto;
-    margin-left: unset !important;
+    width: 70%;
+    margin: 0;
   }
 }
 @media (width >= 768px) {
