@@ -25,14 +25,28 @@ $break-max: 799px;
 // Mixins
 // =======================================
 @mixin respond-to($breakpoint) {
-  @if $breakpoint == sm {
-    @media (width >= $break-sm) { @content; }
-  } @else if $breakpoint == md {
-    @media (width <= $break-md) { @content; }
-  } @else if $breakpoint == lg {
-    @media (width >= $break-lg) { @content; }
-  } @else if $breakpoint == max {
-    @media (width <= $break-max) { @content; }
+  @if $breakpoint ==sm {
+    @media (width >=$break-sm) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==md {
+    @media (width <=$break-md) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==lg {
+    @media (width >=$break-lg) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==max {
+    @media (width <=$break-max) {
+      @content;
+    }
   }
 }
 
@@ -56,8 +70,7 @@ header {
     box-sizing: border-box;
     display: grid;
     grid-template:
-      'hamburger brand tools' $nav-height
-      'sections sections sections' 1fr / auto 1fr auto;
+      'hamburger brand tools'$nav-height 'sections sections sections' 1fr / auto 1fr auto;
     align-items: center;
     gap: 0 2em;
     margin: auto;
@@ -72,9 +85,8 @@ header {
 
     &[aria-expanded="true"] {
       grid-template:
-        'hamburger brand' $nav-height
-        'sections sections' 1fr
-        'tools tools' $nav-height / auto 1fr;
+        'hamburger brand'$nav-height 'sections sections' 1fr
+        'tools tools'$nav-height / auto 1fr;
       overflow-y: auto;
       min-height: 100vh;
     }
@@ -136,6 +148,7 @@ header {
       }
 
       &[aria-expanded="false"] {
+
         .nav-hamburger-icon,
         .nav-hamburger-icon::before,
         .nav-hamburger-icon::after {
@@ -144,8 +157,13 @@ header {
           background: currentcolor;
         }
 
-        .nav-hamburger-icon::before { top: -6px; }
-        .nav-hamburger-icon::after { top: 6px; }
+        .nav-hamburger-icon::before {
+          top: -6px;
+        }
+
+        .nav-hamburger-icon::after {
+          top: 6px;
+        }
       }
 
       &[aria-expanded="true"] {
@@ -216,13 +234,13 @@ header {
         font-size: $font-size-body-s;
         font-weight: 500;
 
-        > li {
+        >li {
           font-weight: 700;
 
-          > ul {
+          >ul {
             margin-top: 0;
 
-            > li {
+            >li {
               font-weight: 500;
             }
           }
@@ -268,18 +286,18 @@ header {
           font-size: $font-size-body-xs;
         }
 
-        .default-content-wrapper > ul > li {
+        .default-content-wrapper>ul>li {
           flex: 0 1 auto;
           position: relative;
           font-weight: 600;
           line-height: 1.2;
 
-          > ul {
+          >ul {
             display: none;
             position: relative;
           }
 
-          &[aria-expanded="true"] > ul {
+          &[aria-expanded="true"]>ul {
             display: block;
             position: absolute;
             left: -1em;
@@ -300,7 +318,7 @@ header {
               border-bottom: 8px solid var(--light-color);
             }
 
-            > li {
+            >li {
               padding: 8px 0;
             }
           }
@@ -308,16 +326,16 @@ header {
       }
 
       @include respond-to(max) {
-        ul > li:not(:last-child) {
+        ul>li:not(:last-child) {
           margin-bottom: 20px;
         }
 
-        .default-content-wrapper > ul > li {
-          > ul {
+        .default-content-wrapper>ul>li {
+          >ul {
             display: none;
           }
 
-          &[aria-expanded="true"] > ul {
+          &[aria-expanded="true"]>ul {
             display: block;
             padding: 1em;
             background-color: var(--light-color);
@@ -393,7 +411,9 @@ header {
   display: flex;
   flex-direction: column;
 
-  .header { order: 2; }
+  .header {
+    order: 2;
+  }
 
   .subheader {
     order: 1;
@@ -421,6 +441,8 @@ header {
           margin: 6px;
         }
 
+
+
         .subheader-list {
           display: flex;
           justify-content: center;
@@ -435,7 +457,13 @@ header {
           }
         }
 
-        > li:last-child {
+        >li:nth-child(1) {
+          @media (width <=786px) {
+            display: none;
+          }
+        }
+
+        >li:last-child {
           border: 1px solid $color-primary;
           border-radius: 6px;
           gap: 0;
@@ -449,7 +477,7 @@ header {
               text-decoration: none;
               background-color: $color-primary;
               color: $color-white;
-			  border-radius: 4px;
+              border-radius: 4px;
             }
           }
         }
