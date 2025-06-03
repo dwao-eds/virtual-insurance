@@ -69,6 +69,10 @@
           font-size: 14px;
           margin: 0;
 
+          &:not(::first-line) {
+            margin-right: 20px;
+          }
+
           strong {
             color: #663DB3;
           }
@@ -257,6 +261,7 @@
   position: relative !important;
   background-color: transparent !important;
   font-size: 30px;
+  padding: 0px 5px;
 
   &-icon_tick {
     img {
