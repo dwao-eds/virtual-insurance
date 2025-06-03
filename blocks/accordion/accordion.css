@@ -21,7 +21,7 @@
   content: "";
   position: absolute;
   top: 50%;
-  right: 18px;
+  right: 25px;
   transform: translateY(-50%) rotate(135deg);
   width: 9px;
   height: 9px;
@@ -31,6 +31,12 @@
 }
 .accordion details .accordion-item-body {
   padding: 0 16px;
+}
+.accordion details .accordion-item-body p {
+  font-size: 14px;
+}
+.accordion details .accordion-item-body p img {
+  width: 14px;
 }
 .accordion details + details {
   margin-top: 16px;
@@ -45,6 +51,10 @@
   border-top: 1px solid var(--dark-color);
 }
 
+.accordion-item[open] .accordion-item-label p {
+  font-size: 20px;
+  font-weight: bold;
+}
 .accordion-item[open] .accordion-item-label p strong {
   background-color: #663DB3;
   color: white;

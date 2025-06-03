@@ -314,7 +314,7 @@ header nav .nav-tools .default-content-wrapper p {
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 10px;
     padding: 0 10px;
     margin: 6px;
   }

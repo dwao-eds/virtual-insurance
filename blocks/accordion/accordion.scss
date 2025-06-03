@@ -32,7 +32,7 @@ $background-color_6: #26026A0D;
         content: "";
         position: absolute;
         top: 50%;
-        right: 18px;
+        right: 25px;
         transform: translateY(-50%) rotate(135deg);
         width: 9px;
         height: 9px;
@@ -44,6 +44,15 @@ $background-color_6: #26026A0D;
 
     .accordion-item-body {
       padding: 0 16px;
+
+      p {
+        font-size: 14px;
+
+        img {
+          width: 14px;
+        }
+      }
+
     }
   }
 
@@ -69,6 +78,8 @@ $background-color_6: #26026A0D;
 .accordion-item[open] {
   .accordion-item-label {
     p {
+      font-size: 20px;
+font-weight: bold;
       strong {
         background-color: $background-color_2;
         color: $color_1;
