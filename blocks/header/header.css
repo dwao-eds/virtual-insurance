@@ -331,6 +331,11 @@ header nav .nav-tools .default-content-wrapper p {
   justify-content: center;
   align-items: center;
 }
+@media (width <= 786px) {
+  .header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul > li:nth-child(1) {
+    display: none;
+  }
+}
 .header-wrapper .subheader .subheader-wrapper .default-content-wrapper ul > li:last-child {
   border: 1px solid #663DB3;
   border-radius: 6px;
