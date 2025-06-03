@@ -79,7 +79,8 @@ $background-color_6: #26026A0D;
   .accordion-item-label {
     p {
       font-size: 20px;
-font-weight: bold;
+      font-weight: bold;
+
       strong {
         background-color: $background-color_2;
         color: $color_1;
@@ -363,4 +364,9 @@ main {
 
     }
   }
+}
+
+.section.section-health-accordion-first.accordion-container {
+  max-width: 1200px;
+  margin: auto;
 }

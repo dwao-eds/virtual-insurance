@@ -237,3 +237,7 @@ main .section-health-accordion-first.padd-top {
     font-size: 15px;
   }
 }
+.section.section-health-accordion-first.accordion-container {
+  max-width: 1200px;
+  margin: auto;
+}
