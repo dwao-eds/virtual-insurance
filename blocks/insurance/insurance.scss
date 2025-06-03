@@ -27,7 +27,9 @@
                     justify-content: center;
 
                     @media (width <=786px) {
-                        margin: 0;
+                        margin: 40px 0;
+                        font-size: 32px;
+                        justify-content: start;
                     }
                 }
             }
@@ -60,14 +62,33 @@
             }
 
             >div:first-child {
+
+                >p:last-child {
+                    @media (width <=786px) {
+                        text-align: center;
+                        border: 1px solid grey;
+                        border-radius: 4px;
+                    }
+                }
+
                 p {
                     font-size: 12px;
                     margin: 5px 0;
+
+                    @media (width <=786px) {
+                        font-size: 14px;
+                        margin: 12px 0;
+                    }
+
 
                     a {
                         color: black;
                         background-color: #fff !important;
                         border: 1px solid #ccc;
+
+                        @media (width <=786px) {
+                            border: none;
+                        }
                     }
                 }
             }
@@ -75,10 +96,39 @@
             table {
                 margin-bottom: 10px;
 
+
+                tbody {
+                    >tr:last-child {
+                        td {
+                            @media (width <=786px) {
+                                text-align: center;
+                                width: 100%;
+                                border: 1px solid grey;
+                                padding: 10px 0px;
+                                border-radius: 4px;
+                            }
+                        }
+                    }
+                }
+
+                tr {
+                    @media (width <=786px) {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+
+
+
                 td {
                     font-size: 12px;
                     vertical-align: top;
                     height: 30px;
+
+                    @media (width <=786px) {
+                        height: auto;
+                        font-size: 14px;
+                    }
 
                     a {
                         border: 1px solid grey;
@@ -86,13 +136,38 @@
                         border-radius: 4px;
                         color: black;
                         margin-left: 20px;
+
+                        @media (width <=786px) {
+                            border: none;
+                            padding: 0;
+                            margin-left: 0;
+                        }
+
                     }
 
                     p {
                         margin: 0px 20px 0;
                         padding-bottom: 5px;
+
+                        @media (width <=786px) {
+                            margin: 15px 0;
+                        }
+
+                        strong {
+
+                            @media (width <=786px) {
+                                font-size: 16px;
+                            }
+
+                        }
+                    }
+
+                    img {
+                        width: 100%;
                     }
                 }
+
+
             }
         }
     }

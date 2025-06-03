@@ -80,7 +80,7 @@
   width: 100%;
   max-width: 50rem;
   display: block;
-  height: 40px;
+  height: 48px;
   padding: 12px 8px;
   border-radius: 4px;
   box-sizing: border-box;
@@ -194,8 +194,8 @@
 }
 @media (width <= 768px) {
   .premium-section {
-    margin-top: 64px;
     background-image: none;
+    background-color: rgba(102, 61, 179, 0.0509803922);
   }
 }
 @media (width >= 2880px) {
@@ -221,6 +221,7 @@
   .need-help-form-main {
     margin-top: 64px;
     margin-bottom: 0px;
+    background-size: cover;
   }
 }
 @media (width >= 2880px) {
@@ -245,37 +246,44 @@
 }
 .need-help-form-main .form-wrapper .form .field-wrapper .button {
   width: 100%;
-  height: 40px;
+  height: 48px;
   border-radius: 5px;
   gap: 10px;
   background-color: #fff !important;
   color: #663DB3;
+  font-size: 16px;
 }
 .need-help-form-main .form-wrapper .form .field-wrapper .form-headline-4 {
-  margin: unset;
+  font-size: 32px;
+  margin-top: 40px;
 }
 .need-help-form-main .form-wrapper .form .field-wrapper select {
-  height: 40px;
-  font-size: 12px;
+  height: 48px;
+  font-size: 16px;
   background-color: inherit;
   border: 1px solid white;
   color: white;
 }
 .need-help-form-main .form-wrapper .form .field-wrapper p {
   margin: unset;
-  font-size: 16px;
+  font-size: 12px;
   padding: 10px 0;
+}
+@media (width <= 786px) {
+  .need-help-form-main .form-wrapper .form .field-wrapper p {
+    text-align: center;
+  }
 }
 .need-help-form-main .form-wrapper .form .field-wrapper fieldset {
   margin: 0;
 }
 .need-help-form-main .form-wrapper .form .field-wrapper.field-wrapper {
   position: relative;
-  margin-top: 10px;
+  margin-top: 18px;
 }
 .need-help-form-main .form-wrapper .form .field-wrapper.field-wrapper label {
   position: absolute;
-  font-size: 12px;
+  font-size: 16px;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -345,6 +353,7 @@
 @media (width <= 786px) {
   .hero-container .form-wrapper form {
     padding: 10px;
+    margin-top: 10px;
   }
 }
 .hero-container .checkbox-wrapper {
@@ -417,4 +426,24 @@ main .need-help-form-main.padd-top {
 
 #form-phonenumber-label {
   margin: 10px 0;
+}
+
+#form-description-2 {
+  text-align: left;
+  font-size: 16px;
+  margin-top: -20px;
+}
+
+#form-description-3 {
+  font-size: 20px;
+}
+
+#form-headline-2 {
+  font-size: 32px;
+  margin: 29px 0 0;
+}
+
+#form-description-5,
+#form-description-6 {
+  margin: 20px 0;
 }

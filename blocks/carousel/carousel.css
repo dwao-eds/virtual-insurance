@@ -31,11 +31,11 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 0.875rem;
+  font-size: 16px;
 }
 @media (width <= 786px) {
   .carousel .carousel-slide {
-    flex: 0 0 75%;
+    flex: 0 0 60%;
   }
 }
 .carousel .carousel-slide:has(.carousel-slide-content[data-align=center]) {
@@ -139,8 +139,7 @@
 }
 @media (width <= 786px) {
   .carousel .carousel-navigation-buttons {
-    top: 50%;
-    display: flex;
+    display: none;
   }
 }
 .carousel .carousel-navigation-buttons button {

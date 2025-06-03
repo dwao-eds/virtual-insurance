@@ -23,6 +23,13 @@
             .heading-label {
                 margin: 0;
                 width: 100%;
+
+                @media (width <=786px) {
+                    margin-top: 1em;
+                    // margin-bottom: 1em;
+                    font-size: 32px;
+
+                }
             }
 
             .label-text-0 .label-text-1,
@@ -71,7 +78,8 @@
         margin-bottom: -11px;
 
         @media (width <=786px) {
-            display: none !important;
+            // display: none !important;
+            margin-right: 50px;
         }
     }
 
