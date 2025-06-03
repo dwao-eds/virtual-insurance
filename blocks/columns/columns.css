@@ -60,6 +60,9 @@
   font-size: 14px;
   margin: 0;
 }
+.hero-container .columns-wrapper .calculate > div > div p:not(::first-line) {
+  margin-right: 20px;
+}
 .hero-container .columns-wrapper .calculate > div > div p strong {
   color: #663DB3;
 }
@@ -198,6 +201,7 @@
   position: relative !important;
   background-color: transparent !important;
   font-size: 30px;
+  padding: 0px 5px;
 }
 .icon-icon_tick img {
   width: 16px;

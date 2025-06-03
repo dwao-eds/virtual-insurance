@@ -181,8 +181,8 @@ a:any-link {
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
-    color: var(--link-hover-color);
+    // text-decoration: underline;
+    color: #663DB3;
   }
 }
 
