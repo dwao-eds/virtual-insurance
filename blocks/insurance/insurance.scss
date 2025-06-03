@@ -78,6 +78,7 @@
                 td {
                     font-size: 12px;
                     vertical-align: top;
+                    height: 30px;
 
                     a {
                         border: 1px solid grey;
@@ -88,7 +89,8 @@
                     }
 
                     p {
-                        margin: 10px 20px 0;
+                        margin: 0px 20px 0;
+                        padding-bottom: 5px;
                     }
                 }
             }

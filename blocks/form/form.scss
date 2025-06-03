@@ -6,7 +6,7 @@
   gap: 24px;
   background-color: white;
 
-  @media (width <= 786px) {
+  @media (width <=786px) {
     width: auto;
   }
 
@@ -14,6 +14,7 @@
     display: grid;
     grid-auto-flow: row;
     align-items: center;
+    // margin-bottom: 10px;
 
     &.selection-wrapper {
       grid-auto-flow: column;
@@ -25,17 +26,17 @@
         accent-color: crimson;
       }
 
-      > label {
+      >label {
         order: 1;
         margin-bottom: 0;
       }
     }
 
-    > label {
+    >label {
       order: -1;
     }
 
-    input[required] + label::after {
+    input[required]+label::after {
       content: "*";
       color: firebrick;
       margin-inline-start: 1ch;
@@ -43,12 +44,12 @@
 
     &.checkbox-wrapper {
       border: 1px solid grey;
-      padding: 10px 20px;
+      padding: 15px 20px;
       min-width: 150px;
       width: auto;
       border-radius: 10px;
 
-      @media (width <= 600px) {
+      @media (width <=600px) {
         min-width: auto;
         flex: 1;
         display: flex;
@@ -60,16 +61,16 @@
     display: grid;
     grid-auto-flow: row;
     gap: 8px;
-    margin: 5px;
+    margin: 8px;
     padding: 0;
     border: none !important;
 
-    @media (width >= 900px) {
+    @media (width >=900px) {
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    > legend {
+    >legend {
       font-weight: 500;
       font-size: var(--heading-font-size-xs);
     }
@@ -84,7 +85,7 @@
   input,
   select,
   textarea {
-    font-size: var(--body-font-size-s);
+    // font-size: var(--body-font-size-s);
     width: 100%;
     max-width: 50rem;
     display: block;
@@ -133,7 +134,7 @@
       width: 0;
       height: 0;
 
-      &:checked + .slider {
+      &:checked+.slider {
         background-color: var(--link-color);
 
         &::before {
@@ -141,7 +142,7 @@
         }
       }
 
-      &:focus + .slider {
+      &:focus+.slider {
         outline: 2px solid var(--link-color);
         outline-offset: 2px;
       }
@@ -176,7 +177,7 @@
   min-height: fit-content;
   background-color: inherit;
 
-  @media (width <= 786px) {
+  @media (width <=786px) {
     width: auto;
   }
 
@@ -195,6 +196,7 @@
     margin: 0;
     background-color: #4169e2;
     border-radius: 8px;
+    margin-top: 20px;
   }
 
   p {
@@ -214,14 +216,14 @@
   background-repeat: no-repeat;
   justify-content: center;
   margin: unset;
-  background-color: #663DB333;
+  // background-color: #663DB333;
 
-  @media (width <= 768px) {
+  @media (width <=768px) {
     margin-top: 64px;
     background-image: none;
   }
 
-  @media (width >= 2880px) {
+  @media (width >=2880px) {
     background-size: auto;
   }
 
@@ -240,12 +242,12 @@
   justify-content: space-evenly;
   padding-top: 0 !important;
 
-  @media (width <= 768px) {
+  @media (width <=768px) {
     margin-top: 64px;
     margin-bottom: 0px;
   }
 
-  @media (width >= 2880px) {
+  @media (width >=2880px) {
     background-size: auto;
     background-color: unset;
     background-position: center;
@@ -267,7 +269,7 @@
         margin: 0;
 
         .button {
-          width: auto !important;
+          width: 100%;
           height: 40px;
           border-radius: 5px;
           gap: 10px;
@@ -289,7 +291,8 @@
 
         p {
           margin: unset;
-          font-size: 14px;
+          font-size: 16px;
+          padding: 10px 0;
         }
 
         fieldset {
@@ -332,13 +335,13 @@
               border-color: #6200EE;
             }
 
-            &:focus + label {
+            &:focus+label {
               color: #fff;
               top: 0;
               transform: translateY(-50%) scale(.9);
             }
 
-            &:not(:placeholder-shown) + label {
+            &:not(:placeholder-shown)+label {
               transform: translateY(-50%) scale(.9);
             }
           }
@@ -388,7 +391,7 @@
       min-height: unset;
       padding-top: 0;
 
-      @media (width <= 786px) {
+      @media (width <=786px) {
         padding: 10px;
       }
     }
@@ -413,8 +416,9 @@
   }
 }
 
-@media (width <= 786px) {
+@media (width <=786px) {
   .hero-container .form-wrapper .form {
+
     #form-persontypefs,
     #form-self-spouse,
     #form-children,
@@ -452,7 +456,7 @@ main {
     padding: 0;
     margin: 0;
 
-    @media (width <= 786px) {
+    @media (width <=786px) {
       padding: 16px 8px;
     }
   }
@@ -465,11 +469,19 @@ main {
     border: none;
 
     // Base shadow
-    box-shadow: 2px 2px 4px rgb(0 0 0 / 10%);
+
 
     // Apply box-shadow when input inside is checked
     &:has(input[type="checkbox"]:checked) {
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); // Optional: stronger shadow on checked
     }
   }
+}
+
+.field-wrapper.email-wrapper {
+  margin: 10px 0;
+}
+
+#form-phonenumber-label{
+   margin: 10px 0;
 }
