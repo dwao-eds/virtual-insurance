@@ -23,6 +23,11 @@
   line-height: 20px;
   width: 100%;
 }
+@media (width <= 786px) {
+  .virtualinsurance-container .virtualinsurance-wrapper {
+    line-height: normal;
+  }
+}
 
 .download-banner .virtualinsurance-wrapper p img {
   width: 18px;
@@ -31,6 +36,12 @@
 #download-virtual-insurance-mobile-app {
   font-size: 40px;
   width: 50%;
+}
+@media (width <= 786px) {
+  #download-virtual-insurance-mobile-app {
+    width: 100%;
+    font-size: 32px;
+  }
 }
 
 .virtualimage-wrapper {
@@ -74,4 +85,8 @@
   #download-the-brochure-for-shieldplus-protection {
     font-size: 28px;
   }
+}
+.section.download-banner.virtualinsurance-container.virtualimage-container {
+  max-width: 1200px;
+  margin: auto;
 }

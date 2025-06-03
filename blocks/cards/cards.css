@@ -8,8 +8,9 @@
 }
 @media (width <= 786px) {
   .cards > ul {
-    display: block;
+    display: flex;
     padding-left: 20px;
+    flex-wrap: wrap;
   }
 }
 .cards > ul > li {
@@ -74,6 +75,7 @@
     width: auto;
     position: unset;
     border-radius: 12px;
+    margin: 40px 10px;
   }
 }
 .second-card-container .default-content-wrapper {
@@ -89,6 +91,7 @@
 @media (width <= 786px) {
   .second-card-container .virtual-health-insurance ul li {
     justify-content: unset;
+    flex: 0.5;
   }
 }
 .second-card-container .virtual-health-insurance ul li p {
@@ -116,8 +119,19 @@
   max-height: none;
 }
 
+@media (width <= 786px) {
+  .section.cards-container .default-content-wrapper {
+    margin: 50px 0;
+  }
+}
+.section.cards-container .default-content-wrapper > p:nth-child(1) {
+  width: 60%;
+}
+.section.cards-container .default-content-wrapper > p:nth-child(1) > strong {
+  color: #663DB3;
+}
 .section.cards-container .default-content-wrapper > p:nth-child(2) > strong {
-  font-size: 28px;
+  font-size: 32px;
 }
 
 .financial-cards ul {

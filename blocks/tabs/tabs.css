@@ -25,6 +25,11 @@
   white-space: unset;
   transition: background-color 0.2s;
 }
+@media (width <= 786px) {
+  .tabs .tabs-list button {
+    margin: 2px;
+  }
+}
 @media (width >= 786px) {
   .tabs .tabs-list button[aria-selected=true] {
     border-bottom: 2px solid #663DB3;
@@ -55,6 +60,13 @@
 .default-content-wrapper p {
   margin: 0;
 }
+@media (width <= 786px) {
+  .default-content-wrapper h3,
+  .default-content-wrapper p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
 .default-content-wrapper .button-container {
   margin-left: auto;
 }
@@ -63,6 +75,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px 0;
   }
 }
 
@@ -89,17 +102,16 @@
 .health-tabs-container .health-tabs-variation .tabs-panel > div {
   display: flex;
 }
+.health-tabs-container .health-tabs-variation .tabs-panel td {
+  font-size: 14px;
+}
 @media (width <= 786px) {
-  .health-tabs-container .health-tabs-variation .tabs-panel > div {
-    display: block;
+  .health-tabs-container .health-tabs-variation .tabs-panel td {
+    font-size: 18px;
   }
 }
-.health-tabs-container .health-tabs-variation .tabs-panel td {
-  font-size: 12px;
-}
 .health-tabs-container .health-tabs-variation .tabs-panel td img {
-  width: 48px;
-  height: 48px;
+  width: 70px;
 }
 .health-tabs-container .health-tabs-variation .tabs-panel td p img {
   width: 15px;
@@ -132,7 +144,10 @@
 @media (width <= 786px) {
   .health-tabs-container .health-tabs-variation .tabs-panel table {
     width: 100%;
-    margin: 0 0 20px 0;
+    min-width: 75vw;
+    padding: 24px;
+    margin: 30px 0px;
+    margin-right: 35px;
   }
 }
 @media (width >= 900px) {

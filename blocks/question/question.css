@@ -23,6 +23,14 @@
     margin: 0;
     width: 100%;
   }
+}
+@media (width <= 786px) and (width <= 786px) {
+  .question-container .q-wrap .heading-label {
+    margin-top: 1em;
+    font-size: 32px;
+  }
+}
+@media (width <= 786px) {
   .question-container .q-wrap .label-text-0 .label-text-1,
   .question-container .q-wrap .label-text-2,
   .question-container .q-wrap .label-text-3,
@@ -62,7 +70,7 @@
 }
 @media (width <= 786px) {
   .question-container .picture-div {
-    display: none !important;
+    margin-right: 50px;
   }
 }
 .question-container .heading-label {

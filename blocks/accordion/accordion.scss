@@ -104,7 +104,7 @@ $background-color_6: #26026A0D;
 
     p {
       img {
-        width: 60%;
+        width: 70%;
         padding-top: 30px;
 
         @media (width <=768px) {
@@ -366,7 +366,7 @@ main {
   }
 }
 
-.section.section-health-accordion-first.accordion-container {
+.section.section-health-accordion-first {
   max-width: 1200px;
   margin: auto;
 }

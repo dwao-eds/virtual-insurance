@@ -71,7 +71,7 @@
   text-align: unset;
 }
 .section-health-accordion-first .default-content-wrapper p img {
-  width: 60%;
+  width: 70%;
   padding-top: 30px;
 }
 @media (width <= 768px) {
@@ -237,7 +237,7 @@ main .section-health-accordion-first.padd-top {
     font-size: 15px;
   }
 }
-.section.section-health-accordion-first.accordion-container {
+.section.section-health-accordion-first {
   max-width: 1200px;
   margin: auto;
 }

@@ -137,18 +137,20 @@
           &:not(:first-of-type) {
             background: white;
             border-radius: 8px;
+            margin-bottom: 10px;
 
             @media (width >=787px) {
               z-index: 3;
               position: relative;
-              margin-bottom: 10px;
+
             }
 
             td {
               padding: 14px 28px;
 
               @media (width <=768px) {
-                padding: 5px 10px;
+                // padding: 5px 10px;
+                border-image-source: none;
               }
 
               &:nth-child(-n + 2) {

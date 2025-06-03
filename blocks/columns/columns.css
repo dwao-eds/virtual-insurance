@@ -120,12 +120,12 @@
 .hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) {
   background: white;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 @media (width >= 787px) {
   .hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) {
     z-index: 3;
     position: relative;
-    margin-bottom: 10px;
   }
 }
 .hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) td {
@@ -133,7 +133,7 @@
 }
 @media (width <= 768px) {
   .hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) td {
-    padding: 5px 10px;
+    border-image-source: none;
   }
 }
 .hero-container .columns-wrapper .calculate > div > div table:not(:first-of-type) td:nth-child(-n+2) {

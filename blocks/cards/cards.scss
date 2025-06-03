@@ -8,8 +8,9 @@
     grid-gap: 20px;
 
     @media (width <=786px) {
-      display: block;
+      display: flex;
       padding-left: 20px;
+      flex-wrap: wrap;
     }
 
     >li {
@@ -83,6 +84,7 @@
     width: auto;
     position: unset;
     border-radius: 12px;
+    margin: 40px 10px;
   }
 
   .default-content-wrapper {
@@ -100,6 +102,7 @@
 
         @media (width <=786px) {
           justify-content: unset;
+          flex: 0.5;
         }
 
         p {
@@ -141,8 +144,20 @@
 
 .section.cards-container {
   .default-content-wrapper {
+    @media (width <=786px) {
+      margin: 50px 0;
+    }
+
+    >p:nth-child(1) {
+      width: 60%;
+
+      >strong {
+        color: #663DB3;
+      }
+    }
+
     >p:nth-child(2)>strong {
-      font-size: 28px;
+      font-size: 32px;
     }
   }
 }

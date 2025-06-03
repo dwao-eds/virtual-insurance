@@ -27,6 +27,10 @@ $background-color_2: #FFFFFF;
         font-size: 20px;
         line-height: 20px;
         width: 100%;
+
+        @media (width <=786px) {
+            line-height: normal;
+        }
     }
 }
 
@@ -44,6 +48,11 @@ $background-color_2: #FFFFFF;
 #download-virtual-insurance-mobile-app {
     font-size: 40px;
     width: 50%;
+
+    @media (width <=786px) {
+        width: 100%;
+        font-size: 32px;
+    }
 }
 
 .virtualimage-wrapper {
@@ -98,4 +107,9 @@ $background-color_2: #FFFFFF;
     #download-the-brochure-for-shieldplus-protection {
         font-size: 28px;
     }
+}
+
+.section.download-banner.virtualinsurance-container.virtualimage-container {
+    max-width: 1200px;
+    margin: auto;
 }

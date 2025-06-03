@@ -23,7 +23,9 @@
 }
 @media (width <= 786px) {
   .insurance-container .insurance-wrapper .insurance div h3 {
-    margin: 0;
+    margin: 40px 0;
+    font-size: 32px;
+    justify-content: start;
   }
 }
 .insurance-container .insurance-wrapper .insurance a {
@@ -46,22 +48,61 @@
     gap: 32px;
   }
 }
+@media (width <= 786px) {
+  .insurance-container .insuranceblock > div:first-child > div:first-child > p:last-child {
+    text-align: center;
+    border: 1px solid grey;
+    border-radius: 4px;
+  }
+}
 .insurance-container .insuranceblock > div:first-child > div:first-child p {
   font-size: 12px;
   margin: 5px 0;
+}
+@media (width <= 786px) {
+  .insurance-container .insuranceblock > div:first-child > div:first-child p {
+    font-size: 14px;
+    margin: 12px 0;
+  }
 }
 .insurance-container .insuranceblock > div:first-child > div:first-child p a {
   color: black;
   background-color: #fff !important;
   border: 1px solid #ccc;
 }
+@media (width <= 786px) {
+  .insurance-container .insuranceblock > div:first-child > div:first-child p a {
+    border: none;
+  }
+}
 .insurance-container .insuranceblock > div:first-child table {
   margin-bottom: 10px;
+}
+@media (width <= 786px) {
+  .insurance-container .insuranceblock > div:first-child table tbody > tr:last-child td {
+    text-align: center;
+    width: 100%;
+    border: 1px solid grey;
+    padding: 10px 0px;
+    border-radius: 4px;
+  }
+}
+@media (width <= 786px) {
+  .insurance-container .insuranceblock > div:first-child table tr {
+    display: flex;
+    flex-direction: column;
+  }
 }
 .insurance-container .insuranceblock > div:first-child table td {
   font-size: 12px;
   vertical-align: top;
   height: 30px;
+}
+@media (width <= 786px) {
+  .insurance-container .insuranceblock > div:first-child table td {
+    height: auto;
+    font-size: 14px;
+  }
 }
 .insurance-container .insuranceblock > div:first-child table td a {
   border: 1px solid grey;
@@ -70,7 +111,27 @@
   color: black;
   margin-left: 20px;
 }
+@media (width <= 786px) {
+  .insurance-container .insuranceblock > div:first-child table td a {
+    border: none;
+    padding: 0;
+    margin-left: 0;
+  }
+}
 .insurance-container .insuranceblock > div:first-child table td p {
   margin: 0px 20px 0;
   padding-bottom: 5px;
+}
+@media (width <= 786px) {
+  .insurance-container .insuranceblock > div:first-child table td p {
+    margin: 15px 0;
+  }
+}
+@media (width <= 786px) {
+  .insurance-container .insuranceblock > div:first-child table td p strong {
+    font-size: 16px;
+  }
+}
+.insurance-container .insuranceblock > div:first-child table td img {
+  width: 100%;
 }
