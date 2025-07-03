@@ -274,24 +274,24 @@ window.showPageStructure = function () {
   links.forEach(a => a.style.outline = '2px dotted blue');
 };
 
-// window.insertSkipLink = function () {
-//   if (!document.querySelector('.skip-link')) {
-//     const skip = document.createElement('a');
-//     skip.href = '#main';
-//     skip.className = 'skip-link';
-//     skip.textContent = 'Skip to main content';
-//     skip.style.cssText = `
-//       position: absolute;
-//       top: 0;
-//       left: 0;
-//       background: #000;
-//       color: #fff;
-//       padding: 8px;
-//       z-index: 10001;
-//     `;
-//     document.body.insertBefore(skip, document.body.firstChild);
-//   }
-// };
+window.insertSkipLink = function () {
+  if (!document.querySelector('.skip-link')) {
+    const skip = document.createElement('a');
+    skip.href = '#main';
+    skip.className = 'skip-link';
+    skip.textContent = 'Skip to main content';
+    skip.style.cssText = `
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px;
+      z-index: 10001;
+    `;
+    document.body.insertBefore(skip, document.body.firstChild);
+  }
+};
 
 window.insertSkipLink();
 
@@ -374,7 +374,7 @@ style.innerHTML = `
 
 /* Big Cursor */
 .big-cursor * {
-  cursor: url(./icons/icons8-cursor-50.png), auto !important;
+  cursor: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFLKwqYzudtbbrkofsTtn_b7vkbeeOdFM3WdCFtKLrc71SwDKiPQx3n1DCVUH9PggNIdo&usqp=CAU'), auto !important;
 }
 
 /* Enlarged Buttons */
