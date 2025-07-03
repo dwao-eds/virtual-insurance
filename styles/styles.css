@@ -186,6 +186,7 @@ button:hover,
 button:focus {
   background-color: var(--link-hover-color);
   cursor: pointer;
+
 }
 
 button:disabled,
