@@ -8,8 +8,8 @@
   toggleBtn.id = 'accessibilityToggleBtn';
   toggleBtn.style.cssText = `
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 5px;
+    left: 20px;
     z-index: 9999;
     background: #004080;
     color: #fff;
@@ -24,17 +24,16 @@
   panel.id = 'accessibilityPanel';
   panel.style.cssText = `
     position: fixed;
-    top: 60px;
-    right: 20px;
-    width: 360px;
+    bottom: 45px;
+    left: 20px;
+    width: 340px;
     max-height: 90vh;
     overflow-y: auto;
     background: #f9f9f9;
-    border: 2px solid #004080;
     border-radius: 12px;
     padding: 16px;
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.3);
     display: none;
     z-index: 9998;
@@ -53,8 +52,8 @@
     <h3>📚 Content</h3>
     <button onclick="increaseFont()">A+</button>
     <button onclick="decreaseFont()">A−</button>
-    <button onclick="toggleImages()">🖼️ Hide/Show Images</button>
-    <button onclick="toggleAltText()">📝 Toggle Image Descriptions</button>
+    <button onclick="toggleImages()">🖼️ Hide/Show Img</button>
+    <button onclick="toggleAltText()">📝 Image Descriptions</button>
     <button onclick="toggleLineSpacing()">📏 Adjust Line Spacing</button>
     <button onclick="toggleLetterSpacing()">🔡 Adjust Letter Spacing</button>
 
@@ -71,6 +70,14 @@
     <button onclick="toggleEnlargeButtons()">🔲 Enlarge Buttons</button>
     <button onclick="toggleReadPage()">🔊 Read Page</button>
   `;
+
+const buttons = panel.querySelectorAll('button');
+buttons.forEach(button => {
+  button.style.margin = '2px';
+  button.style.marginBottom ='5px'
+  button.style.padding = '4px 8px';
+  button.style.fontSize = '10px';
+});
 
   document.body.appendChild(toggleBtn);
   document.body.appendChild(panel);
@@ -180,7 +187,7 @@
   };
 
   window.toggleBigCursor = () => {
-    document.body.style.cursor = bigCursor ? '' : 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAV0lEQVQokWNgGHbgP4SxkZGR/8nJyeEDNGZgZgYFzBxgIya7AslKipn/Dw8H4jKykYGTgYGBgcAo6FgGJhZGBgYCPUsJUHaDjxHZsBkpAObkApgO6eLKAQDbLAwxAwvKSAAAAAElFTkSuQmCC), auto';
+    document.body.style.cursor = bigCursor ? '' : 'url(data:image/png;base64,), auto';
     bigCursor = !bigCursor;
   };
 
@@ -319,7 +326,7 @@ window.enableVirtualKeyboard = function () {
 // Aliases and Enhancements
 
 // Alias for enlargeButtons
-window.enlargeButtons = toggleEnlargeButtons;
+// window.enlargeButtons = toggleEnlargeButtons;
 
 // Alias for highlightLinks
 window.highlightLinks = toggleHighlightLinks;
@@ -339,3 +346,61 @@ document.querySelectorAll('input, textarea, select').forEach(el => {
     el.setAttribute('aria-label', el.name);
   }
 });
+
+const style = document.createElement('style');
+style.innerHTML = `
+/* Color and Contrast */
+.high-contrast {
+  background-color: #000 !important;
+  color: #FFD700 !important;
+}
+.invert-colors {
+  filter: invert(100%) hue-rotate(180deg) !important;
+}
+.grayscale {
+  filter: grayscale(100%) !important;
+}
+.low-saturation {
+  filter: saturate(30%) !important;
+}
+
+/* Spacing */
+.line-spacing p, .line-spacing li {
+  line-height: 2 !important;
+}
+.letter-spacing p, .letter-spacing li {
+  letter-spacing: 2px !important;
+}
+
+/* Big Cursor */
+.big-cursor * {
+  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAM1BMVEUAAAD////////////////////////////////////////////////////////////////+3XtIAAAAEHRSTlMABCMlO05phY+ep6+/z9Pf7PfSU7kAAABWSURBVHicJY5JEoAgDAPbLr1C4v//FpAXMI2N6psQGVbqG1zZ0tLgoH5K+UkMC/Ykxj5NCYMdYMkRpCmfA6YWo7j8DKlzFv4m9GkD+lLSvwxFE0EAAAAASUVORK5CYII='), auto !important;
+}
+
+/* Enlarged Buttons */
+.enlarge-buttons button {
+  font-size: 1.25em !important;
+  padding: 1em 1.5em !important;
+}
+
+/* Highlight Links */
+.highlight-links a {
+  outline: 2px dashed #f00 !important;
+  background: #ffff99 !important;
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 10001;
+}
+.skip-link:focus {
+  top: 0;
+}
+`;
+document.head.appendChild(style);
