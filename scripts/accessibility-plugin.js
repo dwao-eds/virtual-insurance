@@ -7,8 +7,8 @@
   toggleBtn.innerText = '🧩 Accessibility';
   toggleBtn.id = 'accessibilityToggleBtn';
   toggleBtn.style.cssText = `
-    position: fixed;
-    bottom: 5px;
+    position: fixed !important;
+    top: 700px;
     left: 20px;
     z-index: 9999;
     background: #004080;
@@ -23,8 +23,8 @@
   const panel = document.createElement('div');
   panel.id = 'accessibilityPanel';
   panel.style.cssText = `
-    position: fixed;
-    bottom: 45px;
+    position: fixed !important;
+    top: 200px;
     left: 20px;
     width: 340px;
     max-height: 90vh;
@@ -281,7 +281,7 @@ window.insertSkipLink = function () {
     skip.className = 'skip-link';
     skip.textContent = 'Skip to main content';
     skip.style.cssText = `
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       background: #000;
@@ -354,8 +354,9 @@ style.innerHTML = `
   background-color: #000 !important;
   color: #FFD700 !important;
 }
+}
 .invert-colors {
-  filter: invert(100%) hue-rotate(180deg) !important;
+  filter: saturate(30%) !important;
 }
 .grayscale {
   filter: grayscale(100%) !important;
@@ -373,7 +374,7 @@ style.innerHTML = `
 }
 
 /* Big Cursor */
-.big-cursor * {
+.big-cursor {
   cursor: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFLKwqYzudtbbrkofsTtn_b7vkbeeOdFM3WdCFtKLrc71SwDKiPQx3n1DCVUH9PggNIdo&usqp=CAU'), auto !important;
 }
 
@@ -398,6 +399,7 @@ style.innerHTML = `
   color: #fff;
   padding: 8px;
   z-index: 10001;
+      display: none;
 }
 .skip-link:focus {
   top: 0;
