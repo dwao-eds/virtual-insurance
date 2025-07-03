@@ -8,7 +8,7 @@
   toggleBtn.id = 'accessibilityToggleBtn';
   toggleBtn.style.cssText = `
     position: fixed !important;
-    top: 700px;
+    bottom: 10px;
     left: 20px;
     z-index: 9999;
     background: #004080;
@@ -24,7 +24,7 @@
   panel.id = 'accessibilityPanel';
   panel.style.cssText = `
     position: fixed !important;
-    top: 200px;
+    bottom: 50px;
     left: 20px;
     width: 340px;
     max-height: 90vh;
@@ -192,11 +192,7 @@ buttons.forEach(button => {
   };
 
   window.toggleEnlargeButtons = () => {
-    document.querySelectorAll('button, a').forEach(el => {
-      el.style.padding = buttonsEnlarged ? '' : '14px';
-      el.style.fontSize = buttonsEnlarged ? '' : '18px';
-    });
-    buttonsEnlarged = !buttonsEnlarged;
+  document.body.classList.toggle('big-buttons');
   };
 
   // Screen reader
@@ -217,7 +213,7 @@ buttons.forEach(button => {
     if (profile === 'blind') toggleReadPage();
     if (profile === 'visual') { toggleHighContrast(); increaseFont(); }
     if (profile === 'cognitive') { toggleLetterSpacing(); toggleLineSpacing(); }
-    if (profile === 'epilepsy') document.querySelectorAll('*').forEach(el => el.style.transition = 'none');
+    if (profile === 'epilepsy') document.querySelectorAll('*').forEach(el => el.classList.toggle('disable-animation'));
     if (profile === 'adhd') { toggleReadingLine(); toggleImages(); }
   };
 
@@ -354,14 +350,14 @@ style.innerHTML = `
   background-color: #000 !important;
   color: #FFD700 !important;
 }
+
+.invert-colors *{
+   filter: saturate(30%) !important; 
 }
-.invert-colors {
-  filter: saturate(30%) !important;
-}
-.grayscale {
+.grayscale *{
   filter: grayscale(100%) !important;
 }
-.low-saturation {
+.low-saturation *{
   filter: saturate(30%) !important;
 }
 
@@ -403,6 +399,15 @@ style.innerHTML = `
 }
 .skip-link:focus {
   top: 0;
+}
+
+.big-buttons button, .big-buttons input[type="submit"], .big-buttons a{
+  transform: scale(1.06);
+}
+
+.disable-animation{
+  transition: none !important;
+  animation: none !important;
 }
 `;
 document.head.appendChild(style);

@@ -56,6 +56,7 @@ export default async function decorate(block) {
       const liElements = subHeader.querySelectorAll("li");
       liElements.forEach((li) => {
         li.classList.add("subheader-list");
+        li.classList.add("floating");
       });
       block.textContent = "";
       block.append(subHeader);
