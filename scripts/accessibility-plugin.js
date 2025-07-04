@@ -100,13 +100,37 @@ buttons.forEach(button => {
   let speech;
 
   // Font controls
+ const elements = [];
+
+  // Wait until DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    // Select all elements
+    document.querySelectorAll('*').forEach(el => {
+      const computedSize = parseFloat(window.getComputedStyle(el).fontSize);
+      if (computedSize && !el.dataset.originalFontSize) {
+        el.dataset.originalFontSize = computedSize;
+        elements.push(el);
+      }
+    });
+  });
+
+  function updateFontSizes() {
+    elements.forEach(el => {
+      const originalSize = parseFloat(el.dataset.originalFontSize);
+      if (originalSize) {
+        el.style.fontSize = (originalSize * currentFontSize / 100) + 'px';
+      }
+    });
+  }
+
   window.increaseFont = () => {
     currentFontSize += 10;
-    document.body.style.fontSize = currentFontSize + '%';
+    updateFontSizes();
   };
+
   window.decreaseFont = () => {
     currentFontSize = Math.max(70, currentFontSize - 10);
-    document.body.style.fontSize = currentFontSize + '%';
+    updateFontSizes();
   };
 
   // Toggle images
@@ -406,8 +430,6 @@ style.innerHTML = `
 }
 
 .disable-animation{
-  transition: none !important;
-  animation: none !important;
-}
+  }
 `;
 document.head.appendChild(style);
