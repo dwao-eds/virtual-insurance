@@ -376,7 +376,7 @@ style.innerHTML = `
 }
 
 .invert-colors *{
-   filter: saturate(30%) !important; 
+   filter: invert(220%);
 }
 .grayscale *{
   filter: grayscale(100%) !important;
