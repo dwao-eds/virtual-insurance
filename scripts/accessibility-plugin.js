@@ -235,7 +235,7 @@ buttons.forEach(button => {
   // Profiles
   window.applyProfile = (profile) => {
     if (profile === 'blind') toggleReadPage();
-    if (profile === 'visual') { toggleHighContrast(); increaseFont(); }
+    if (profile === 'visual') { toggleHighContrast(); increaseFonts(); }
     if (profile === 'cognitive') { toggleLetterSpacing(); toggleLineSpacing(); }
     if (profile === 'epilepsy') document.querySelectorAll('*').forEach(el => el.classList.toggle('disable-animation'));
     if (profile === 'adhd') { toggleReadingLine(); toggleImages(); }
@@ -430,6 +430,8 @@ style.innerHTML = `
 }
 
 .disable-animation{
+  animation: none !important;
+  transition: none !important;
   }
 `;
 document.head.appendChild(style);
