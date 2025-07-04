@@ -382,7 +382,7 @@ style.innerHTML = `
   filter: grayscale(100%) !important;
 }
 .low-saturation *{
-  filter: saturate(30%) !important;
+  filter: contrast(200%);;
 }
 
 /* Spacing */
