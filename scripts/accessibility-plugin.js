@@ -63,7 +63,7 @@
     .low-saturation * { filter: contrast(200%) !important; }
     .line-spacing p, .line-spacing li { line-height: 2 !important; }
     .letter-spacing p, .letter-spacing li { letter-spacing: 2px !important; }
-    .big-cursor { cursor: url('https://example.com/cursor.png'), auto !important; }
+    .big-cursor { cursor: url(../icons/icons-icon-img.png), auto !important; }
     .highlight-links a { outline: 2px dashed #f00 !important; background: #ffff99 !important; }
     .skip-link { position: absolute; top: 0px; left: 0; background: #000; color: #fff; padding: 8px; z-index: 10001;  }
     .skip-link:focus { top: 0; }
