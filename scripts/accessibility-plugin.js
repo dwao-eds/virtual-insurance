@@ -82,8 +82,8 @@
 
   const sections = [
     {
-      title: "🔁 Reset",
-      buttons: [{ text: "Reset All", fn: () => resetAllAccessibility() }],
+      title: "🔁 Reset All",
+      buttons: [{ text: "Reset", fn: () => resetAllAccessibility() }],
     },
     {
       title: "🧠 Profiles",
@@ -134,7 +134,7 @@
         { text: "📝 Image Descriptions", fn: () => toggleAltText() },
         { text: "📏 Adjust Line Spacing", fn: () => toggleLineSpacing() },
         { text: "🔡 Adjust Letter Spacing", fn: () => toggleLetterSpacing() },
-        { text: "🔡 Text Zoom", fn: () => toggleMagnifier() },
+        { text: "🔎 Text Zoom", fn: () => toggleMagnifier() },
         { text: "📜 Enable Skip Link", fn: () => insertSkipLink() },
         { text: "🛑 Pause Media/Animations", fn: () => pauseStopHideMedia() },
       ],
@@ -210,7 +210,6 @@
     });
   };
   window.toggleVirtualKeyboard = () => {
-    debugger;
     var keyboardWrapper = document.getElementById("keyboardWrapper");
     keyboardWrapper.style.display =
       keyboardWrapper.style.display === "none" ? "block" : "none";
@@ -405,7 +404,6 @@
     document.body.classList.toggle("big-buttons");
 
   window.toggleReadPage = () => {
-    debugger;
     if (window.speechSynthesis) {
       if (speech && window.speechSynthesis.speaking)
         window.speechSynthesis.cancel();
