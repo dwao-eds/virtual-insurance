@@ -1,437 +1,715 @@
-
 (function () {
-  const body = document.body;
+  let pageStrutcutre = false;
+  let linkloaded = false;
 
-  // Floating button
-  const toggleBtn = document.createElement('button');
-  toggleBtn.innerText = '🧩 Accessibility';
-  toggleBtn.id = 'accessibilityToggleBtn';
-  toggleBtn.style.cssText = `
-    position: fixed !important;
-    bottom: 10px;
-    left: 20px;
-    z-index: 9999;
-    background: #004080;
-    color: #fff;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  `;
-
-  // Plugin Panel
-  const panel = document.createElement('div');
-  panel.id = 'accessibilityPanel';
-  panel.style.cssText = `
-    position: fixed !important;
-    bottom: 50px;
-    left: 20px;
-    width: 340px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: #f9f9f9;
-    border-radius: 12px;
-    padding: 16px;
-    font-family: sans-serif;
-    font-size: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-    display: none;
-    z-index: 9998;
-  `;
-
-  panel.innerHTML = `
-    <h2>🧩 Accessibility Options</h2>
-
-    <h3>🧠 Profiles</h3>
-    <button onclick="applyProfile('blind')">Blindness</button>
-    <button onclick="applyProfile('visual')">Visually Impaired</button>
-    <button onclick="applyProfile('cognitive')">Cognitive</button>
-    <button onclick="applyProfile('epilepsy')">Epilepsy</button>
-    <button onclick="applyProfile('adhd')">ADHD</button>
-
-    <h3>📚 Content</h3>
-    <button onclick="increaseFont()">A+</button>
-    <button onclick="decreaseFont()">A−</button>
-    <button onclick="toggleImages()">🖼️ Hide/Show Img</button>
-    <button onclick="toggleAltText()">📝 Image Descriptions</button>
-    <button onclick="toggleLineSpacing()">📏 Adjust Line Spacing</button>
-    <button onclick="toggleLetterSpacing()">🔡 Adjust Letter Spacing</button>
-
-    <h3>🎨 Colors & Contrast</h3>
-    <button onclick="toggleHighContrast()">High Contrast</button>
-    <button onclick="toggleInvert()">Invert Colors</button>
-    <button onclick="toggleGrayscale()">Grayscale</button>
-    <button onclick="toggleSaturation()">Low Saturation</button>
-
-    <h3>🧭 Navigation</h3>
-    <button onclick="toggleReadingLine()">📖 Reading Line</button>
-    <button onclick="toggleHighlightLinks()">🔗 Highlight Links</button>
-    <button onclick="toggleBigCursor()">🖱️ Big Cursor</button>
-    <button onclick="toggleEnlargeButtons()">🔲 Enlarge Buttons</button>
-    <button onclick="toggleReadPage()">🔊 Read Page</button>
-  `;
-
-const buttons = panel.querySelectorAll('button');
-buttons.forEach(button => {
-  button.style.margin = '2px';
-  button.style.marginBottom ='5px'
-  button.style.padding = '4px 8px';
-  button.style.fontSize = '10px';
-});
-
-  document.body.appendChild(toggleBtn);
-  document.body.appendChild(panel);
-
-  toggleBtn.onclick = () => {
-    panel.style.display = (panel.style.display === 'none') ? 'block' : 'none';
-  };
-
-  // Functional states
   let currentFontSize = 100;
   let imagesHidden = false;
   let altShown = true;
-  let highContrast = false;
-  let readingLine;
-  let readingLineOn = false;
-  let letterSpaced = false;
-  let lineSpaced = false;
-  let bigCursor = false;
-  let buttonsEnlarged = false;
-  let speech;
+  let speech,
+    readingLine,
+    readingLineOn = false;
+  let skipLinkEnabled = false;
+  let mediaPaused = false;
+  let magnifierEnabled = false;
 
-  // Font controls
- const elements = [];
+  const createEl = (tag, props = {}, styles = {}, children = []) => {
+    const el = document.createElement(tag);
+    Object.assign(el, props);
+    Object.assign(el.style, styles);
+    children.forEach((child) => el.appendChild(child));
+    return el;
+  };
 
-  // Wait until DOM is loaded
-  document.addEventListener('DOMContentLoaded', () => {
-    // Select all elements
-    document.querySelectorAll('*').forEach(el => {
-      const computedSize = parseFloat(window.getComputedStyle(el).fontSize);
-      if (computedSize && !el.dataset.originalFontSize) {
-        el.dataset.originalFontSize = computedSize;
-        elements.push(el);
-      }
+  const css = `
+    #accessibilityToggleBtn {
+      position: fixed !important;
+      bottom: 10px;
+      left: 20px;
+      z-index: 9999;
+      background: #004080;
+      color: #fff;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #accessibilityPanel, #pageList {
+      position: fixed !important;
+      bottom: 50px;
+      left: 20px;
+      width: 340px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: sans-serif;
+      font-size: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      z-index: 9998;
+      display:none;
+    }
+    #accessibilityPanel button {
+      margin: 2px 0 5px;
+      padding: 4px 8px;
+      font-size: 10px;
+    }
+    .high-contrast { background-color: #000 !important; color: #FFD700 !important; }
+    .invert-colors * { filter: invert(220%); }
+    .grayscale * { filter: grayscale(100%) !important; }
+    .low-saturation * { filter: contrast(200%) !important; }
+    .line-spacing p, .line-spacing li { line-height: 2 !important; }
+    .letter-spacing p, .letter-spacing li { letter-spacing: 2px !important; }
+    .big-cursor { cursor: url('https://example.com/cursor.png'), auto !important; }
+    .highlight-links a { outline: 2px dashed #f00 !important; background: #ffff99 !important; }
+    .skip-link { position: absolute; top: 0px; left: 0; background: #000; color: #fff; padding: 8px; z-index: 10001;  }
+    .skip-link:focus { top: 0; }
+    .big-buttons button, .big-buttons input[type="submit"], .big-buttons a { transform: scale(1.06); }
+    .disable-animation { animation: none !important; transition: none !important; }
+    #ariaAlertRegion { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+  `;
+
+  const style = createEl("style", { innerHTML: css });
+  document.head.appendChild(style);
+
+  const toggleBtn = createEl("button", {
+    innerText: "🧩 Accessibility",
+    id: "accessibilityToggleBtn",
+  });
+  const panel = createEl("div", { id: "accessibilityPanel" });
+  const pageList = createEl("div", { id: "pageList" });
+  pageList.style.display = "none";
+
+  const sections = [
+    {
+      title: "🔁 Reset",
+      buttons: [{ text: "Reset All", fn: () => resetAllAccessibility() }],
+    },
+    {
+      title: "🧠 Profiles",
+      buttons: [
+        { text: "Blindness", fn: () => toggleReadPage() },
+        {
+          text: "Visually Impaired",
+          fn: () => {
+            toggleHighContrast();
+            increaseFont();
+          },
+        },
+        {
+          text: "Cognitive",
+          fn: () => {
+            toggleLetterSpacing();
+            toggleLineSpacing();
+          },
+        },
+        {
+          text: "Epilepsy",
+          fn: () =>
+            document
+              .querySelectorAll("*")
+              .forEach((el) => el.classList.toggle("disable-animation")),
+        },
+        {
+          text: "ADHD",
+          fn: () => {
+            toggleReadingLine();
+            toggleImages();
+          },
+        },
+        {
+          text: "Dyslexia",
+          fn: () => {
+            getDyslexiaFont();
+          },
+        },
+      ],
+    },
+    {
+      title: "📚 Content",
+      buttons: [
+        { text: "A+", fn: () => increaseFont() },
+        { text: "A−", fn: () => decreaseFont() },
+        { text: "🖼️ Hide/Show Img", fn: () => toggleImages() },
+        { text: "📝 Image Descriptions", fn: () => toggleAltText() },
+        { text: "📏 Adjust Line Spacing", fn: () => toggleLineSpacing() },
+        { text: "🔡 Adjust Letter Spacing", fn: () => toggleLetterSpacing() },
+        { text: "🔡 Text Zoom", fn: () => toggleMagnifier() },
+        { text: "📜 Enable Skip Link", fn: () => insertSkipLink() },
+        { text: "🛑 Pause Media/Animations", fn: () => pauseStopHideMedia() },
+      ],
+    },
+    {
+      title: "🎨 Colors & Contrast",
+      buttons: [
+        { text: "High Contrast", fn: () => toggleHighContrast() },
+        { text: "Invert Colors", fn: () => toggleInvert() },
+        { text: "Grayscale", fn: () => toggleGrayscale() },
+        { text: "Low Saturation", fn: () => toggleSaturation() },
+      ],
+    },
+    {
+      title: "🧭 Navigation",
+      buttons: [
+        { text: "📖 Reading Line", fn: () => toggleReadingLine() },
+        { text: "🔗 Highlight Links", fn: () => toggleHighlightLinks() },
+        { text: "🖱️ Big Cursor", fn: () => toggleBigCursor() },
+        { text: "🔲 Enlarge Buttons", fn: () => toggleEnlargeButtons() },
+        { text: "🔊 Read Page", fn: () => toggleReadPage() },
+        { text: "Page Structure", fn: () => getPageStructure() },
+        { text: "Virtual Keyboard", fn: () => toggleVirtualKeyboard() },
+      ],
+    },
+  ];
+
+  // Build panel content
+  sections.forEach(({ title, buttons }) => {
+    panel.appendChild(createEl("h3", { innerText: title }));
+    buttons.forEach(({ text, fn }) => {
+      const btn = createEl("button", { innerText: text });
+      btn.onclick = fn;
+      panel.appendChild(btn);
     });
   });
 
-  function updateFontSizes() {
-    elements.forEach(el => {
-      const originalSize = parseFloat(el.dataset.originalFontSize);
-      if (originalSize) {
-        el.style.fontSize = (originalSize * currentFontSize / 100) + 'px';
-      }
+  // Append to body
+  document.body.append(toggleBtn, panel, pageList);
+
+  toggleBtn.onclick = () => {
+    const visible = panel.style.display === "block";
+    panel.style.display = visible ? "none" : "block";
+    // pageList.style.display = visible ? "none" : "block";
+  };
+
+  // Auto-label form fields
+  document.querySelectorAll("input, textarea, select").forEach((el) => {
+    if (!el.hasAttribute("aria-label") && el.name) {
+      el.setAttribute("aria-label", el.name);
+    }
+  });
+
+  // Add aria live region
+  if (!document.getElementById("ariaAlertRegion")) {
+    const alertRegion = createEl("div", {
+      id: "ariaAlertRegion",
+      "aria-live": "polite",
     });
+    document.body.appendChild(alertRegion);
   }
+
+  const updateFontSizes = () => {
+    document.querySelectorAll("*").forEach((el) => {
+      const computedSize = window.getComputedStyle(el).fontSize;
+      if (!el.dataset.originalFontSize) {
+        el.dataset.originalFontSize = computedSize;
+      }
+
+      const originalSize = parseFloat(el.dataset.originalFontSize);
+      const newSize = (originalSize * currentFontSize) / 100;
+      el.style.fontSize = `${newSize}px`;
+    });
+  };
+  window.toggleVirtualKeyboard = () => {
+    debugger;
+    var keyboardWrapper = document.getElementById("keyboardWrapper");
+    keyboardWrapper.style.display =
+      keyboardWrapper.style.display === "none" ? "block" : "none";
+  };
 
   window.increaseFont = () => {
     currentFontSize += 10;
     updateFontSizes();
   };
-
   window.decreaseFont = () => {
     currentFontSize = Math.max(70, currentFontSize - 10);
     updateFontSizes();
   };
 
-  // Toggle images
   window.toggleImages = () => {
-    document.querySelectorAll('img').forEach(img => {
-      img.style.display = imagesHidden ? 'inline' : 'none';
-    });
+    console.log("this");
+    document
+      .querySelectorAll("img")
+      .forEach((img) => (img.style.display = imagesHidden ? "inline" : "none"));
     imagesHidden = !imagesHidden;
   };
 
-  // Alt text
   window.toggleAltText = () => {
-    document.querySelectorAll('img').forEach(img => {
-      if (altShown) {
-        if (img.alt) {
-          const span = document.createElement('span');
-          span.className = 'img-alt';
-          span.textContent = img.alt;
-          img.parentNode.insertBefore(span, img.nextSibling);
-        }
+    document.querySelectorAll("img").forEach((img) => {
+      if (altShown && img.alt) {
+        const span = createEl("span", {
+          className: "img-alt",
+          textContent: img.alt,
+        });
+        img.insertAdjacentElement("afterend", span);
       } else {
-        document.querySelectorAll('.img-alt').forEach(e => e.remove());
+        document.querySelectorAll(".img-alt").forEach((el) => el.remove());
       }
     });
     altShown = !altShown;
   };
 
-  // Contrast and color
-  window.toggleHighContrast = () => {
-    document.body.classList.toggle('high-contrast');
-  };
-  window.toggleInvert = () => {
-    document.body.classList.toggle('invert-colors');
-  };
-  window.toggleGrayscale = () => {
-    document.body.classList.toggle('grayscale');
-  };
-  window.toggleSaturation = () => {
-    document.body.classList.toggle('low-saturation');
+  window.insertSkipLink = () => {
+    const existingSkipLink = document.querySelector(".skip-link");
+    const main = document.querySelector('[data-id="main"]');
+
+    if (!skipLinkEnabled) {
+      // Enable Skip Link
+      if (!existingSkipLink) {
+        const skip = createEl("a", {
+          href: "#main",
+          className: "skip-link",
+          textContent: "Skip to main content",
+        });
+        skip.onfocus = () => (skip.style.top = "0");
+        skip.onblur = () => (skip.style.top = "-40px");
+        document.body.prepend(skip);
+      }
+
+      if (main) {
+        main.setAttribute("tabindex", "-1");
+        document.querySelector(".skip-link").addEventListener("click", () => {
+          main.focus();
+        });
+      }
+
+      skipLinkEnabled = true;
+    } else {
+      // Disable Skip Link
+      if (existingSkipLink) {
+        existingSkipLink.remove();
+      }
+      if (main) {
+        main.removeAttribute("tabindex");
+      }
+      skipLinkEnabled = false;
+    }
+
+    // Optional ARIA feedback
+    const alert = document.getElementById("ariaAlertRegion");
+    if (alert) {
+      alert.textContent = skipLinkEnabled
+        ? "Skip link enabled."
+        : "Skip link disabled.";
+    }
   };
 
-  // Spacing
-  window.toggleLineSpacing = () => {
-    document.body.classList.toggle('line-spacing');
-    lineSpaced = !lineSpaced;
-  };
-  window.toggleLetterSpacing = () => {
-    document.body.classList.toggle('letter-spacing');
-    letterSpaced = !letterSpaced;
+  window.getDyslexiaFont = () => {
+    if (!linkloaded) {
+      linkloaded = true;
+      const link = document.createElement("link");
+      link.id = "opendyslexic-css";
+      link.rel = "stylesheet";
+      link.href =
+        "https://cdn.jsdelivr.net/npm/opendyslexic@0.1.1/opendyslexic.css";
+      document.head.appendChild(link);
+      const style = document.createElement("style");
+      style.id = "dyslexia-font-style";
+      style.innerHTML = `
+    .dyslexia-font {
+      font-family: 'OpenDyslexic', Arial, Verdana, sans-serif !important;
+    }
+  `;
+      document.head.appendChild(style);
+    }
+    document.body.classList.toggle("dyslexia-font");
   };
 
-  // Navigation
+  window.pauseStopHideMedia = () => {
+    const pauseStyleId = "pause-css-animations";
+
+    if (!mediaPaused) {
+      // Pause all audio/video
+      document.querySelectorAll("audio, video").forEach((media) => {
+        if (!media.dataset.originalPlaybackState) {
+          media.dataset.originalPlaybackState = media.paused
+            ? "paused"
+            : "playing";
+        }
+        media.pause();
+      });
+
+      // Freeze animated GIFs (reload them)
+      document.querySelectorAll('img[src$=".gif"]').forEach((gif) => {
+        gif.dataset.originalSrc = gif.src;
+        gif.src = "";
+        gif.src = gif.dataset.originalSrc;
+      });
+
+      // Disable animations and transitions
+      if (!document.getElementById(pauseStyleId)) {
+        const css = createEl("style", {
+          id: pauseStyleId,
+          innerHTML:
+            "* { animation: none !important; transition: none !important; }",
+        });
+        document.head.appendChild(css);
+      }
+
+      mediaPaused = true;
+    } else {
+      // Resume media that were playing
+      document.querySelectorAll("audio, video").forEach((media) => {
+        if (media.dataset.originalPlaybackState === "playing") {
+          media.play();
+        }
+      });
+
+      // Re-enable animations and transitions
+      const styleTag = document.getElementById(pauseStyleId);
+      if (styleTag) {
+        styleTag.remove();
+      }
+
+      mediaPaused = false;
+    }
+  };
+
+  window.toggleHighContrast = () =>
+    document.body.classList.toggle("high-contrast");
+  window.toggleInvert = () => document.body.classList.toggle("invert-colors");
+  window.toggleGrayscale = () => document.body.classList.toggle("grayscale");
+  window.toggleSaturation = () =>
+    document.body.classList.toggle("low-saturation");
+  window.toggleLineSpacing = () =>
+    document.body.classList.toggle("line-spacing");
+  window.toggleLetterSpacing = () =>
+    document.body.classList.toggle("letter-spacing");
+
   window.toggleReadingLine = () => {
     if (!readingLineOn) {
-      readingLine = document.createElement('div');
-      readingLine.id = 'readingLine';
-      readingLine.style.cssText = `
-        position: fixed;
-        height: 2px;
-        width: 100%;
-        background: red;
-        top: 50%;
-        left: 0;
-        z-index: 10000;
-        pointer-events: none;
-      `;
+      readingLine = createEl(
+        "div",
+        { id: "readingLine" },
+        {
+          position: "fixed",
+          height: "2px",
+          width: "100%",
+          background: "red",
+          top: "50%",
+          left: "0",
+          zIndex: "10000",
+          pointerEvents: "none",
+        }
+      );
       document.body.appendChild(readingLine);
-    } else {
-      if (readingLine) readingLine.remove();
+    } else if (readingLine) {
+      readingLine.remove();
     }
     readingLineOn = !readingLineOn;
   };
 
-  window.toggleHighlightLinks = () => {
-    document.querySelectorAll('a').forEach(a => {
-      a.style.outline = a.style.outline ? '' : '2px dashed orange';
-    });
-  };
+  window.toggleHighlightLinks = () =>
+    document.body.classList.toggle("highlight-links");
+  window.toggleBigCursor = () => document.body.classList.toggle("big-cursor");
+  window.toggleEnlargeButtons = () =>
+    document.body.classList.toggle("big-buttons");
 
-  window.toggleBigCursor = () => {
-    document.body.style.cursor = bigCursor ? '' : 'url(./icons/icons8-cursor-50.png), auto';
-    bigCursor = !bigCursor;
-  };
-
-  window.toggleEnlargeButtons = () => {
-  document.body.classList.toggle('big-buttons');
-  };
-
-  // Screen reader
   window.toggleReadPage = () => {
+    debugger;
     if (window.speechSynthesis) {
-      if (speech && window.speechSynthesis.speaking) {
+      if (speech && window.speechSynthesis.speaking)
         window.speechSynthesis.cancel();
-      } else {
+      else {
         speech = new SpeechSynthesisUtterance(document.body.innerText);
-        speech.lang = 'en-IN';
+        speech.lang = "en-IN";
         window.speechSynthesis.speak(speech);
       }
     }
   };
 
-  // Profiles
-  window.applyProfile = (profile) => {
-    if (profile === 'blind') toggleReadPage();
-    if (profile === 'visual') { toggleHighContrast(); increaseFonts(); }
-    if (profile === 'cognitive') { toggleLetterSpacing(); toggleLineSpacing(); }
-    if (profile === 'epilepsy') document.querySelectorAll('*').forEach(el => el.classList.toggle('disable-animation'));
-    if (profile === 'adhd') { toggleReadingLine(); toggleImages(); }
+  window.toggleMagnifier = () => {
+    const elements = document.querySelectorAll("p, li, h1, h2, h3, h4, h5");
+
+    if (!magnifierEnabled) {
+      elements.forEach((el) => {
+        el.style.transition = "transform 0.2s";
+        el.addEventListener("mouseover", magnify);
+        el.addEventListener("mouseout", resetMagnify);
+      });
+      magnifierEnabled = true;
+    } else {
+      elements.forEach((el) => {
+        el.removeEventListener("mouseover", magnify);
+        el.removeEventListener("mouseout", resetMagnify);
+        el.style.transform = "none"; // Reset any existing scale
+      });
+      magnifierEnabled = false;
+    }
   };
 
-})();
-
-
-
-// --- Additional UI and interaction enhancements --- //
-
-window.toggleTextAlign = function (alignType) {
-  document.body.style.textAlign = alignType;
-};
-
-window.toggleMagnifier = function () {
-  document.querySelectorAll('p, li, h1, h2, h3, h4, h5').forEach(el => {
-    el.addEventListener('mouseover', () => el.style.transform = 'scale(1.2)');
-    el.addEventListener('mouseout', () => el.style.transform = 'scale(1)');
-    el.style.transition = 'transform 0.2s';
-  });
-};
-
-window.toggleReadingMask = function () {
-  let mask = document.getElementById('readingMask');
-  if (mask) {
-    mask.remove();
-  } else {
-    const div = document.createElement('div');
-    div.id = 'readingMask';
-    div.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      pointer-events: none;
-      z-index: 9996;
-    `;
-    document.body.appendChild(div);
+  // Helper functions
+  function magnify(e) {
+    e.target.style.transform = "scale(1.2)";
   }
-};
-
-window.highlightHeadings = function () {
-  document.querySelectorAll('h1, h2, h3, h4, h5').forEach(el => {
-    el.style.background = 'yellow';
-    el.style.border = '2px dashed #000';
-  });
-};
-
-window.showPageStructure = function () {
-  const headings = document.querySelectorAll('h1, h2, h3');
-  headings.forEach(h => h.style.outline = '2px solid red');
-  const links = document.querySelectorAll('a');
-  links.forEach(a => a.style.outline = '2px dotted blue');
-};
-
-window.insertSkipLink = function () {
-  if (!document.querySelector('.skip-link')) {
-    const skip = document.createElement('a');
-    skip.href = '#main';
-    skip.className = 'skip-link';
-    skip.textContent = 'Skip to main content';
-    skip.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: #000;
-      color: #fff;
-      padding: 8px;
-      z-index: 10001;
-    `;
-    document.body.insertBefore(skip, document.body.firstChild);
+  function resetMagnify(e) {
+    e.target.style.transform = "scale(1)";
   }
-};
 
-window.insertSkipLink();
+  window.getPageStructure = () => {
+    const pageList = document.getElementById("pageList");
 
-window.toggleColorSwatch = function(type) {
-  const bg = type === 'dark' ? '#000' : '#fff';
-  const color = type === 'dark' ? '#fff' : '#000';
-  document.body.style.background = bg;
-  document.body.style.color = color;
-};
+    if (!pageStrutcutre) {
+      function createEl(tag, props = {}) {
+        const el = document.createElement(tag);
+        Object.entries(props).forEach(([key, value]) => {
+          if (key === "style") {
+            Object.assign(el.style, value);
+          } else {
+            el[key] = value;
+          }
+        });
+        return el;
+      }
+      const header = createEl("h1", {
+        innerText: "Page Structure",
+        style: { fontSize: "18px", marginBottom: "10px" },
+      });
+      const closeBtn = createEl("span", {
+        innerText: "X",
+        className: "close-popup",
+        style: {
+          cursor: "pointer",
+          float: "right",
+          fontWeight: "bold",
+          color: "#a00",
+        },
+      });
 
-window.triggerTimeoutWarning = function () {
-  setTimeout(() => {
-    alert('Session will expire soon due to inactivity. Please interact to continue.');
-  }, 5000);
-};
+      closeBtn.onclick = () => {
+        pageList.style.display = "none";
+      };
 
-window.activateDictionary = function () {
-  document.addEventListener('mouseup', () => {
-    const text = window.getSelection().toString();
-    if (text.length > 3) {
-      alert('Selected word: "' + text + '"\n(Dictionary: feature placeholder)');
+      pageList.appendChild(header);
+      pageList.appendChild(closeBtn);
+
+      pageStrutcutre = true;
+      document
+        .querySelectorAll('[data-page-structure="true"]')
+        .forEach((link) => {
+          const a = createEl("a", {
+            href: link.href,
+            textContent: link.textContent,
+            target: "_blank",
+            style: { display: "block", margin: "4px 0" },
+          });
+          pageList.appendChild(a);
+        });
     }
-  });
-};
+    pageList.style.display =
+      pageList.style.display === "none" ? "block" : "none";
+  };
 
-window.enableVirtualKeyboard = function () {
-  alert("Virtual keyboard integration placeholder. Use browser plugin for now.");
-};
+  window.resetFontSize = () => {
+    document.querySelectorAll("*").forEach((el) => {
+      if (el.dataset.originalFontSize) {
+        el.style.fontSize = ""; // remove inline style
+        delete el.dataset.originalFontSize; // remove data attribute
+      }
+    });
+    currentFontSize = 100;
+  };
 
+  window.enableVirtualKeyboard = () => {
+    // Create keyboard wrapper
+    const keyboardWrapper = document.createElement("div");
+    keyboardWrapper.className = "keyboardWrapper";
+    keyboardWrapper.id = "keyboardWrapper";
 
+    keyboardWrapper.style.position = "fixed";
+    keyboardWrapper.style.bottom = "20px"; // margin from bottom
+    keyboardWrapper.style.left = "50%";
+    keyboardWrapper.style.transform = "translateX(-50%)";
+    keyboardWrapper.style.backgroundColor = "#f9f9f9";
+    keyboardWrapper.style.border = "2px solid #ccc";
+    keyboardWrapper.style.borderRadius = "10px";
+    keyboardWrapper.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.2)";
+    keyboardWrapper.style.padding = "20px";
+    keyboardWrapper.style.zIndex = "1000";
+    keyboardWrapper.style.maxWidth = "600px";
+    keyboardWrapper.style.width = "95%";
+    keyboardWrapper.style.boxSizing = "border-box";
+    keyboardWrapper.style.display = "none";
 
-// Aliases and Enhancements
+    const inputWrapper = document.createElement("div");
+    inputWrapper.style.display = "flex";
+    inputWrapper.style.alignItems = "center";
+    inputWrapper.style.justifyContent = "space-between";
+    inputWrapper.style.marginBottom = "10px";
 
-// Alias for enlargeButtons
-// window.enlargeButtons = toggleEnlargeButtons;
+    const inputFired = document.createElement("input");
+    inputFired.id = "inputField";
+    inputFired.type = "text";
+    inputFired.style.fontSize = "16px";
+    inputFired.style.width = "100%";
+    inputFired.style.padding = "5px";
+    inputFired.style.flex = "1";
 
-// Alias for highlightLinks
-window.highlightLinks = toggleHighlightLinks;
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "✖";
+    closeBtn.style.marginLeft = "10px";
+    closeBtn.style.fontSize = "18px";
+    closeBtn.style.cursor = "pointer";
+    closeBtn.style.border = "none";
+    closeBtn.style.background = "transparent";
+    closeBtn.style.color = "#888";
+    closeBtn.style.padding = "0 8px";
 
-// Add aria-live to alert region if missing
-if (!document.getElementById('ariaAlertRegion')) {
-  const alertRegion = document.createElement('div');
-  alertRegion.id = 'ariaAlertRegion';
-  alertRegion.setAttribute('aria-live', 'polite');
-  alertRegion.style.cssText = 'position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;';
-  document.body.appendChild(alertRegion);
-}
+    closeBtn.onclick = () => {
+      keyboardWrapper.style.display =
+        keyboardWrapper.style.display === "none" ? "block" : "none";
+    };
 
-// Auto-inject aria-labels for form inputs if not labeled
-document.querySelectorAll('input, textarea, select').forEach(el => {
-  if (!el.hasAttribute('aria-label') && el.name) {
-    el.setAttribute('aria-label', el.name);
-  }
-});
+    inputWrapper.appendChild(inputFired);
+    inputWrapper.appendChild(closeBtn);
+    keyboardWrapper.appendChild(inputWrapper);
 
-const style = document.createElement('style');
-style.innerHTML = `
-/* Color and Contrast */
-.high-contrast {
-  background-color: #000 !important;
-  color: #FFD700 !important;
-}
+    // Create keyboard container
+    const keyboardContainer = document.createElement("div");
+    keyboardContainer.id = "virtualKeyboard";
+    keyboardContainer.style.backgroundColor = "#eee";
+    keyboardContainer.style.padding = "10px";
+    keyboardContainer.style.display = "inline-block";
+    keyboardContainer.style.width = "100%";
 
-.invert-colors *{
-   filter: invert(220%);
-}
-.grayscale *{
-  filter: grayscale(100%) !important;
-}
-.low-saturation *{
-  filter: contrast(200%);;
-}
+    keyboardWrapper.appendChild(keyboardContainer);
+    document.body.appendChild(keyboardWrapper);
 
-/* Spacing */
-.line-spacing p, .line-spacing li {
-  line-height: 2 !important;
-}
-.letter-spacing p, .letter-spacing li {
-  letter-spacing: 2px !important;
-}
+    const input = document.getElementById("inputField");
+    let isShift = false;
 
-/* Big Cursor */
-.big-cursor {
-  cursor: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFLKwqYzudtbbrkofsTtn_b7vkbeeOdFM3WdCFtKLrc71SwDKiPQx3n1DCVUH9PggNIdo&usqp=CAU'), auto !important;
-}
+    // Keyboard layout by rows
+    const layout = [
+      ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Del"],
+      ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+      ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Return"],
+      ["Shift", "Z", "X", "C", "V", "B", "N", "M", "."],
+      ["Space"],
+    ];
 
-/* Enlarged Buttons */
-.enlarge-buttons button {
-  font-size: 1.25em !important;
-  padding: 1em 1.5em !important;
-}
+    layout.forEach((rowKeys) => {
+      const row = document.createElement("div");
+      row.style.display = "flex";
+      row.style.justifyContent = "center";
+      row.style.marginBottom = "5px";
 
-/* Highlight Links */
-.highlight-links a {
-  outline: 2px dashed #f00 !important;
-  background: #ffff99 !important;
-}
+      rowKeys.forEach((key) => {
+        const btn = document.createElement("button");
+        btn.textContent = key === "Space" ? "␣" : key;
+        btn.style.margin = "4px";
+        btn.style.padding = "10px 14px";
+        btn.style.fontSize = "14px";
+        btn.style.minWidth =
+          key === "Space" ? "300px" : key.length > 1 ? "70px" : "40px";
+        btn.style.cursor = "pointer";
+        btn.style.border = "1px solid #aaa";
+        btn.style.borderRadius = "4px";
+        btn.style.backgroundColor = "#fff";
 
-/* Skip Link */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: #000;
-  color: #fff;
-  padding: 8px;
-  z-index: 10001;
-      display: none;
-}
-.skip-link:focus {
-  top: 0;
-}
+        btn.addEventListener("click", () => {
+          switch (key) {
+            case "Del":
+              input.value = input.value.slice(0, -1);
+              break;
+            case "Return":
+              input.value += "\n";
+              break;
+            case "Space":
+              input.value += " ";
+              break;
+            case "Shift":
+              isShift = !isShift;
+              updateKeyLabels();
+              break;
+            default:
+              input.value += isShift ? key.toUpperCase() : key.toLowerCase();
+              if (isShift) {
+                isShift = false;
+                updateKeyLabels();
+              }
+          }
+          input.focus();
+        });
 
-.big-buttons button, .big-buttons input[type="submit"], .big-buttons a{
-  transform: scale(1.06);
-}
+        btn.dataset.keyValue = key;
+        row.appendChild(btn);
+      });
 
-.disable-animation{
-  animation: none !important;
-  transition: none !important;
-  }
-`;
-document.head.appendChild(style);
+      keyboardContainer.appendChild(row);
+    });
+
+    // Toggle case on Shift
+    function updateKeyLabels() {
+      const allButtons = keyboardContainer.querySelectorAll("button");
+      allButtons.forEach((btn) => {
+        const key = btn.dataset.keyValue;
+        if (key.length === 1 && /[a-z0-9]/i.test(key)) {
+          btn.textContent = isShift ? key.toUpperCase() : key.toLowerCase();
+        } else if (key === "Space") {
+          btn.textContent = "␣";
+        } else {
+          btn.textContent = key;
+        }
+      });
+    }
+  };
+  enableVirtualKeyboard();
+  window.resetAllAccessibility = () => {
+    // Reset font size
+    // currentFontSize = 100;
+    // updateFontSizes();
+    resetFontSize();
+    // Show images
+    imagesHidden = false;
+    document
+      .querySelectorAll("img")
+      .forEach((img) => (img.style.display = "inline"));
+
+    // Remove alt overlays
+    document.querySelectorAll(".img-alt").forEach((el) => el.remove());
+    altShown = true;
+
+    // Remove all accessibility-related classes from <body>
+    document.body.classList.remove(
+      "high-contrast",
+      "invert-colors",
+      "grayscale",
+      "low-saturation",
+      "line-spacing",
+      "letter-spacing",
+      "big-cursor",
+      "highlight-links",
+      "big-buttons",
+      "dyslexia-font"
+    );
+
+    // Remove reading line if active
+    const rl = document.getElementById("readingLine");
+    if (rl) rl.remove();
+    readingLineOn = false;
+
+    // Cancel screen reader voice if speaking
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+
+    // Remove skip link
+    const skipLink = document.querySelector(".skip-link");
+    if (skipLink) skipLink.remove();
+
+    // Remove CSS that disables animation
+    const pauseCSS = document.getElementById("pause-css-animations");
+    if (pauseCSS) pauseCSS.remove();
+
+    // Optional: Reset transform zoom effects
+    document.querySelectorAll("p, li, h1, h2, h3, h4, h5").forEach((el) => {
+      el.style.transform = "none";
+      el.onmouseover = null;
+      el.onmouseout = null;
+    });
+
+    // Optional: Hide page structure and keyboard
+    const pageList = document.getElementById("pageList");
+    if (pageList) pageList.style.display = "none";
+
+    const keyboardWrapper = document.getElementById("keyboardWrapper");
+    if (keyboardWrapper) keyboardWrapper.style.display = "none";
+  };
+})();

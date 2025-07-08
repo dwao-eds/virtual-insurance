@@ -49,6 +49,7 @@ function focusNavSection() {
 function toggleAllNavSections(sections, expanded = false) {
   sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
     section.setAttribute('aria-expanded', expanded);
+    // section.setAttribute('data-page-structure',true)
   });
 }
 
@@ -68,10 +69,14 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
   // enable nav dropdown keyboard accessibility
   const navDrops = navSections.querySelectorAll('.nav-drop');
-  navDrops.forEach((navDrop)=>{
-    const anchor=navDrop.querySelectorAll('a');
-    anchor.forEach((item)=>item.setAttribute("target","_blank"))
-  })
+  navDrops.forEach((navDrop) => {
+    const anchor = navDrop.querySelectorAll('a');
+    anchor.forEach((item) => {
+      item.setAttribute("target", "_blank");
+      item.setAttribute("data-page-structure", true);
+    });
+  });
+  
   if (isDesktop.matches) {
     navDrops.forEach((drop) => {
       if (!drop.hasAttribute('tabindex')) {
