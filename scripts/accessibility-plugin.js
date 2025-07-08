@@ -12,6 +12,9 @@
   let mediaPaused = false;
   let magnifierEnabled = false;
 
+  let alignmentStates = ["left", "center", "right", null];
+  let currentAlignmentIndex = 0;
+
   const createEl = (tag, props = {}, styles = {}, children = []) => {
     const el = document.createElement(tag);
     Object.assign(el, props);
@@ -137,6 +140,7 @@
         { text: "🔎 Text Zoom", fn: () => toggleMagnifier() },
         { text: "📜 Enable Skip Link", fn: () => insertSkipLink() },
         { text: "🛑 Pause Media/Animations", fn: () => pauseStopHideMedia() },
+        { text: "📝 Toggle Text Alignment", fn: () => toggleTextAlignment() },
       ],
     },
     {
@@ -215,6 +219,30 @@
       keyboardWrapper.style.display === "none" ? "block" : "none";
   };
 
+
+  window.toggleTextAlignment = () => {
+    const align = alignmentStates[currentAlignmentIndex];
+
+    // Remove all previous alignments
+    document
+      .querySelectorAll("p, h1, h2, h3, h4, h5, h6")
+      .forEach((el) => {
+        el.style.textAlign = "";
+      });
+
+    // Apply new alignment if not null
+    if (align) {
+      document
+        .querySelectorAll("p, h1, h2, h3, h4, h5, h6")
+        .forEach((el) => {
+          el.style.textAlign = align;
+        });
+    }
+
+    // Update index for next toggle
+    currentAlignmentIndex =
+      (currentAlignmentIndex + 1) % alignmentStates.length;
+  };
   window.increaseFont = () => {
     currentFontSize += 10;
     updateFontSizes();
@@ -709,5 +737,11 @@
 
     const keyboardWrapper = document.getElementById("keyboardWrapper");
     if (keyboardWrapper) keyboardWrapper.style.display = "none";
+    currentAlignmentIndex = 0;
+    document
+      .querySelectorAll("p, h1, h2, h3, h4, h5, h6, li, div")
+      .forEach((el) => {
+        el.style.textAlign = "";
+      });
   };
 })();
