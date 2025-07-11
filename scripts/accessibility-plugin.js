@@ -176,7 +176,7 @@
 }
 
 /* Accordion container */
-.accordion-container {
+.accordion-container-acces{
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -184,7 +184,7 @@
 }
 
 /* Accordion items */
-.accordion-item {
+.accordion-item-acces {
     width: 360px;
     border: 1px solid rgba(17, 17, 17, 0.2);
     border-radius: 10px;
@@ -218,7 +218,7 @@
     color: #111111;
 }
 
-.accordion-item.active .accordion-icon {
+.accordion-item-acces.active .accordion-icon {
     transform: rotate(180deg);
 }
 
@@ -229,7 +229,7 @@
     padding-top: 0;
 }
 
-.accordion-item.active .accordion-content {
+.accordion-item-acces.active .accordion-content {
     max-height: 500px;
     padding-top: 24px;
 }
@@ -356,7 +356,7 @@
         padding: 20px 16px;
     }
     
-    .accordion-item {
+    .accordion-item-acces {
         width: 100%;
     }
     
@@ -852,7 +852,7 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     });
 
     content.appendChild(grid);
-    const item = createEl("div", { class: "accordion-item" }, [
+    const item = createEl("div", { class: "accordion-item-acces" }, [
       trigger,
       content,
     ]);
@@ -880,7 +880,7 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
       innerHTML: "Reset All",
     });
     const scrollArea = createEl("div", { class: "scroll-area" });
-    const container = createEl("div", { class: "accordion-container" });
+    const container = createEl("div", { class: "accordion-container-acces" });
     accessibilitySections.forEach((section) =>
       container.appendChild(createAccordionSection(section))
     );
@@ -1619,7 +1619,7 @@ document.addEventListener("DOMContentLoaded", function () {
   accordionTriggers.forEach((trigger) => {
     trigger.addEventListener("click", function () {
       const targetId = this.getAttribute("data-target");
-      const accordionItem = this.closest(".accordion-item");
+      const accordionItem = this.closest(".accordion-item-acces");
       const content = document.getElementById(targetId);
 
       // Toggle active state
@@ -1628,7 +1628,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Close other accordion items
       accordionTriggers.forEach((otherTrigger) => {
         if (otherTrigger !== trigger) {
-          const otherItem = otherTrigger.closest(".accordion-item");
+          const otherItem = otherTrigger.closest(".accordion-item-acces");
           otherItem.classList.remove("active");
         }
       });
@@ -1729,7 +1729,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Initialize with first accordion open
-  const firstAccordion = document.querySelector(".accordion-item");
+  const firstAccordion = document.querySelector(".accordion-item-acces");
   if (firstAccordion) {
     firstAccordion.classList.add("active");
   }
