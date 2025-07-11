@@ -64,6 +64,23 @@
     z-index: 9998;
     display: none;
 }
+
+@media (max-width: 768px) {
+  .accessibility-panel,
+  #pageList {
+    width: 90vw;
+    left: 5vw;
+    right: 5vw;
+    bottom: 20px;
+    padding: 12px;
+    font-size: 11px;
+    gap: 20px;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  }
+}
+
   #pageList {
     display: inline-flex;
     flex-direction: column;
@@ -182,6 +199,13 @@
     width: 100%;
 }
 
+@media (max-width: 768px) {
+  .accordion-container-acces {
+    width: 90%;
+  }
+}
+
+
 /* Accordion items */
 .accordion-item-acces {
     width: 360px;
@@ -265,6 +289,13 @@
     position: relative;
 }
 
+@media (max-width: 768px) {
+  .option-card {
+    padding: 4px 8px;
+  }
+}
+
+
 .option-card:hover {
     border-color: #663db3;
     box-shadow: 0 2px 8px rgba(102, 61, 179, 0.1);
@@ -339,6 +370,13 @@
     border-radius: 2px;
 }
 
+@media (max-width: 768px) {
+  .scrollbar {
+ display: none;
+  }
+}
+
+
 .scrollbar-thumb {
     position: absolute;
     width: 3px;
@@ -351,7 +389,7 @@
 @media (max-width: 480px) {
     .accessibility-panel {
         width: 100%;
-        max-width: 360px;
+        max-width: 80%;
         padding: 20px 16px;
     }
     
@@ -966,17 +1004,17 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     if (stepUl) {
       updateActiveStepIndicator(stepUl, fontSizeLevel);
     }
-  };  
+  };
 
   window.toggleVirtualKeyboard = () => {
     var keyboardWrapper = document.getElementById("keyboardWrapper");
     keyboardWrapper.style.display =
       keyboardWrapper.style.display === "none" ? "block" : "none";
 
- 
 
-     
-    
+
+
+
   };
 
   const toggleTextAlign = createThreeStepToggle({
@@ -1616,15 +1654,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   function insertToActiveInput(char) {
     const el = lastFocusedInput;
-  
+
     if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA")) {
       const start = el.selectionStart;
       const end = el.selectionEnd;
       const value = el.value;
-  
+
       let newValue = value;
       let newCaretPos = start;
-  
+
       if (char === "Del") {
         if (start > 0) {
           newValue = value.slice(0, start - 1) + value.slice(end);
@@ -1642,17 +1680,17 @@ document.addEventListener("DOMContentLoaded", function () {
         newValue = value.slice(0, start) + finalChar + value.slice(end);
         newCaretPos = start + 1;
       }
-  
+
       el.value = newValue;
       el.focus();
       el.selectionStart = el.selectionEnd = newCaretPos;
-  
+
       el.dispatchEvent(new Event("input", { bubbles: true }));
     } else {
       console.warn("No input is focused.");
     }
   }
-  
+
 
   document.querySelectorAll(".virtual-key").forEach((key) => {
     key.addEventListener("click", () => {
