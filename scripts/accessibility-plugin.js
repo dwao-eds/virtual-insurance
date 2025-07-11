@@ -14,8 +14,7 @@
   let fontSizeLevel = 0;
   const fontSizeSteps = [100, 110, 120]; // percentages
 
-  let alignmentStates = ["left", "center", "right", null];
-  let currentAlignmentIndex = 0;
+
 
   // const createEl = (tag, props = {}, styles = {}, children = []) => {
   //   const el = document.createElement(tag);
@@ -928,7 +927,6 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
   }
 
   function createThreeStepToggle(options) {
-    debugger;
     let currentStep = 0;
 
     return function toggle() {
@@ -942,14 +940,12 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     };
   }
   function updateActiveStepIndicator(ulElement, activeIndex) {
-    debugger;
     const liItems = ulElement.querySelectorAll("li");
     liItems.forEach((li, index) => {
       li.classList.toggle("active", index === activeIndex);
     });
   }
   const updateFontSizes = (e) => {
-    debugger;
     // Cycle through 0 → 3 → 0 again
     fontSizeLevel = (fontSizeLevel + 1) % fontSizeSteps.length;
     const scale = fontSizeSteps[fontSizeLevel];
@@ -970,11 +966,17 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     if (stepUl) {
       updateActiveStepIndicator(stepUl, fontSizeLevel);
     }
-  };
+  };  
+
   window.toggleVirtualKeyboard = () => {
     var keyboardWrapper = document.getElementById("keyboardWrapper");
     keyboardWrapper.style.display =
       keyboardWrapper.style.display === "none" ? "block" : "none";
+
+ 
+
+     
+    
   };
 
   const toggleTextAlign = createThreeStepToggle({
@@ -1006,7 +1008,6 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
   //     (currentAlignmentIndex + 1) % alignmentStates.length;
   // };
   window.increaseFont = (e) => {
-    debugger;
     currentFontSize += 10;
     updateFontSizes(e);
   };
@@ -1067,7 +1068,6 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
   });
 
   window.insertSkipLink = () => {
-    debugger;
     const existingSkipLink = document.querySelector(".skip-link");
     const main = document.querySelector('[data-id="main"]');
 
@@ -1195,7 +1195,6 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     document.body.classList.toggle("letter-spacing");
 
   window.toggleReadingLine = () => {
-    debugger;
     if (!readingLineOn) {
       readingLine = createEl("div", { id: "readingLine" });
       document.body.appendChild(readingLine);
@@ -1425,14 +1424,6 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     inputWrapper.style.justifyContent = "space-between";
     inputWrapper.style.marginBottom = "10px";
 
-    const inputFired = document.createElement("input");
-    inputFired.id = "inputField";
-    inputFired.type = "text";
-    inputFired.style.fontSize = "16px";
-    inputFired.style.width = "100%";
-    inputFired.style.padding = "5px";
-    inputFired.style.flex = "1";
-
     const closeBtn = document.createElement("button");
     closeBtn.textContent = "✖";
     closeBtn.style.marginLeft = "10px";
@@ -1448,7 +1439,6 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
         keyboardWrapper.style.display === "none" ? "block" : "none";
     };
 
-    inputWrapper.appendChild(inputFired);
     inputWrapper.appendChild(closeBtn);
     keyboardWrapper.appendChild(inputWrapper);
 
@@ -1463,14 +1453,14 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     keyboardWrapper.appendChild(keyboardContainer);
     document.body.appendChild(keyboardWrapper);
 
-    const input = document.getElementById("inputField");
+    // const input = document.getElementById("inputField");
     let isShift = false;
 
     // Keyboard layout by rows
     const layout = [
-      ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Del"],
+      ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "@"],
       ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-      ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Return"],
+      ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Del"],
       ["Shift", "Z", "X", "C", "V", "B", "N", "M", "."],
       ["Space"],
     ];
@@ -1493,31 +1483,33 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
         btn.style.border = "1px solid #aaa";
         btn.style.borderRadius = "4px";
         btn.style.backgroundColor = "#fff";
+        btn.className = "virtual-key";
 
-        btn.addEventListener("click", () => {
-          switch (key) {
-            case "Del":
-              input.value = input.value.slice(0, -1);
-              break;
-            case "Return":
-              input.value += "\n";
-              break;
-            case "Space":
-              input.value += " ";
-              break;
-            case "Shift":
-              isShift = !isShift;
-              updateKeyLabels();
-              break;
-            default:
-              input.value += isShift ? key.toUpperCase() : key.toLowerCase();
-              if (isShift) {
-                isShift = false;
-                updateKeyLabels();
-              }
-          }
-          input.focus();
-        });
+        // btn.addEventListener("click", () => {
+        //   debugger
+        //   switch (key) {
+        //     case "Del":
+        //       input.value = input.value.slice(0, -1);
+        //       break;
+        //     case "Return":
+        //       input.value += "\n";
+        //       break;
+        //     case "Space":
+        //       input.value += " ";
+        //       break;
+        //     case "Shift":
+        //       isShift = !isShift;
+        //       updateKeyLabels();
+        //       break;
+        //     default:
+        //       input.value += isShift ? key.toUpperCase() : key.toLowerCase();
+        //       if (isShift) {
+        //         isShift = false;
+        //         updateKeyLabels();
+        //       }
+        //   }
+        //   input.focus();
+        // });
 
         btn.dataset.keyValue = key;
         row.appendChild(btn);
@@ -1610,6 +1602,65 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
 })();
 // Accordion functionality
 document.addEventListener("DOMContentLoaded", function () {
+  let lastFocusedInput = null;
+  let isShift = false;
+
+  document.addEventListener("focusin", (e) => {
+    if (
+      e.target.tagName === "INPUT" ||
+      e.target.tagName === "TEXTAREA" ||
+      e.target.isContentEditable
+    ) {
+      lastFocusedInput = e.target;
+    }
+  });
+  function insertToActiveInput(char) {
+    const el = lastFocusedInput;
+  
+    if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA")) {
+      const start = el.selectionStart;
+      const end = el.selectionEnd;
+      const value = el.value;
+  
+      let newValue = value;
+      let newCaretPos = start;
+  
+      if (char === "Del") {
+        if (start > 0) {
+          newValue = value.slice(0, start - 1) + value.slice(end);
+          newCaretPos = start - 1;
+        }
+      } else if (char === "Space") {
+        newValue = value.slice(0, start) + " " + value.slice(end);
+        newCaretPos = start + 1;
+      } else if (char === "Shift") {
+        isShift = !isShift;
+        console.log("Shift toggled:", isShift ? "UPPERCASE" : "lowercase");
+        return; // Don't insert text for Shift key itself
+      } else {
+        const finalChar = isShift ? char.toUpperCase() : char.toLowerCase();
+        newValue = value.slice(0, start) + finalChar + value.slice(end);
+        newCaretPos = start + 1;
+      }
+  
+      el.value = newValue;
+      el.focus();
+      el.selectionStart = el.selectionEnd = newCaretPos;
+  
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+    } else {
+      console.warn("No input is focused.");
+    }
+  }
+  
+
+  document.querySelectorAll(".virtual-key").forEach((key) => {
+    key.addEventListener("click", () => {
+      const char = key.dataset.keyValue;
+      insertToActiveInput(char);
+    });
+  });
+
   const accordionTriggers = document.querySelectorAll(".accordion-trigger");
   const optionCards = document.querySelectorAll(".option-card:not(.empty)");
   const resetAllBtn = document.querySelector(".reset-all");
@@ -1683,7 +1734,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add closing animation
     const panel = document.querySelector(".accessibility-panel");
     panel.style.transform = "scale(0.95)";
-    panel.style.opacity = "0";
+    // panel.style.opacity = "0";
 
     setTimeout(() => {
       panel.style.display = "none";
