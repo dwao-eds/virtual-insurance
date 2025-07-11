@@ -768,9 +768,10 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
         {
           icon: "../acc-img/svgrepo-iconcarrier-10.png",
           label: "Page Structure",
+          cardClass:"page-structure"
         },
 
-        { icon: "../acc-img/frame-14.svg", label: "Virtual Keyboard" },
+        { icon: "../acc-img/frame-14.svg", label: "Virtual Keyboard" ,cardClass:"virtual-keyboad"},
       ],
     },
   ];
@@ -779,7 +780,7 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     const label = option.label || "";
     const labelHtml = option.multiline ? label.replace(/ /g, "<br>") : label;
 
-    const card = createEl("div", { class: "option-card" });
+    const card = createEl("div", { class: `option-card ${option.cardClass ? option.cardClass:"" }`});
 
     // Add icon if provided
     if (option.icon) {
@@ -830,7 +831,7 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     //   ]);
     // }
     const labelHtml = option.multiline ? label.replace(/ /g, "<br>") : label;
-    const card = createEl("div", { class: "option-card" }, [
+    const card = createEl("div", { class: `option-card ${option.cardClass}` }, [
       createEl("img", {
         src: `${option.icon}`,
         alt: label,
@@ -1341,6 +1342,7 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
       });
 
       closeBtn.onclick = () => {
+        document.querySelector('.page-structure').classList.toggle('active')
         pageList.style.display = "none";
       };
 
@@ -1473,8 +1475,12 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     closeBtn.style.padding = "0 8px";
 
     closeBtn.onclick = () => {
+      
       keyboardWrapper.style.display =
         keyboardWrapper.style.display === "none" ? "block" : "none";
+
+        document.querySelector('.virtual-keyboad').classList.toggle('active')
+
     };
 
     inputWrapper.appendChild(closeBtn);
