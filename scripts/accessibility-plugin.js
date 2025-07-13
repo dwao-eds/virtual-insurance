@@ -106,6 +106,12 @@
     display: none;
 }
 
+@media (max-width: 768px) {
+  #pageList {
+   width: 80%;
+  }
+
+
   .accessibility-panel button {
   background: none  !important;
   border: none;
