@@ -14,8 +14,6 @@
   let fontSizeLevel = 0;
   const fontSizeSteps = [100, 110, 120]; // percentages
 
-
-
   // const createEl = (tag, props = {}, styles = {}, children = []) => {
   //   const el = document.createElement(tag);
   //   Object.assign(el, props);
@@ -68,7 +66,6 @@
 @media (max-width: 768px) {
   .accessibility-panel,
   #pageList {
-    width: 90vw;
     left: 5vw;
     right: 5vw;
     bottom: 20px;
@@ -106,10 +103,7 @@
     display: none;
 }
 
-@media (max-width: 768px) {
-  #pageList {
-   width: 80%;
-  }
+
 
 
   .accessibility-panel button {
@@ -299,6 +293,9 @@
   .option-card {
     padding: 4px 8px;
   }
+     .option-card.virtual-keyboad{
+    display:none
+  }
 }
 
 
@@ -393,7 +390,7 @@
 
 /* Responsive design */
 @media (max-width: 480px) {
-    .accessibility-panel {
+    .accessibility-panel , #pageList{
         width: 100%;
         max-width: 80%;
         padding: 20px 16px;
@@ -774,10 +771,14 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
         {
           icon: "../acc-img/svgrepo-iconcarrier-10.png",
           label: "Page Structure",
-          cardClass:"page-structure"
+          cardClass: "page-structure",
         },
 
-        { icon: "../acc-img/frame-14.svg", label: "Virtual Keyboard" ,cardClass:"virtual-keyboad"},
+        {
+          icon: "../acc-img/frame-14.svg",
+          label: "Virtual Keyboard",
+          cardClass: "virtual-keyboad",
+        },
       ],
     },
   ];
@@ -786,7 +787,9 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     const label = option.label || "";
     const labelHtml = option.multiline ? label.replace(/ /g, "<br>") : label;
 
-    const card = createEl("div", { class: `option-card ${option.cardClass ? option.cardClass:"" }`});
+    const card = createEl("div", {
+      class: `option-card ${option.cardClass ? option.cardClass : ""}`,
+    });
 
     // Add icon if provided
     if (option.icon) {
@@ -991,11 +994,15 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     });
   }
   const updateFontSizes = (e) => {
-    // Cycle through 0 → 3 → 0 again
     fontSizeLevel = (fontSizeLevel + 1) % fontSizeSteps.length;
     const scale = fontSizeSteps[fontSizeLevel];
 
+    const accessibilityPanel = document.querySelector(".accessibility-panel");
+
     document.querySelectorAll("*").forEach((el) => {
+      // Skip if the element is inside the accessibility panel
+      if (accessibilityPanel && accessibilityPanel.contains(el)) return;
+
       const computedSize = window.getComputedStyle(el).fontSize;
 
       if (!el.dataset.originalFontSize) {
@@ -1007,6 +1014,7 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
 
       el.style.fontSize = `${newSize}px`;
     });
+
     const stepUl = document.querySelector(".option-steps");
     if (stepUl) {
       updateActiveStepIndicator(stepUl, fontSizeLevel);
@@ -1017,11 +1025,6 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     var keyboardWrapper = document.getElementById("keyboardWrapper");
     keyboardWrapper.style.display =
       keyboardWrapper.style.display === "none" ? "block" : "none";
-
-
-
-
-
   };
 
   const toggleTextAlign = createThreeStepToggle({
@@ -1087,7 +1090,11 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
   const toggleLetterSpacing = createThreeStepToggle({
     applyStep(step) {
       const spacing = ["normal", "0.05em", "0.1em"];
+      const accessibilityPanel = document.querySelector(".accessibility-panel");
+
       document.querySelectorAll("p, li, h1, h2").forEach((el) => {
+        if (accessibilityPanel && accessibilityPanel.contains(el)) return;
+
         if (!el.dataset.originalLetterSpacing) {
           const current = window.getComputedStyle(el).letterSpacing;
           el.dataset.originalLetterSpacing = current;
@@ -1100,8 +1107,12 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
 
   const toggleLineHeight = createThreeStepToggle({
     applyStep(step) {
+      const accessibilityPanel = document.querySelector(".accessibility-panel");
+
       const heights = ["1.4", "1.8", "2.2"];
       document.querySelectorAll("p, li, h1, h2").forEach((el) => {
+        if (accessibilityPanel && accessibilityPanel.contains(el)) return;
+
         if (!el.dataset.originalLineHeight) {
           const current = window.getComputedStyle(el).lineHeight;
           el.dataset.originalLineHeight = current;
@@ -1348,7 +1359,7 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
       });
 
       closeBtn.onclick = () => {
-        document.querySelector('.page-structure').classList.toggle('active')
+        document.querySelector(".page-structure").classList.toggle("active");
         pageList.style.display = "none";
       };
 
@@ -1481,12 +1492,10 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     closeBtn.style.padding = "0 8px";
 
     closeBtn.onclick = () => {
-      
       keyboardWrapper.style.display =
         keyboardWrapper.style.display === "none" ? "block" : "none";
 
-        document.querySelector('.virtual-keyboad').classList.toggle('active')
-
+      document.querySelector(".virtual-keyboad").classList.toggle("active");
     };
 
     inputWrapper.appendChild(closeBtn);
@@ -1702,7 +1711,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.warn("No input is focused.");
     }
   }
-
 
   document.querySelectorAll(".virtual-key").forEach((key) => {
     key.addEventListener("click", () => {
