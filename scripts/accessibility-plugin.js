@@ -4,7 +4,7 @@
 
   let currentFontSize = 100;
   let imagesHidden = false;
-  let altShown = true;
+  // let altShown = true;
   let speech,
     readingLine,
     readingLineOn = false;
@@ -601,8 +601,30 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
 }
                  .high-contrast { background-color: #000 !important; color: #FFD700 !important; }
     .invert-colors * { filter: invert(220%); }
+  
     .grayscale * { filter: grayscale(100%) !important; }
     .low-saturation * { filter: contrast(200%) !important; }
+    .grayscale .accessibility-panel,
+.grayscale .accessibility-panel *,
+.grayscale #pageList,
+.grayscale #pageList * {
+  filter: none !important;
+}
+
+.low-saturation .accessibility-panel,
+.low-saturation .accessibility-panel *,
+.low-saturation #pageList,
+.low-saturation #pageList * {
+  filter: none !important;
+}
+.invert-colors .accessibility-panel,
+.invert-colors .accessibility-panel *,
+.invert-colors #pageList,
+.invert-colors #pageList * {
+  filter: none !important;
+}
+
+
     .line-spacing p, .line-spacing li { line-height: 2 !important; }
     .letter-spacing p, .letter-spacing li { letter-spacing: 2px !important; }
     .big-cursor { cursor: url(../icons/icons-icon-img.png), auto !important; }
@@ -773,7 +795,6 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
           label: "Big Cursor",
           multiline: true,
         },
-        { icon: "../acc-img/frame-2.svg", label: "Big Cursor" },
         { icon: "../acc-img/frame-11.svg", label: "Enlarge Buttons" },
         { icon: "../acc-img/svgrepo-iconcarrier-10.png", label: "Read Page" },
         {
@@ -1075,40 +1096,61 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
   };
 
   window.toggleImages = () => {
-    console.log("this");
+          const accessibilityPanel = document.querySelector(".accessibility-panel");
+
     document
       .querySelectorAll("img")
-      .forEach((img) => (img.style.display = imagesHidden ? "inline" : "none"));
+      .forEach((img) => 
+        {
+          if (accessibilityPanel && accessibilityPanel.contains(img)) return;
+
+          img.style.display = imagesHidden ? "inline" : "none"
+
+      });
     imagesHidden = !imagesHidden;
   };
 
 
   
   window.toggleAltText = () => {
+    debugger
     const images = document.querySelectorAll("img");
-  
+    const accessibilityPanel = document.querySelector(".accessibility-panel");
+
+    // Create spans only once
     if (!altSpansCreated) {
       images.forEach((img) => {
+        if (accessibilityPanel && accessibilityPanel.contains(img)) return;
+
         if (img.alt) {
           const span = createEl("span", {
-            className: "img-alt",
-            textContent: img.alt,
-            style: { display: "none", fontSize: "12px", marginLeft: "8px", color: "#333" }
+            class: "img-alt",
+            innerHTML: img.alt
           });
+  
+          Object.assign(span.style, {
+            display: "inline", // Show on first run
+            fontSize: "12px",
+            marginLeft: "8px",
+            color: "#333"
+          });
+  
           img.insertAdjacentElement("afterend", span);
         }
       });
+  
       altSpansCreated = true;
+      altShownInner = true; 
+      return; 
     }
   
-    // Toggle visibility
+    // Toggle visibility of already-created spans
     document.querySelectorAll(".img-alt").forEach((span) => {
       span.style.display = altShownInner ? "none" : "inline";
     });
   
     altShownInner = !altShownInner;
   };
-  
 
   const toggleLetterSpacing = createThreeStepToggle({
     applyStep(step) {
@@ -1408,7 +1450,7 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
             const btn = document.createElement("a");
             btn.className = "page-button";
             btn.textContent = link.textContent;
-            (btn.link = link.href), (btn.target = "_blank");
+            (btn.href = link.href), (btn.target = "_blank");
 
             rowDiv.appendChild(btn);
           }
@@ -1628,8 +1670,11 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
       .forEach((img) => (img.style.display = "inline"));
 
     // Remove alt overlays
-    document.querySelectorAll(".img-alt").forEach((el) => el.remove());
-    altShown = true;
+    document.querySelectorAll(".img-alt").forEach((span) => {
+      span.style.display = altShownInner ? "none" : "inline";
+    });
+  
+    altShownInner = !altShownInner;
 
     // Remove all accessibility-related classes from <body>
     document.body.classList.remove(
@@ -1698,16 +1743,43 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   function insertToActiveInput(char) {
     const el = lastFocusedInput;
-
+  
     if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA")) {
+      const type = el.type;
+  
+      // Special handling for email type
+      if (el.tagName === "INPUT" && type === "email") {
+        let toInsert = "";
+  
+        if (char === "Delete") {
+          // Remove last character
+          el.value = el.value.slice(0, -1);
+        } else if (char === "Space") {
+          toInsert = " ";
+        } else if (char === "Shift") {
+          isShift = !isShift;
+          console.log("Shift toggled:", isShift ? "UPPERCASE" : "lowercase");
+          return;
+        } else {
+          const finalChar = isShift ? char.toUpperCase() : char.toLowerCase();
+          toInsert = finalChar.split("").reverse().join(""); // reverse char
+        }
+  
+        el.value += toInsert;
+        el.dispatchEvent(new Event("input", { bubbles: true }));
+        el.focus();
+        return;
+      }
+  
+      // Normal handling for other input types
       const start = el.selectionStart;
       const end = el.selectionEnd;
       const value = el.value;
-
+  
       let newValue = value;
       let newCaretPos = start;
-
-      if (char === "Del") {
+  
+      if (char === "Delete") {
         if (start > 0) {
           newValue = value.slice(0, start - 1) + value.slice(end);
           newCaretPos = start - 1;
@@ -1718,22 +1790,22 @@ document.addEventListener("DOMContentLoaded", function () {
       } else if (char === "Shift") {
         isShift = !isShift;
         console.log("Shift toggled:", isShift ? "UPPERCASE" : "lowercase");
-        return; // Don't insert text for Shift key itself
+        return;
       } else {
         const finalChar = isShift ? char.toUpperCase() : char.toLowerCase();
         newValue = value.slice(0, start) + finalChar + value.slice(end);
         newCaretPos = start + 1;
       }
-
+  
       el.value = newValue;
       el.focus();
       el.selectionStart = el.selectionEnd = newCaretPos;
-
       el.dispatchEvent(new Event("input", { bubbles: true }));
     } else {
       console.warn("No input is focused.");
     }
   }
+  
 
   document.querySelectorAll(".virtual-key").forEach((key) => {
     key.addEventListener("click", () => {
