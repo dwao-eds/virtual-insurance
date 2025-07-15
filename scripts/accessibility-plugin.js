@@ -13,6 +13,8 @@
   let magnifierEnabled = false;
   let fontSizeLevel = 0;
   const fontSizeSteps = [100, 110, 120]; // percentages
+  let altShownInner = false;
+  let altSpansCreated = false;
 
   // const createEl = (tag, props = {}, styles = {}, children = []) => {
   //   const el = document.createElement(tag);
@@ -585,7 +587,13 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
 .page-button:active {
   transform: translateY(1px);
 }
-
+.reset-icon{
+ position: relative;
+    height: 32px;
+    width: 41px;
+    top: 10px;
+   
+}
 
 .accordion-content {
     transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
@@ -873,13 +881,12 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
       },
       [
         createEl("span", { innerHTML: section.title }),
-        createEl("svg", {
+        createEl("img", {
           class: "accordion-icon",
           width: "15",
           height: "15",
-          viewBox: "0 0 15 15",
-          fill: "none",
-          innerHTML: `<path d='m4.5 6 3 3 3-3' stroke='currentColor' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/>`,
+          src:"../acc-img/acc-open.png",
+          alt:"acc-alt-opnen"
         }),
       ]
     );
@@ -924,8 +931,11 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
   function buildAccessibilityPanel() {
     const reset = createEl("div", {
       class: "reset-all",
-      innerHTML: "Reset All",
     });
+    reset.appendChild( createEl("img", { src:"../acc-img/reset-icon.png",alt:"reset-icon", class:"reset-icon"}))
+    reset.appendChild(
+      createEl("span", { innerHTML:"Reset All" })
+    )
     const scrollArea = createEl("div", { class: "scroll-area" });
     const container = createEl("div", { class: "accordion-container-acces" });
     accessibilitySections.forEach((section) =>
@@ -1072,20 +1082,33 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     imagesHidden = !imagesHidden;
   };
 
+
+  
   window.toggleAltText = () => {
-    document.querySelectorAll("img").forEach((img) => {
-      if (altShown && img.alt) {
-        const span = createEl("span", {
-          className: "img-alt",
-          textContent: img.alt,
-        });
-        img.insertAdjacentElement("afterend", span);
-      } else {
-        document.querySelectorAll(".img-alt").forEach((el) => el.remove());
-      }
+    const images = document.querySelectorAll("img");
+  
+    if (!altSpansCreated) {
+      images.forEach((img) => {
+        if (img.alt) {
+          const span = createEl("span", {
+            className: "img-alt",
+            textContent: img.alt,
+            style: { display: "none", fontSize: "12px", marginLeft: "8px", color: "#333" }
+          });
+          img.insertAdjacentElement("afterend", span);
+        }
+      });
+      altSpansCreated = true;
+    }
+  
+    // Toggle visibility
+    document.querySelectorAll(".img-alt").forEach((span) => {
+      span.style.display = altShownInner ? "none" : "inline";
     });
-    altShown = !altShown;
+  
+    altShownInner = !altShownInner;
   };
+  
 
   const toggleLetterSpacing = createThreeStepToggle({
     applyStep(step) {
@@ -1519,7 +1542,7 @@ position: fixed; height: 2px; width: 100%; background: red; top: 50%; left: 0px;
     const layout = [
       ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "@"],
       ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-      ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Del"],
+      ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Delete"],
       ["Shift", "Z", "X", "C", "V", "B", "N", "M", "."],
       ["Space"],
     ];
