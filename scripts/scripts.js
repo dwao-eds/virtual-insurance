@@ -225,6 +225,13 @@ if (getMetadata('target')  && getMetadata('target')=='on') {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
+  if (getMetadata('experiment')
+    || Object.keys(getAllMetadata('campaign')).length
+    || Object.keys(getAllMetadata('audience')).length) {
+    // eslint-disable-next-line import/no-relative-packages
+    const { loadEager: runEager } = await import('../plugins/experimentation/src/index.js');
+    await runEager(document, { audiences: AUDIENCES }, pluginContext);
+    }
   let langCode="";
    langCode=getMetadata('language-code') ? getMetadata('language-code') :'en';
   document.documentElement.lang = langCode;
@@ -278,14 +285,6 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 
-  if ((getMetadata('experiment')
-      || Object.keys(getAllMetadata('campaign')).length
-      || Object.keys(getAllMetadata('audience')).length)) {
-      // eslint-disable-next-line import/no-relative-packages
-      const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
-      await runLazy(document, { audiences: AUDIENCES }, pluginContext);
-    }
-
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
@@ -308,4 +307,3 @@ async function loadPage() {
 }
 
 loadPage();
-
